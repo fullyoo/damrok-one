@@ -1,16 +1,16 @@
 @charset "utf-8";
 
 /*font + */
-@import url('//fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&subset=korean');
+/* @import url('//fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&subset=korean'); */
 /* font-family: 'Noto Sans KR', sans-serif; */
 
-@import url(http://cdn.rawgit.com/hiun/NanumSquare/master/nanumsquare.css);
+/* @import url(http://cdn.rawgit.com/hiun/NanumSquare/master/nanumsquare.css); */
 /* font-family: 'Nanum Square'; */
 
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
 /* font-family: "Pretendard Variable", Pretendard, -apple-system, 'Outfit', BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif; */
 
-@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap'); */
 /* font-family: 'Russo One', sans-serif; */
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');

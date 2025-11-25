@@ -5,8 +5,8 @@ $(function () {
 
 	$(".header .gnb > ul").hover(function () {
 		$(".header").addClass("hover");
-		$(".header .gnb > ul > li > ul").stop().slideDown(400);
-		$(".header .bg").stop().slideDown(300)
+		// $(".header .gnb > ul > li > ul").stop().slideDown(400);
+		// $(".header .bg").stop().slideDown(300)
 	}, function () {
 		$(".header").removeClass("hover");
 		$(".header .gnb > ul > li > ul").stop().slideUp(400);
@@ -36,8 +36,8 @@ $(function () {
 		e.preventDefault();
 
 		// 클릭한 a 이외의 서브메뉴는 닫기
-		$(this).next().stop().slideToggle();
-		$(".header .header_ui .m_gnb > ul > li > a").not(this).next().stop().slideUp();
+		// $(this).next().stop().slideToggle();
+		// $(".header .header_ui .m_gnb > ul > li > a").not(this).next().stop().slideUp();
 
 		// ★★★☆ 다른 a 태그의 on 클래스 제거 ☆★★★
 		$(".header .header_ui .m_gnb > ul > li > a").not(this).removeClass("on");

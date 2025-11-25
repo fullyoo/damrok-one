@@ -146,7 +146,7 @@ $(function () {
     $(function () {
         setTimeout(function () {
             initSlider();
-        }, 1000); // 4초 대기
+        }, 100); // 4초 대기
     });
 
 

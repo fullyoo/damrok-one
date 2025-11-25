@@ -73,7 +73,7 @@ $(function () {
             fade: true,
             pauseOnHover: false,
             pauseOnFocus: false,
-            autoplay: true,
+            // autoplay: true, //자동재생
             autoplaySpeed: autoplaySpeed,
             infinite: true,
             speed: 0,
@@ -161,7 +161,7 @@ $(function () {
         pauseOnFocus: false,
         variableWidth: true,
         centerMode: true,
-        autoplay: true,
+        // autoplay: true,
         autoplaySpeed: 2000,
         speed: 1200,
     }).on('beforeChange', function (event, slick, currentSlide, nextSlide) {

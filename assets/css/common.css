@@ -12,6 +12,7 @@
 :root {
 	--color-primary: #3B5C4D;
 	--color-text: #333;
+	--color-subtext: #aaa;
 }
 
 
@@ -416,7 +417,7 @@
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	right: 20px;
+	right: 10px;
 	margin: auto;
 	width: 45px;
 	height: 45px;
@@ -746,7 +747,7 @@
 
 @media (max-width:800px) {
 	.header .header_ui .m_gnb>ul>li>a {
-		padding: 18px 16px;
+		padding: 18px 20px;
 		font-size: 24px;
 	}
 

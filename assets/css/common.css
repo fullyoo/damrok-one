@@ -4,7 +4,7 @@
 /* 공통영역 */
 * {
 	line-height: 1.2;
-	letter-spacing: -0.025em;
+	letter-spacing: -1px;
 	word-break: keep-all;
 	box-sizing: border-box;
 }
@@ -12,7 +12,8 @@
 :root {
 	--color-primary: #3B5C4D;
 	--color-text: #333;
-	--color-subtext: #aaa;
+	--color-dark: #111;
+	--color-subtext: #777;
 }
 
 
@@ -217,7 +218,7 @@
 	bottom: -1px;
 	left: 50%;
 	width: 0;
-	height: 2px;
+	height: 4px;
 	background: #3B5C4D;
 	transition: 0.4s;
 	transform: translateX(-50%);
@@ -384,7 +385,7 @@
 	top: 0;
 	right: -100%;
 	width: 100%;
-	max-width: 640px;
+	/* max-width: 640px; */
 	height: 100%;
 	background: #000000d6;
 	background: #ffbfbfd6;
@@ -403,12 +404,12 @@
 	width: 100%;
 	display: inline-block;
 	vertical-align: top;
-	font-weight: 600;
+	font-weight: 400;
 	font-size: 28px;
-	letter-spacing: -0.025em;
-	color: #aaa;
+	color: #777;
 	padding: 18px 56px;
 	position: relative;
+	font-family: "Noto Serif", serif;
 }
 
 .header .header_ui .m_gnb>ul>li>a:after {
@@ -431,6 +432,9 @@
 
 .header .header_ui .m_gnb>ul>li>a.on {
 	color: #3B5C4D;
+	font-weight: 600;
+	text-decoration: underline;
+	text-underline-offset: 5px;
 }
 
 .header .header_ui .m_gnb>ul>li>a.on:after {
@@ -463,6 +467,7 @@
 
 .header .gnb>ul>li:hover>a {
 	color: #3B5C4D;
+	font-weight: 600;
 
 }
 
@@ -596,7 +601,7 @@
 .footer .top .family p {
 	font-weight: 500;
 	font-size: 15px;
-	letter-spacing: 0.025em;
+	letter-spacing: 1.5px;
 	color: #111;
 	line-height: 48px;
 	padding-left: 38px;
@@ -643,7 +648,7 @@
 	font-weight: 200;
 	font-size: 14px;
 	color: #fff;
-	letter-spacing: 0.05em;
+	letter-spacing: 3px;
 	line-height: 80px;
 	opacity: 0.5;
 }
@@ -742,13 +747,10 @@
 		bottom: 40px;
 	}
 
-
-}
-
-@media (max-width:800px) {
 	.header .header_ui .m_gnb>ul>li>a {
-		padding: 18px 20px;
-		font-size: 24px;
+		padding: 30px 20px;
+		font-size: 22px;
+		text-transform: uppercase;
 	}
 
 	.header .header_ui .m_gnb>ul>li>ul {
@@ -758,6 +760,11 @@
 	.header .header_ui .m_gnb>ul>li>ul>li>a {
 		padding: 8px 26px;
 	}
+
+
+}
+
+@media (max-width:800px) {
 
 	.footer .top .addr {}
 
@@ -787,7 +794,7 @@
 	}
 
 	.header .header_ui .m_gnb>ul>li>a {
-		padding: 18px 16px;
+		padding: 20px 16px;
 	}
 
 	.header .header_ui .m_gnb>ul>li>ul>li>a {

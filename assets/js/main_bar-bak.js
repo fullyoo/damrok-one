@@ -73,7 +73,7 @@ $(function () {
             fade: true,
             pauseOnHover: false,
             pauseOnFocus: false,
-            autoplay: true, //자동재생
+            // autoplay: true, //자동재생
             autoplaySpeed: autoplaySpeed,
             infinite: true,
             speed: 0,
@@ -142,7 +142,7 @@ $(function () {
         });
     }
 
-    // .intro 인트로가 끝난 후 4초 뒤 슬라이더 실행
+    // .intro가 끝난 후 4초 뒤 슬라이더 실행
     $(function () {
         setTimeout(function () {
             initSlider();
@@ -153,7 +153,7 @@ $(function () {
 
 
 
-    // 02.메인어바웃 Chair
+    // 02.메인어바웃
 
     $(".m-about-sec .slide_wrap .slide_ctn").slick({
         arrows: false,
@@ -161,7 +161,7 @@ $(function () {
         pauseOnFocus: false,
         variableWidth: true,
         centerMode: true,
-        autoplay: true,
+        // autoplay: true,
         autoplaySpeed: 2000,
         speed: 1200,
     }).on('beforeChange', function (event, slick, currentSlide, nextSlide) {

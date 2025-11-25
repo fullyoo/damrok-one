@@ -3,9 +3,7 @@
 
 /*  */
 
-.main {
-	/* display: none; */
-}
+.main {}
 
 footer {
 	display: none;
@@ -95,7 +93,8 @@ body {
 	position: absolute;
 	top: 0;
 	left: 0;
-	background-color: rgba(0 0 0 / 25%);
+	background-color: rgba(0 0 0 / 20%);
+	z-index: 1;
 }
 
 .mv-sec .slide_wrap .slide_ctn .item .bg video {
@@ -267,7 +266,7 @@ body {
 
 .m-about-sec .slide_wrap .slide_ctn .item .img_box {
 	position: relative;
-	border-radius: 30px;
+	border-radius: 20px;
 	overflow: hidden;
 }
 
@@ -289,7 +288,7 @@ body {
 	position: absolute;
 	bottom: 30px;
 	left: 40px;
-	font-family: 'Russo One', sans-serif;
+	font-family: "Noto Serif", serif;
 	font-size: 45px;
 	color: #fff;
 	letter-spacing: 0;
@@ -299,9 +298,9 @@ body {
 
 .m-about-sec .slide_wrap .slide_ctn .item .img_box .on {
 	position: absolute;
-	bottom: -18px;
-	right: -3px;
-	font-family: 'Russo One', sans-serif;
+	bottom: -5px;
+	right: 0;
+	font-family: "Noto Serif", serif;
 	font-size: 80px;
 	color: #fff;
 	letter-spacing: 0;
@@ -355,7 +354,7 @@ body {
 	height: 100%;
 	background: url(../images/main/icon_txt_btn_n.png) 50% 50% no-repeat;
 	z-index: -1;
-	/* animation: rotate 10s linear infinite; */
+	animation: rotate 15s linear infinite;
 }
 
 .m-about-sec .slide_wrap .slide_btn>div {
@@ -415,9 +414,9 @@ body {
 	display: inline-block;
 	vertical-align: top;
 	position: relative;
-	font-family: 'Russo One', sans-serif;
+	font-family: "Noto Serif", serif;
 	font-size: 14px;
-	letter-spacing: 0.05em;
+	letter-spacing: 3px;
 	color: #fff;
 	text-transform: uppercase;
 }
@@ -483,7 +482,7 @@ body {
 
 .m-news-sec .cont .tab li {
 	position: relative;
-	font-family: 'Russo One', sans-serif;
+	font-family: "Noto Serif", serif;
 	font-size: 30px;
 	color: #111;
 	margin-right: 46px;
@@ -492,7 +491,7 @@ body {
 }
 
 .m-news-sec .cont .tab li.on {
-	color: #de0515;
+	color: #3B5C4D;
 }
 
 .m-news-sec .cont .tab li::after {
@@ -542,7 +541,7 @@ body {
 	left: 0;
 	width: 0%;
 	height: 1px;
-	background: #de0515;
+	background: #3B5C4D;
 	transition: 0.8s
 }
 
@@ -552,9 +551,9 @@ body {
 }
 
 .m-news-sec .cont .list .item .tit h3 {
-	font-family: 'Russo One', sans-serif;
+	font-family: "Noto Serif", serif;
 	font-size: 18px;
-	color: #de0515;
+	color: #3B5C4D;
 	text-transform: uppercase;
 }
 
@@ -965,7 +964,7 @@ video {
 
 .slide_txt h2 {
 	color: white;
-	font-size: 3rem;
+	font-size: 180px;
 	font-weight: bold;
 	line-height: 1.2;
 	margin-bottom: 20px;
@@ -973,7 +972,7 @@ video {
 
 .slide_txt p {
 	color: white;
-	font-size: 1.2rem;
+	font-size: 72px;
 	opacity: 0.9;
 }
 

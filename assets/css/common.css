@@ -554,14 +554,14 @@
 	position: relative;
 	display: flex;
 	padding: 90px 100px 74px;
-	background: #f9f9f9;
+	background: #3B5C4D;
 }
 
 .footer .top .f_logo {
-	width: 235px;
+	/* width: 235px;
 	height: 40px;
 	background: url(../images/common/f_logo.png) 50% 50% no-repeat;
-	margin-right: 177px;
+	margin-right: 177px; */
 }
 
 .footer .top .addr {}

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>무한 이미지 롤링6</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f5f5f5;
+            overflow: hidden;
+            padding: 100px 0;
+        }
+
+        :root {
+            /* transform: translateY(-30px); */
+            /* --hover-y: translateY(-30px); */
+        }
+
+        .loop-container {
+            width: 100%;
+            overflow: visible;
+            position: relative;
+            padding: 80px 0;
+        }
+
+        .instawrap {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            animation: scroll 20s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .insta-img {
+            min-width: 300px;
+            height: 300px;
+            border-radius: 12px;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .insta-img::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .insta-img::after {
+            content: '📷 Instagram';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .insta-img:hover::before,
+        .insta-img:hover::after {
+            opacity: 1;
+        }
+
+        /* 반응형 디자인 */
+        @media (max-width: 1200px) {
+            .insta-img {
+                min-width: 250px;
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .insta-img {
+                min-width: 200px;
+                height: 200px;
+                border-radius: 8px;
+            }
+
+            .instawrap {
+                gap: 15px;
+            }
+
+            body {
+                padding: 70px 0;
+            }
+
+            .loop-container {
+                padding: 50px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .insta-img {
+                min-width: 150px;
+                height: 150px;
+                border-radius: 6px;
+            }
+
+            .instawrap {
+                gap: 10px;
+            }
+
+            body {
+                padding: 60px 0;
+            }
+
+            .loop-container {
+                padding: 40px 0;
+            }
+        }
+
+        .insta-img:hover {
+            /* transform: translateY(var(--hover-y, 0)) scale(1.05); */
+        }
+
+        /* 각 이미지에 실제 이미지 적용 */
+        .in-1 {
+            background-image: url('https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=400&h=400&fit=crop');
+            background-size: cover;
+            background-position: center;
+            transform: translateY(-30px);
+            --hover-y: -30px;
+        }
+
+        .in-2 {
+            background-image: url('https://images.unsplash.com/photo-1522770179533-24471fcdba45?w=400&h=400&fit=crop');
+            background-size: cover;
+            background-position: center;
+            transform: translateY(40px);
+            --hover-y: 40px;
+        }
+
+        .in-3 {
+            background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&h=400&fit=crop');
+            background-size: cover;
+            background-position: center;
+            transform: translateY(-15px);
+            --hover-y: -15px;
+        }
+
+        .in-4 {
+            background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=400&fit=crop');
+            background-size: cover;
+            background-position: center;
+            transform: translateY(25px);
+            --hover-y: 25px;
+        }
+
+        .in-5 {
+            background-image: url('https://images.unsplash.com/photo-1556761175-b413da4baf72?w=400&h=400&fit=crop');
+            background-size: cover;
+            background-position: center;
+            transform: translateY(-40px);
+            --hover-y: -40px;
+        }
+
+        /* 마우스 호버시 애니메이션 일시정지 */
+        .loop-container:hover .instawrap {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="loop-container">
+        <div class="instawrap">
+            <div class="insta-img in-1" data-instagram="https://www.instagram.com/p/example1/"></div>
+            <div class="insta-img in-2" data-instagram="https://www.instagram.com/p/example2/"></div>
+            <div class="insta-img in-3" data-instagram="https://www.instagram.com/p/example3/"></div>
+            <div class="insta-img in-4" data-instagram="https://www.instagram.com/p/example4/"></div>
+            <div class="insta-img in-5" data-instagram="https://www.instagram.com/p/example5/"></div>
+            <!-- 무한 스크롤을 위한 복제 -->
+            <div class="insta-img in-1" data-instagram="https://www.instagram.com/p/example1/"></div>
+            <div class="insta-img in-2" data-instagram="https://www.instagram.com/p/example2/"></div>
+            <div class="insta-img in-3" data-instagram="https://www.instagram.com/p/example3/"></div>
+            <div class="insta-img in-4" data-instagram="https://www.instagram.com/p/example4/"></div>
+            <div class="insta-img in-5" data-instagram="https://www.instagram.com/p/example5/"></div>
+        </div>
+    </div>
+
+    <script>
+        // 인스타그램 링크 클릭 이벤트
+        document.querySelectorAll('.insta-img').forEach(img => {
+            img.addEventListener('click', function () {
+                const instagramUrl = this.getAttribute('data-instagram');
+                window.open(instagramUrl, '_blank');
+            });
+        });
+    </script>
+</body>
+
+</html>

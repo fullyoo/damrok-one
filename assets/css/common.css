@@ -583,6 +583,7 @@
 	display: flex;
 	justify-content: center;
 	gap: 10px;
+	margin-bottom: 10px;
 }
 
 .sns-box img {
@@ -660,7 +661,6 @@
 	border: 1px solid var(--color-border);
 	background-color: var(--color-bg);
 	border-radius: 5px;
-	margin-top: 10px;
 	position: relative;
 }
 
@@ -828,7 +828,9 @@
 		width: 100%;
 	}
 
-	.footer .top .family {}
+	.footer .top .family {
+		height: 50px;
+	}
 
 	.foot-wrap {
 		flex-direction: column;
@@ -878,6 +880,7 @@
 
 	.sns-box {
 		justify-content: flex-start;
+		margin: 20px 0;
 	}
 
 	.header {

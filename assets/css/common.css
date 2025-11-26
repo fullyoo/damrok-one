@@ -735,7 +735,8 @@
 	font-size: 14px;
 	color: var(--color-lightbg);
 	letter-spacing: 1px;
-	line-height: 80px;
+	line-height: 1.5;
+	padding: 20px 16px;
 }
 
 @media (max-width: 1600px) {
@@ -752,7 +753,7 @@
 	}
 
 	.footer .top {
-		padding: 30px 40px;
+		padding: 50px 40px;
 		gap: 0;
 	}
 

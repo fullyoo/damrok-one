@@ -47,8 +47,11 @@ $(function () {
 	});
 
 
-	$(".footer .top .family p").on("click", function () {
+	$(".footer .top .family>div").on("click", function () {
+		// ul 열고 닫기
 		$(this).next().stop().slideToggle();
+		// span에 on 클래스 토글
+		$(this).find("span").toggleClass("on");
 	})
 	$(".footer .top_btn").on("click", function () {
 		$("html, body").stop().animate({ scrollTop: 0 }, 600)

@@ -17,6 +17,9 @@
 	--color-dark: #111;
 	--color-subtext: #777;
 	--color-white: #fff;
+	--color-border: #ddd;
+
+	--color-bg: #f6f6f6;
 	--color-dimbg: rgba(0 0 0 / 25%);
 	--color-lightbg: rgba(255 255 255 / 50%);
 
@@ -26,7 +29,7 @@
 	--transition-10s: all 1s ease;
 
 
-	--base-font: 'Pretendard', 'Noto Sans KR', 'Malgun Gothic', 'verdana', sans-serif;
+	--base-font: 'Pretendard', 'Malgun Gothic', 'verdana', sans-serif;
 	--key-font: "Noto Serif", serif;
 }
 
@@ -146,7 +149,7 @@
 	box-sizing: border-box;
 	padding: 0 100px;
 	z-index: 500;
-	background-color: #fff;
+	background-color: var(--color-white);
 }
 
 .header::after {
@@ -156,7 +159,7 @@
 	left: 0;
 	width: 100%;
 	height: 1px;
-	background-color: #fff;
+	background-color: var(--color-white);
 	opacity: 0.3;
 	z-index: -1;
 	opacity: 0;
@@ -170,7 +173,7 @@
 	left: 0;
 	width: 100%;
 	height: 379px;
-	background-color: #fff;
+	background-color: var(--color-white);
 	opacity: 0.8;
 	z-index: -1;
 }
@@ -223,7 +226,7 @@
 	color: var(--color-text);
 	padding: 0 46px;
 	transition: var(--transition-3s);
-	font-family: "Noto Serif", serif;
+	font-family: var(--key-font);
 }
 
 .header .gnb>ul>li>a::after {
@@ -257,7 +260,7 @@
 	left: 0;
 	width: 1px;
 	height: 284px !important;
-	background-color: #fff;
+	background-color: var(--color-white);
 	opacity: 0.3;
 }
 
@@ -268,7 +271,7 @@
 	right: 0;
 	width: 1px;
 	height: 284px !important;
-	background-color: #fff;
+	background-color: var(--color-white);
 	opacity: 0.3;
 }
 
@@ -281,7 +284,7 @@
 	text-align: center;
 	font-weight: 300;
 	font-size: 16px;
-	color: #fff;
+	color: var(--color-white);
 	opacity: 0.8;
 	padding: 7px 0;
 }
@@ -314,7 +317,7 @@
 	display: inline-block;
 	font-weight: 300;
 	font-size: 12px;
-	color: #fff;
+	color: var(--color-white);
 	vertical-align: middle;
 }
 
@@ -328,7 +331,7 @@
 	position: absolute;
 	top: 36px;
 	left: 0;
-	background-color: #fff;
+	background-color: var(--color-white);
 	width: 100%;
 	border-radius: 5px;
 	padding: 12px 0;
@@ -401,9 +404,8 @@
 	width: 100%;
 	/* max-width: 640px; */
 	height: 100%;
-	background-color: #111000d6;
-	background-color: #ffbfbfd6;
-	background-color: #f6f6f6;
+	background-color: var(--color-dimbg);
+	background-color: var(--color-bg);
 	transition: var(--transition-5s);
 	/* z-index: 99; */
 }
@@ -423,7 +425,7 @@
 	color: var(--color-subtext);
 	padding: 18px 56px;
 	position: relative;
-	font-family: "Noto Serif", serif;
+	font-family: var(--key-font);
 }
 
 .header .header_ui .m_gnb>ul>li>a:after {
@@ -440,7 +442,7 @@
 	background-size: auto 100%;
 	/* background-image: url("../images/common/gnb_off_arrow.svg"); */
 	transform: rotate(90deg);
-	transition: transform .1s ease;
+	transition: var(--transition-1s);
 }
 
 
@@ -472,7 +474,7 @@
 	padding: 8px 56px;
 	font-weight: 300;
 	font-size: 18px;
-	color: #fff;
+	color: var(--color-white);
 }
 
 .header .gnb>ul>li:hover>a::after {
@@ -604,38 +606,40 @@
 	right: 100px;
 	width: 200px;
 	height: 50px;
-	border: 1px solid #e0e0e0;
-	background-color: #f5f5f5;
+	border: 1px solid var(--color-border);
+	background-color: var(--color-bg);
 	border-radius: 5px;
 	margin-top: 37px;
 }
 
-.footer .top .family p {
+.footer .top .family>div {
 	font-weight: 500;
 	font-size: 16px;
-	letter-spacing: 1.5px;
 	color: var(--color-dark);
-	line-height: 48px;
-	padding-left: 38px;
 	cursor: pointer;
 	font-family: var(--key-font);
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 20px;
 }
 
-.footer .top .family p:hover {}
-
-.footer .top .family p:hover span {
-	transform: rotate(90deg) scale(1.2);
+.footer .top .family>div span {
+	font-size: 30px;
+	transform-origin: center center;
+	/* 중앙 기준 회전 */
+	display: inline-block;
+	/* 꼭 필요 */
+	transition: var(--transition-3s);
 }
 
-.footer .top .family p span {
-	position: absolute;
-	top: 50%;
-	right: 28px;
-	transform: translateY(-50%);
-	color: var(--color-primary);
-	font-size: 26px;
-	transform: rotate(0deg) scale(1);
+/* .footer .top .family>div:hover span, */
+.footer .top .family>div span.on {
+	transform: rotate(180deg) scale(1.15);
 }
+
 
 .footer .top .family ul {
 	display: none;
@@ -644,8 +648,8 @@
 	left: 0;
 	width: 100%;
 	border-radius: 5px;
-	border: 1px solid #e0e0e0;
-	background-color: #f5f5f5;
+	border: 1px solid var(--color-border);
+	background-color: var(--color-bg);
 	padding: 10px 0;
 }
 
@@ -662,15 +666,21 @@
 	padding: 4px 16px;
 }
 
+.footer .top .family ul li a:hover {
+	color: var(--color-primary);
+	text-decoration: underline;
+	text-underline-offset: 5px;
+}
+
 .footer .copy {
-	background-color: #111111;
+	background-color: var(--color-dark);
 	text-align: center;
 }
 
 .footer .copy p {
 	font-weight: 200;
 	font-size: 14px;
-	color: #fff;
+	color: var(--color-white);
 	letter-spacing: 3px;
 	line-height: 80px;
 	opacity: 0.5;

@@ -2,22 +2,24 @@
 
 
 /*드래그색상 정의*/
-/* ::-moz-selection { background:#263658; color:#fff; }
-::selection { background:#263658; color:#fff; } */
+/* ::-moz-selection { background:#263658; color:var(--color-white); }
+::selection { background:#263658; color:var(--color-white); } */
 
 /*기본태그 정의*/
 * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
     max-height: 1000000px;
 }
 
 html,
 body {
-    padding: 0;
-    margin: 0;
+    font-family: "Pretendard Variable", Pretendard, -apple-system, 'Outfit', BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 }
 
 html {
-    /* scroll-behavior: smooth; */
+    scroll-behavior: smooth;
 }
 
 /* 모바일 가로모드 폰트확대 방지 */
@@ -34,8 +36,7 @@ table,
 input,
 textarea {
     font-size: 12px;
-    font-family: "Pretendard Variable", Pretendard, -apple-system, 'Outfit', BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
-    color: #777
+    color: var(--color-subtext);
 }
 
 article,
@@ -49,15 +50,13 @@ hgroup,
 menu,
 nav,
 section {
-    display: block
+    display: block;
 }
 
 select,
 input,
 textarea,
-button {
-    font-family: "Pretendard Variable", Pretendard, -apple-system, 'Outfit', BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
-}
+button {}
 
 /* for AXISJ */
 body,
@@ -254,7 +253,7 @@ legend {
     left: 0;
     display: block;
     width: 150px;
-    color: #fff;
+    color: var(--color-white);
     height: 18px;
     padding: 5px 3px 0 3px;
     margin-left: 5px;

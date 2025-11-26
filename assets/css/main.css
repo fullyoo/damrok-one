@@ -7,7 +7,7 @@
 .m_tit h2 {
 	font-family: var(--key-font);
 	font-size: 80px;
-	color: #fff;
+	color: var(--color-white);
 	line-height: 1.05;
 	letter-spacing: 0
 }
@@ -15,7 +15,7 @@
 .m_tit p {
 	font-weight: 300;
 	font-size: 20px;
-	color: #fff;
+	color: var(--color-white);
 	margin-top: 24px;
 	line-height: 1.6;
 	letter-spacing: 0
@@ -54,7 +54,7 @@
 }
 
 .quick li a img {
-	box-shadow: 1px 2px 7px 1px #0000000f;
+	box-shadow: 1px 2px 7px 1px var(--color-dimbg);
 	border-radius: 50%;
 }
 
@@ -126,7 +126,7 @@
 .mv-sec .slide_wrap .slide_ui .slide_txt .item h2 {
 	font-family: var(--key-font);
 	font-size: 80px;
-	color: #fff;
+	color: var(--color-white);
 	line-height: 1.1;
 	animation: fadeUp 1s both
 }
@@ -134,7 +134,7 @@
 .mv-sec .slide_wrap .slide_ui .slide_txt .item p {
 	font-weight: 300;
 	font-size: 20px;
-	color: #fff;
+	color: var(--color-white);
 	margin-top: 24px;
 	line-height: 1.6;
 	animation: fadeUp 1s 0.3s both
@@ -158,7 +158,7 @@
 	vertical-align: top;
 	width: 0;
 	height: 100%;
-	background-color: #fff;
+	background-color: var(--color-white);
 }
 
 .mv-sec .slide_wrap .slide_ui .progress_ctn .play_btn {
@@ -284,7 +284,7 @@ video {
 }
 
 .slide_txt h2 {
-	color: #fff;
+	color: var(--color-white);
 	font-size: 180px;
 	font-weight: bold;
 	line-height: 1.2;
@@ -292,7 +292,7 @@ video {
 }
 
 .slide_txt p {
-	color: #fff;
+	color: var(--color-white);
 	font-size: 72px;
 	opacity: 0.9;
 }
@@ -339,20 +339,20 @@ video {
 	left: 5px;
 	width: 0;
 	height: 3px;
-	background-color: #fff;
+	background-color: var(--color-white);
 	transition: var(--transition-3s);
 	z-index: 1;
 }
 
 .mv-sec .slide_wrap .slide_ui .progress_ctn .bar.active span {
-	background-color: #fff;
+	background-color: var(--color-white);
 	background-color: var(--color-primary);
 }
 
 .mv-sec .slide_wrap .slide_ui .progress_ctn .bar.completed span {
 	opacity: 0;
 	width: 100% !important;
-	background-color: #fff;
+	background-color: var(--color-white);
 }
 
 /* 호버 효과 추가 */
@@ -382,7 +382,7 @@ video {
 }
 
 .mv-sec .slide_wrap .slide_ui .progress_ctn .play_btn .stop:hover {
-	background-color: #3B5C4D !important;
+	background-color: var(--color-primary) !important;
 }
 
 .mv-sec .slide_wrap .slide_ui .progress_ctn .play_btn .stop.on {
@@ -395,7 +395,7 @@ video {
 	content: '';
 	width: 0;
 	height: 0;
-	border-left: 8px solid #fff;
+	border-left: 8px solid var(--color-white);
 	border-top: 5px solid transparent;
 	border-bottom: 5px solid transparent;
 	margin-left: 2px;
@@ -407,10 +407,10 @@ video {
 	content: '';
 	width: 1px;
 	height: 11px;
-	background-color: #fff;
+	background-color: var(--color-white);
 	border: none;
-	box-shadow: 5px 0 0 #fff;
-	margin-left: -3px;
+	box-shadow: 5px 0 0 var(--color-white);
+	margin-left: -5px;
 }
 
 /* 개선된 바 텍스트 스타일 - 클릭 가능, bar 위쪽에 위치 */
@@ -418,7 +418,7 @@ video {
 	position: absolute;
 	top: -25px;
 	left: 5px;
-	color: #fff;
+	color: var(--color-white);
 	font-size: 12px;
 	font-weight: 500;
 	opacity: 0.6;
@@ -439,7 +439,7 @@ video {
 
 .mv-sec .slide_wrap .slide_ui .progress_ctn .bar.active .bar-text {
 	opacity: 1;
-	color: #fff;
+	color: var(--color-white);
 	font-weight: 700;
 	transform: translateY(2px);
 }
@@ -513,7 +513,7 @@ video {
 	left: 40px;
 	font-family: var(--key-font);
 	font-size: 45px;
-	color: #fff;
+	color: var(--color-white);
 	letter-spacing: 0;
 	line-height: 1.1;
 	transition: var(--transition-10s);
@@ -525,7 +525,7 @@ video {
 	right: 0;
 	font-family: var(--key-font);
 	font-size: 80px;
-	color: #fff;
+	color: var(--color-white);
 	letter-spacing: 0;
 	text-align: right;
 	line-height: 1.1;
@@ -632,7 +632,7 @@ video {
 	font-family: var(--baseFont2);
 	font-size: 160px;
 	font-weight: 900;
-	color: #fff;
+	color: var(--color-white);
 	white-space: nowrap;
 	/* text-shadow: -1px 0px rgba(159 159 159 / 70%),
                 0px 1px rgba(159 159 159 / 70%),
@@ -712,7 +712,7 @@ video {
 	font-family: var(--key-font);
 	font-size: 14px;
 	letter-spacing: 3px;
-	color: #fff;
+	color: var(--color-white);
 	text-transform: uppercase;
 }
 
@@ -723,7 +723,7 @@ video {
 	left: 0;
 	width: 100%;
 	height: 3px;
-	background-color: #fff;
+	background-color: var(--color-white);
 }
 
 .m-brand-sec .cont .list {
@@ -738,14 +738,14 @@ video {
 .m-brand-sec .cont .list .item .txt h3 {
 	font-weight: bold;
 	font-size: 30px;
-	color: #fff;
+	color: var(--color-white);
 	margin: 35px 0 24px;
 }
 
 .m-brand-sec .cont .list .item .txt p {
 	font-weight: 200;
 	font-size: 16px;
-	color: #fff;
+	color: var(--color-white);
 	line-height: 1.7;
 }
 
@@ -820,7 +820,7 @@ video {
 	display: flex;
 	align-items: center;
 	padding: 68px 0 50px;
-	border-bottom: 1px solid #e0e0e0;
+	border-bottom: 1px solid var(--color-border);
 }
 
 .m-news-sec .cont .list .item a {

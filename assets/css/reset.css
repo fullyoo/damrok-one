@@ -35,7 +35,7 @@ input,
 textarea {
     font-size: 12px;
     font-family: "Pretendard Variable", Pretendard, -apple-system, 'Outfit', BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
-    color: #666;
+    color: #777
 }
 
 article,
@@ -179,16 +179,16 @@ caption {
 /* 폼태그의 초기화 */
 select {
     vertical-align: middle;
-    color: #666;
+    color: #777;
 }
 
 input {
     vertical-align: middle;
-    color: #666;
+    color: #777;
 }
 
 textarea {
-    color: #666;
+    color: #777;
 }
 
 input[type="radio"] {
@@ -196,22 +196,22 @@ input[type="radio"] {
 }
 
 a:link {
-    color: #666;
+    color: #777;
     text-decoration: none;
 }
 
 a:active {
-    color: #666;
+    color: #777;
     text-decoration: none;
 }
 
 a:visited {
-    color: #666;
+    color: #777;
     text-decoration: none;
 }
 
 a:hover {
-    color: #666;
+    color: #777;
     text-decoration: none;
 }
 
@@ -261,7 +261,7 @@ legend {
     text-align: center;
     font-size: 100%;
     font-weight: bold;
-    background: #115aa3;
+    background: #3B5C4D;
     text-decoration: none;
 }
 

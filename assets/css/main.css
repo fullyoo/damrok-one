@@ -692,13 +692,29 @@ video {
 /****** 4. 브랜드 영역 brand ******/
 
 .m-brand-sec {
-	background: url(../images/main/main02.jpg) 50% 50% no-repeat;
+	/* background: url(../images/main/brand01.jpg) 50% 50% no-repeat; */
 	background-size: cover;
 	padding: 150px 0;
 	background-attachment: fixed;
+	background-color: #D2CEC8;
+	position: relative;
 }
 
-.m-brand-sec .cont {}
+.m-brand-sec:before {
+	content: '';
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: var(--color-dimbg);
+	z-index: 1;
+}
+
+.m-brand-sec .m_tit {
+	position: relative;
+	z-index: 2;
+}
 
 .m-brand-sec .cont .link {
 	text-align: center;

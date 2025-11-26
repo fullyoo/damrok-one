@@ -832,6 +832,10 @@
 		height: 50px;
 	}
 
+	.footer .top .family ul {
+		bottom: 54px;
+	}
+
 	.foot-wrap {
 		flex-direction: column;
 		gap: 30px;

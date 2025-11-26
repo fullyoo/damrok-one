@@ -179,16 +179,16 @@ caption {
 /* 폼태그의 초기화 */
 select {
     vertical-align: middle;
-    color: #777;
+    color: var(--color-subtext);
 }
 
 input {
     vertical-align: middle;
-    color: #777;
+    color: var(--color-subtext);
 }
 
 textarea {
-    color: #777;
+    color: var(--color-subtext);
 }
 
 input[type="radio"] {
@@ -196,22 +196,22 @@ input[type="radio"] {
 }
 
 a:link {
-    color: #777;
+    color: var(--color-subtext);
     text-decoration: none;
 }
 
 a:active {
-    color: #777;
+    color: var(--color-subtext);
     text-decoration: none;
 }
 
 a:visited {
-    color: #777;
+    color: var(--color-subtext);
     text-decoration: none;
 }
 
 a:hover {
-    color: #777;
+    color: var(--color-subtext);
     text-decoration: none;
 }
 
@@ -261,7 +261,7 @@ legend {
     text-align: center;
     font-size: 100%;
     font-weight: bold;
-    background: #3B5C4D;
+    background-color: var(--color-primary);
     text-decoration: none;
 }
 

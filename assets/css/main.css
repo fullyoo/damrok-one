@@ -22,11 +22,11 @@
 }
 
 .m_tit.c h2 {
-	color: #111;
+	color: var(--color-dark);
 }
 
 .m_tit.c p {
-	color: #777;
+	color: var(--color-subtext);
 }
 
 .m_tit.tac {
@@ -150,7 +150,7 @@
 	position: relative;
 	width: 250px;
 	height: 3px;
-	background: #ffffff4f;
+	background-color: var(--color-lightbg);
 }
 
 .mv-sec .slide_wrap .slide_ui .progress_ctn .bar span {
@@ -158,7 +158,7 @@
 	vertical-align: top;
 	width: 0;
 	height: 100%;
-	background: #fff;
+	background-color: #fff;
 }
 
 .mv-sec .slide_wrap .slide_ui .progress_ctn .play_btn {
@@ -329,7 +329,8 @@ video {
 	left: 5px;
 	right: 5px;
 	height: 3px;
-	background: #ffffff4f;
+	background-color: var(--color-lightbg);
+	transition: var(--transition-3s);
 }
 
 .mv-sec .slide_wrap .slide_ui .progress_ctn .bar span {
@@ -338,24 +339,26 @@ video {
 	left: 5px;
 	width: 0;
 	height: 3px;
-	background: #fff;
-	transition: opacity 0.5s ease;
+	background-color: #fff;
+	transition: var(--transition-3s);
 	z-index: 1;
 }
 
 .mv-sec .slide_wrap .slide_ui .progress_ctn .bar.active span {
-	background: #fff;
+	background-color: #fff;
+	background-color: var(--color-primary);
 }
 
 .mv-sec .slide_wrap .slide_ui .progress_ctn .bar.completed span {
 	opacity: 0;
 	width: 100% !important;
-	background: #fff;
+	background-color: #fff;
 }
 
 /* 호버 효과 추가 */
 .mv-sec .slide_wrap .slide_ui .progress_ctn .bar:hover::before {
-	background: #ffffff80;
+	background-color: var(--color-primary);
+	background-color: var(--color-white);
 }
 
 .play_btn {
@@ -365,22 +368,27 @@ video {
 .mv-sec .slide_wrap .slide_ui .progress_ctn .play_btn .stop {
 	width: 40px;
 	height: 40px;
-	background: rgba(255, 255, 255, 0.3);
+	background-color: var(--color-lightbg);
 	border-radius: 50%;
 	cursor: pointer;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	transition: background 0.3s ease;
+	/* transition: var(--transition-3s); */
 }
 
 .stop:hover {
-	background: rgba(255, 255, 255, 0.5);
+	background-color: var(--color-lightbg);
+}
+
+.mv-sec .slide_wrap .slide_ui .progress_ctn .play_btn .stop:hover {
+	background-color: #3B5C4D !important;
 }
 
 .mv-sec .slide_wrap .slide_ui .progress_ctn .play_btn .stop.on {
-	background: rgba(255, 255, 255, 0.5);
+	background-color: var(--color-lightbg);
 }
+
 
 
 .stop.on:before {
@@ -397,9 +405,9 @@ video {
 
 .stop:before {
 	content: '';
-	width: 3px;
-	height: 12px;
-	background: #fff;
+	width: 1px;
+	height: 11px;
+	background-color: #fff;
 	border: none;
 	box-shadow: 5px 0 0 #fff;
 	margin-left: -3px;
@@ -414,7 +422,7 @@ video {
 	font-size: 12px;
 	font-weight: 500;
 	opacity: 0.6;
-	transition: all 0.3s ease;
+	transition: var(--transition-3s);
 	white-space: nowrap;
 	cursor: pointer;
 	z-index: 2;
@@ -467,7 +475,7 @@ video {
 	max-width: 740px;
 	overflow: hidden;
 	padding-top: 106px;
-	transition: 1.2s;
+	transition: var(--transition-10s);
 	margin: 0 10px;
 }
 
@@ -508,7 +516,7 @@ video {
 	color: #fff;
 	letter-spacing: 0;
 	line-height: 1.1;
-	transition: 1.2s
+	transition: var(--transition-10s);
 }
 
 .m-about-sec .slide_wrap .slide_ctn .item .img_box .on {
@@ -522,7 +530,7 @@ video {
 	text-align: right;
 	line-height: 1.1;
 	transform: translateX(100%);
-	transition: 1.2s
+	transition: var(--transition-10s);
 }
 
 .m-about-sec .slide_wrap .slide_ctn .item .down_txt {
@@ -530,20 +538,20 @@ video {
 	transform: translateY(-100%);
 	padding: 40px 50px 0;
 	z-index: -1;
-	transition: 1.2s
+	transition: var(--transition-10s);
 }
 
 .m-about-sec .slide_wrap .slide_ctn .item .down_txt h4 {
 	font-weight: bold;
 	font-size: 30px;
-	color: #111;
+	color: var(--color-dark);
 	margin-bottom: 14px;
 }
 
 .m-about-sec .slide_wrap .slide_ctn .item .down_txt p {
 	font-weight: 300;
 	font-size: 18px;
-	color: #111;
+	color: var(--color-dark);
 }
 
 .m-about-sec .slide_wrap .slide_btn {
@@ -687,7 +695,7 @@ video {
 	background: url(../images/main/main02.jpg) 50% 50% no-repeat;
 	background-size: cover;
 	padding: 150px 0;
-	background-attachment: fixed
+	background-attachment: fixed;
 }
 
 .m-brand-sec .cont {}
@@ -715,7 +723,7 @@ video {
 	left: 0;
 	width: 100%;
 	height: 3px;
-	background: #fff;
+	background-color: #fff;
 }
 
 .m-brand-sec .cont .list {
@@ -774,14 +782,14 @@ video {
 	position: relative;
 	font-family: var(--key-font);
 	font-size: 30px;
-	color: #111;
+	color: var(--color-dark);
 	margin-right: 46px;
 	cursor: pointer;
 	z-index: 5;
 }
 
 .m-news-sec .cont .tab li.on {
-	color: #3B5C4D;
+	color: var(--color-primary);
 }
 
 .m-news-sec .cont .tab li::after {
@@ -792,7 +800,7 @@ video {
 	width: 9px;
 	height: 9px;
 	border-radius: 50%;
-	background: #111;
+	background-color: var(--color-dark);
 }
 
 .m-news-sec .cont .tab li:last-of-type {
@@ -831,8 +839,8 @@ video {
 	left: 0;
 	width: 0%;
 	height: 1px;
-	background: #3B5C4D;
-	transition: 0.8s
+	background-color: var(--color-primary);
+	transition: var(--transition-5s);
 }
 
 .m-news-sec .cont .list .item .tit {
@@ -843,7 +851,7 @@ video {
 .m-news-sec .cont .list .item .tit h3 {
 	font-family: var(--key-font);
 	font-size: 18px;
-	color: #3B5C4D;
+	color: var(--color-primary);
 	text-transform: uppercase;
 }
 
@@ -856,14 +864,14 @@ video {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	font-size: 30px;
-	color: #111;
+	color: var(--color-dark);
 	margin-bottom: 32px;
 }
 
 .m-news-sec .cont .list .item .txt p.date {
 	font-weight: 300;
 	font-size: 15px;
-	color: #777;
+	color: var(--color-subtext);
 	vertical-align: middle;
 }
 
@@ -876,11 +884,11 @@ video {
 	bottom: 17px;
 	right: -110px;
 	opacity: 0;
-	transition: 0.3s
+	transition: var(--transition-3s);
 }
 
 .m-news-sec .cont .list .item .position_img img {
-	box-shadow: 11px 21px 49px 0px rgba(0, 0, 0, 0.25);
+	box-shadow: 11px 21px 49px 0px var(--color-dimbg);
 	border-radius: 30px
 }
 
@@ -902,7 +910,7 @@ video {
 	overflow: hidden;
 	width: 100%;
 	height: 100vh;
-	background-color: #3B5C4D;
+	background-color: var(--color-primary);
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;

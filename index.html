@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="viewport"
-        content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+
+    <!-- iOS 전화번호, 이메일 자동링크 방지 -->
+    <meta name="format-detection" content="telephone=no, email=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Damrok, 淡綠</title>
     <link rel="icon" href="./assets/images/common/favicon.ico" type="image/x-icon">
@@ -35,7 +36,9 @@
 
     <header class="header">
         <div class="bg"></div>
-        <h1 class="logo"><a href="#"><img src="./assets/images/common/logo.svg" alt=""></a></h1>
+        <h1 class="logo">
+            <a href="#"><img src="./assets/images/common/logo.svg" alt="로고"></a>
+        </h1>
         <nav class="gnb">
             <ul>
                 <li>
@@ -255,46 +258,58 @@
                     <h2>Business Information</h2>
                     <p>해상운송(전용선,부정기선) 무역사업을 아우르는 종합자원 수송의 대표주자로 세계 각지에서 고객들에게 <br>최상의 서비스를 제공할 수 있도록 노력하고 있습니다. </p>
                 </div>
-                <div class="cont">
+                <div class="cont" style="display: none;">
                     <div class="link" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100">
                         <a href="#">View details</a>
                     </div>
-                    <div class="list" style="display: none;">
-                        <div class="item">
-                            <a href="#">
-                                <figure data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100"><img
-                                        src="./assets/images/main/icon_main01.png" alt=""></figure>
-                                <div class="txt" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-                            </a>
-                            <h3>전용선</h3>
-                            <p>한국전력 화력발전용 유연탄 장기운송계약 및 국내 최대 제철사인 포스코와의<br> 장기운송계약에 전용선(Supramax/ Panamax/ Cape)을
-                                투입하여<br> 해운시황의 변동성에 노출없이 안정적인 수익을 창출하고 있습니다.</p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <a href="#">
-                            <figure data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100"><img
-                                    src="./assets/images/main/icon_main02.png" alt=""></figure>
+
+                    <div class="list">
+                        <!-- item 1 -->
+                        <a href="#" class="item" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100">
+                            <figure>
+                                <img src="./assets/images/main/icon_main01.png" alt="">
+                            </figure>
                             <div class="txt" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                                <h3>전용선</h3>
+                                <p>
+                                    한국전력 화력발전용 유연탄 장기운송계약 및 국내 최대 제철사인 포스코와의<br>
+                                    장기운송계약에 전용선(Supramax/ Panamax/ Cape)을 투입하여<br>
+                                    해운시황의 변동성에 노출없이 안정적인 수익을 창출하고 있습니다.
+                                </p>
+                            </div>
                         </a>
-                        <h3>부정기선</h3>
-                        <p>국내·외 우량 화주와 긴밀한 협력관계를 바탕으로 HANDY SIZE 부터<br> CAPE SIZE 선박을 통해, 3대 주요 화물( 곡물, 석탄, 철광석 ) 및
-                            비료,<br> 각종 미네랄을 운송하고 있습니다.</p>
+
+                        <!-- item 2 -->
+                        <a href="#" class="item" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100">
+                            <figure>
+                                <img src="./assets/images/main/icon_main02.png" alt="">
+                            </figure>
+                            <div class="txt" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                                <h3>부정기선</h3>
+                                <p>
+                                    국내·외 우량 화주와 긴밀한 협력관계를 바탕으로 HANDY SIZE 부터<br>
+                                    CAPE SIZE 선박을 통해, 3대 주요 화물(곡물, 석탄, 철광석) 및<br>
+                                    비료, 각종 미네랄을 운송하고 있습니다.
+                                </p>
+                            </div>
+                        </a>
+
+                        <!-- item 3 -->
+                        <a href="#" class="item" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100">
+                            <figure>
+                                <img src="./assets/images/main/icon_main03.png" alt="">
+                            </figure>
+                            <div class="txt" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                                <h3>원자재</h3>
+                                <p>
+                                    최고의 품질과 신뢰를 바탕으로 다양한 철강, 화학제품 및 합금철을<br>
+                                    국내외 시장에 공급하고 보세창고를 통한 물류의 전문화로<br>
+                                    높은 인지도를 쌓아가고 있습니다.
+                                </p>
+                            </div>
+                        </a>
                     </div>
                 </div>
-                <div class="item">
-                    <a href="#">
-                        <figure data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100"><img
-                                src="./assets/images/main/icon_main03.png" alt=""></figure>
-                        <div class="txt" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-                    </a>
-                    <h3>원자재</h3>
-                    <p>최고의 품질과 신뢰를 바탕으로 다양한 철강, 화학제품 및 합금철을<br> 국내외 시장에 공급하고 보세창고를 통한 물류의 전문화로<br> 높은 인지도를 쌓아가고 있습니다.
-                    </p>
-                </div>
-            </div>
-            </div>
-            </div>
             </div>
         </section>
         <section class="m-news-sec" style="display: none;">

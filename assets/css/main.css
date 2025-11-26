@@ -698,6 +698,7 @@ video {
 	background-attachment: fixed;
 	background-color: #D2CEC8;
 	position: relative;
+	height: 100vh;
 }
 
 .m-brand-sec:before {

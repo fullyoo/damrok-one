@@ -1,0 +1,707 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport"
+        content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
+
+    <title>메인_bar-bak</title>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" /> -->
+
+    <link rel="stylesheet" href="./assets/css/slick.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@xpressengine/xeicon@2.3.3/xeicon.min.css">
+
+
+    <link rel="stylesheet" type="text/css" href="./assets/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/common-bak.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/aos.css" />
+    <link rel="stylesheet" href="./assets/css/main-bak.css">
+
+    <style>
+        .mv-sec {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .slide_wrap {
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide_ctn {
+            width: 100%;
+            height: 100%;
+        }
+
+        .item {
+            /* width: 100%;
+            height: 100vh;
+            position: relative; */
+        }
+
+        .bg {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .bg01 {
+            background-color: #ff6b6b;
+        }
+
+        .bg02 {
+            background-color: #4ecdc4;
+        }
+
+        .bg04 {
+            background-color: #45b7d1;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slide_ui {
+            position: absolute;
+            bottom: 50px;
+            left: 50px;
+            z-index: 10;
+        }
+
+        .slide_txt {
+            margin-bottom: 30px;
+        }
+
+        .slide_txt h2 {
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .slide_txt p {
+            color: white;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .progress_ctn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .bars_container {
+            display: flex;
+            gap: 2px;
+        }
+
+        /* 개선된 bar 컨테이너 - 클릭 영역 확장 */
+        .mv-sec .slide_wrap .slide_ui .progress_ctn .bar {
+            position: relative;
+            width: 80px;
+            height: 3px;
+            background: none;
+            cursor: pointer;
+            /* 클릭 영역을 위아래로 확장 */
+            padding: 15px 0px;
+            padding: 0px 0px 30px;
+            margin: -15px 0px;
+        }
+
+        /* 실제 진행바는 패딩 안쪽에 위치 */
+        .mv-sec .slide_wrap .slide_ui .progress_ctn .bar::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 5px;
+            right: 5px;
+            height: 3px;
+            background: #ffffff4f;
+        }
+
+        .mv-sec .slide_wrap .slide_ui .progress_ctn .bar span {
+            position: absolute;
+            top: 15px;
+            left: 5px;
+            width: 0;
+            height: 3px;
+            background: #fff;
+            transition: opacity 0.5s ease;
+            z-index: 1;
+        }
+
+        .mv-sec .slide_wrap .slide_ui .progress_ctn .bar.active span {
+            background: #fff;
+        }
+
+        .mv-sec .slide_wrap .slide_ui .progress_ctn .bar.completed span {
+            opacity: 0;
+            width: 100% !important;
+            background: #fff;
+        }
+
+        /* 호버 효과 추가 */
+        .mv-sec .slide_wrap .slide_ui .progress_ctn .bar:hover::before {
+            background: #ffffff80;
+        }
+
+        .play_btn {
+            margin-left: 15px;
+        }
+
+        .mv-sec .slide_wrap .slide_ui .progress_ctn .play_btn .stop {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+
+        .stop:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .mv-sec .slide_wrap .slide_ui .progress_ctn .play_btn .stop.on {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+
+        .stop.on:before {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 8px solid white;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            margin-left: 2px;
+            background: none;
+            box-shadow: none;
+        }
+
+        .stop:before {
+            content: '';
+            width: 3px;
+            height: 12px;
+            background: white;
+            border: none;
+            box-shadow: 5px 0 0 white;
+            margin-left: -3px;
+        }
+
+        /* 개선된 바 텍스트 스타일 - 클릭 가능, bar 위쪽에 위치 */
+        .bar-text {
+            position: absolute;
+            top: -25px;
+            left: 5px;
+            color: white;
+            font-size: 12px;
+            font-weight: 500;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            cursor: pointer;
+            z-index: 2;
+            /* 클릭 영역 확장을 위한 패딩 */
+            padding: 5px 0;
+            margin: -5px 0;
+        }
+
+        /* 텍스트 호버 효과 */
+        .bar-text:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .mv-sec .slide_wrap .slide_ui .progress_ctn .bar.active .bar-text {
+            opacity: 1;
+            color: #fff;
+            font-weight: 700;
+            transform: translateY(2px);
+        }
+
+        /* 활성 상태의 텍스트 호버 */
+        .mv-sec .slide_wrap .slide_ui .progress_ctn .bar.active .bar-text:hover {
+            transform: translateY(3px);
+        }
+
+
+        /* 모바일 반응형 */
+        @media (max-width: 768px) {
+
+            .mv-sec .slide_wrap .slide_ui .progress_ctn .bar {
+                width: calc(33.333% - 3px);
+                min-width: 50px;
+                /* width: 70px; */
+                padding: 12px 0px;
+                margin: -12px 0px;
+            }
+
+            .mv-sec .slide_wrap .slide_ui .progress_ctn .bar::before {
+                top: 12px;
+                left: 3px;
+                /* width: calc(100% - 15px); */
+            }
+
+            .mv-sec .slide_wrap .slide_ui .progress_ctn .bar span {
+                top: 12px;
+                left: 3px;
+
+            }
+
+            .mv-sec .slide_wrap .slide_ui .progress_ctn .bar.completed span {
+                width: calc(100% - 6px) !important;
+            }
+
+            .mv-sec .slide_wrap .slide_ui .progress_ctn .play_btn .stop {
+                width: 30px;
+                height: 30px;
+            }
+
+            .stop:before {
+                border-left-width: 6px;
+                border-top-width: 4px;
+                border-bottom-width: 4px;
+
+            }
+
+            .stop.on:before {}
+
+            .bar-text {
+                font-size: 11px;
+                top: -22px;
+                left: 3px;
+                opacity: 0.6;
+                padding: 4px 0;
+                margin: -4px 0;
+            }
+
+            .mv-sec .slide_wrap .slide_ui .progress_ctn .bar.active .bar-text {
+                opacity: 1;
+                font-weight: 700;
+            }
+
+        }
+
+        /* 작은 모바일 */
+        @media (max-width: 480px) {
+            .progress_ctn {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .bars_container {
+                /* width: 100%; */
+                /* justify-content: space-between; */
+                gap: 0px;
+            }
+
+            .mv-sec .slide_wrap .slide_ui .progress_ctn .play_btn {
+                margin-left: 0;
+                display: flex;
+                /* align-self: center; */
+            }
+
+            .mv-sec .slide_wrap .slide_ui .progress_ctn {
+                display: flex;
+                align-items: center;
+                flex-direction: row;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="intro">
+        <div class="first">
+            <img src="./assets/images/main/about04.png" alt="">
+        </div>
+    </div> -->
+
+    <header class="header">
+        <div class="bg"></div>
+        <h1 class="logo"><a href="#"><img src="./assets/images/common/logo.png" alt=""></a></h1>
+        <nav class="gnb">
+            <ul>
+                <li>
+                    <a href="#">회사소개</a>
+                    <ul class="sub_depth sub_depth01">
+                        <li><a href="#">기업개요</a></li>
+                        <li><a href="#">CEO인사말</a></li>
+                        <li><a href="#">연혁</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">ESG경영</a>
+                    <ul class="sub_depth sub_depth02">
+                        <li><a href="#">ESG경영전략</a></li>
+                        <li><a href="#">윤리경영</a></li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">사업분야</a>
+                    <ul class="sub_depth sub_depth03">
+                        <li><a href="#">전용선</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">재무정보</a>
+                    <ul class="sub_depth sub_depth04">
+                        <li><a href="#">공시정보</a></li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">홍보센터</a>
+                    <ul class="sub_depth sub_depth05">
+                        <li><a href="#">뉴스</a></li>
+                        <li><a href="#">홍보영상</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">인재채용</a>
+                    <ul class="sub_depth sub_depth06">
+                        <li><a href="#">인사제도</a></li>
+                        <li><a href="#">복리후생</a></li>
+                        <li><a href="#">채용공고</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div class="header_ui">
+            <ul class="lang">
+                <li>
+                    <span><img src="./assets/images/common/icon_lang.png" alt=""> Language <i
+                            class="xi-caret-down-min"></i></span>
+                    <ul>
+                        <li><a href="/kr">한국어</a></li>
+                        <li><a href="/en">English</a></li>
+                        <!-- <li><a href="/ch">中国語</a></li> -->
+                    </ul>
+                </li>
+            </ul>
+            <div class="m_btn">
+                <span></span>
+            </div>
+            <div class="m_gnb"></div>
+        </div>
+    </header>
+
+    <main class="main wrap">
+        <section class="mv-sec">
+            <div class="slide_wrap">
+                <div class="slide_ctn">
+                    <div class="item">
+                        <div class="bg bg01">
+                            <video loop playsinline muted data-keepplaying autoplay>
+                                <source
+                                    src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                                    type="video/mp4">
+                            </video>
+                            <!-- <video muted="muted" data-autoplay="data-autoplay" playsinline="playsinline" loop="loop">
+                                <source
+                                    src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                                    type="video/mp4">
+                            </video> -->
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="bg bg02">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="bg bg04">
+                        </div>
+                    </div>
+                </div>
+                <div class="slide_ui">
+                    <div class="slide_txt">
+                        <div class="item">
+                            <h2>Global <br>Total Logistics <br>Company</h2>
+                            <p>벌크선 중심의 해상운송, 무역서비스를 제공하는 글로벌 종합물류 기업입니다.</p>
+                        </div>
+                    </div>
+
+                    <!-- <div class="progress_ctn">
+                        <div class="bar">
+                            <span></span>
+                        </div>
+                        <div class="play_btn">
+                            <div class="stop"></div>
+                        </div>
+                    </div> -->
+
+                    <div class="progress_ctn">
+                        <div class="bars_container">
+                            <!-- 진행바들이 동적으로 생성됩니다 -->
+                        </div>
+                        <div class="play_btn">
+                            <div class="stop"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="m-about-sec">
+            <div class="w1500">
+                <div class="m_tit c" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                    <h2>Korea Shipping Corporation</h2>
+                    <p>대한상선㈜은 창의, 도전, 성취라는 사훈 아래 화주와의 협력강화와 시너지 창출 및 신규 거래선 개발 등 <br>미래성장동력 확보를 위한 가치창출을 위해 끊임없이 노력하고
+                        있습니다.</p>
+                </div>
+            </div>
+            <div class="slide_wrap">
+                <div class="slide_ctn">
+                    <div class="item">
+                        <div class="img_box">
+                            <figure><img src="./assets/images/main/about01.png" alt=""></figure>
+                            <h3>Affiliate <br>Info</h3>
+                            <h3 class="on">Affiliate <br>Info</h3>
+                        </div>
+                        <div class="down_txt">
+                            <h4>계열사</h4>
+                            <p>대한상선㈜는 SM그룹의 가족사로 많은 계열사와 함께합니다.</p>
+                        </div>
+                        <a href="#"></a>
+                    </div>
+                    <div class="item">
+                        <div class="img_box">
+                            <figure><img src="./assets/images/main/about02.png" alt=""></figure>
+                            <h3>CEO <br>Greeting</h3>
+                            <h3 class="on">CEO <br>Greeting</h3>
+                        </div>
+                        <div class="down_txt">
+                            <h4>CEO인사말</h4>
+                            <p>저희 대한상선㈜을 찾아주신 고객님께 감사드립니다.</p>
+                        </div>
+                        <a href="#"></a>
+                    </div>
+                    <div class="item">
+                        <div class="img_box">
+                            <figure><img src="./assets/images/main/about03.png" alt=""></figure>
+                            <h3>Company <br>Overview</h3>
+                            <h3 class="on">Company <br>Overview</h3>
+                        </div>
+                        <div class="down_txt">
+                            <h4>기업개요</h4>
+                            <p>대한상선㈜은 종합자원 수송기업으로서 국가 기간산업의 성장에 일조해 왔습니다.</p>
+                        </div>
+                        <a href="#"></a>
+                    </div>
+                    <div class="item">
+                        <div class="img_box">
+                            <figure><img src="./assets/images/main/about04.png" alt=""></figure>
+                            <h3>About <br>History</h3>
+                            <h3 class="on">About <br>History</h3>
+                        </div>
+                        <div class="down_txt">
+                            <h4>연혁</h4>
+                            <p>1983년 창립 이후 현재까지 종합물류기업 대한상선㈜의 발자취를 소개합니다.</p>
+                        </div>
+                        <a href="#"></a>
+                    </div>
+                </div>
+                <div class="slide_btn">
+                    <div class="prev"></div>
+                    <div class="next"></div>
+                </div>
+            </div>
+        </section>
+        <section class="m-brand-sec" style="position: relative;">
+            <video loop playsinline muted data-keepplaying autoplay style="position: absolute; top: 0;">
+                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                    type="video/mp4">
+            </video>
+            <div class="w1500">
+                <div class="m_tit tac" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                    <h2>Business Information</h2>
+                    <p>해상운송(전용선,부정기선) 무역사업을 아우르는 종합자원 수송의 대표주자로 세계 각지에서 고객들에게 <br>최상의 서비스를 제공할 수 있도록 노력하고 있습니다. </p>
+                </div>
+                <div class="cont">
+                    <div class="link" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100">
+                        <a href="#">View details</a>
+                    </div>
+                    <div class="list" style="display: none;">
+                        <div class="item">
+                            <a href="#">
+                                <figure data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100"><img
+                                        src="./assets/images/main/icon_main01.png" alt=""></figure>
+                                <div class="txt" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                            </a>
+                            <h3>전용선</h3>
+                            <p>한국전력 화력발전용 유연탄 장기운송계약 및 국내 최대 제철사인 포스코와의<br> 장기운송계약에 전용선(Supramax/ Panamax/ Cape)을
+                                투입하여<br> 해운시황의 변동성에 노출없이 안정적인 수익을 창출하고 있습니다.</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <a href="#">
+                            <figure data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100"><img
+                                    src="./assets/images/main/icon_main02.png" alt=""></figure>
+                            <div class="txt" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                        </a>
+                        <h3>부정기선</h3>
+                        <p>국내·외 우량 화주와 긴밀한 협력관계를 바탕으로 HANDY SIZE 부터<br> CAPE SIZE 선박을 통해, 3대 주요 화물( 곡물, 석탄, 철광석 ) 및
+                            비료,<br> 각종 미네랄을 운송하고 있습니다.</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <a href="#">
+                        <figure data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100"><img
+                                src="./assets/images/main/icon_main03.png" alt=""></figure>
+                        <div class="txt" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                    </a>
+                    <h3>원자재</h3>
+                    <p>최고의 품질과 신뢰를 바탕으로 다양한 철강, 화학제품 및 합금철을<br> 국내외 시장에 공급하고 보세창고를 통한 물류의 전문화로<br> 높은 인지도를 쌓아가고 있습니다.
+                    </p>
+                </div>
+            </div>
+            </div>
+            </div>
+            </div>
+        </section>
+        <section class="m-news-sec">
+            <div class="w1500">
+                <div class="m_tit c" data-aos="fade-right" data-aos-duration="800" data-aos-delay="100">
+                    <h2>Public <br>Relations</h2>
+                </div>
+                <div class="cont">
+                    <ul class="tab" data-aos="fade-down" data-aos-duration="800" data-aos-delay="100">
+                        <li data-tab="news">News</li>
+                        <li data-tab="video">Video</li>
+                    </ul>
+                    <div class="list">
+
+                        <div class="item" data-idx="news">
+                            <div class="tit">
+                                <h3>news</h3>
+                            </div>
+                            <div class="txt">
+                                <h4>SM그룹 대한상선, 영흥호 (YOUNGHEUNG호) 노사 합동 안전 점검 실시</h4>
+                                <p class="date"><i class="xi-time-o"></i>2024.03.27</p>
+                            </div>
+                            <figure class="position_img">
+
+                            </figure>
+                            <a href="#"></a>
+                        </div>
+
+                        <div class="item" data-idx="news">
+                            <div class="tit">
+                                <h3>news</h3>
+                            </div>
+                            <div class="txt">
+                                <h4>SM 대한상선, 브라질 기업과 '우드펄프 수송' 장기운송계약</h4>
+                                <p class="date"><i class="xi-time-o"></i>2022.12.02</p>
+                            </div>
+                            <figure class="position_img">
+
+                            </figure>
+                            <a href="#"></a>
+                        </div>
+
+                        <div class="item" data-idx="news">
+                            <div class="tit">
+                                <h3>news</h3>
+                            </div>
+                            <div class="txt">
+                                <h4>대한상선, 지난해 매출액 4510억…전년비 66%↑</h4>
+                                <p class="date"><i class="xi-time-o"></i>2022.12.02</p>
+                            </div>
+                            <figure class="position_img">
+
+                            </figure>
+                            <a href="#"></a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="top_btn">
+            <img src="./assets/images/common/top_arrow.png" alt="">
+        </div>
+        <div class="top">
+            <h2 class="f_logo"></h2>
+            <div class="addr">
+                <h3>대한상선㈜</h3>
+                <ul>
+                    <!-- <li>대표이사 : 양진호</li> -->
+                    <!-- <li>대표이사 : 임상범</li> -->
+                    <!-- <li><address>주소 : 서울특별시 강서구 마곡중앙8로 78, SM R&D센터 7층</address></li> -->
+                    <li>
+                        <address>주소 : 서울특별시 서대문구 신촌역로 30 신촌민자역사 3층</address>
+                    </li>
+                </ul>
+                <ul>
+                    <li>Tel : 02-399-8500</li>
+                    <li>Fax : 02-399-8570/8536</li>
+                    <li>E-mail : head@smksc.co.kr</li>
+                </ul>
+            </div>
+            <div class="family">
+                <p>Family Site <span>+</span></p>
+                <ul>
+                    <li><a href="#" target="_blank">SM대한해운</a></li>
+                    <li><a href="#" target="_blank">SM상선</a></li>
+                    <li><a href="#" target="_blank">SM대한해운엘엔지</a></li>
+                    <li><a href="#" target="_blank">SM창명해운</a></li>
+                    <li><a href="#" target="_blank">SM상선 경인터미널</a></li>
+                    <li><a href="#" target="_blank">SM상선 김포터미널</a></li>
+                    <li><a href="#" target="_blank">SM상선 케이엘씨에스엠</a></li>
+                    <li><a href="#" target="_blank">SM상선 한국선박금융</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copy">
+            <p>Copyright © KOREA SHIPPING CORPORATION. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <div class="quick">
+        <ul>
+            <li><a href="#" target="_blank"><img src="./assets/images/common/quick01.png" alt=""></a></li>
+            <li><a href="#" target="_blank"><img src="./assets/images/common/quick02.png" alt=""></a></li>
+        </ul>
+    </div>
+
+
+
+
+
+    <!-- 스크립트 영역 -->
+    <!-- <script src="//code.jquery.com/jquery-latest.js"></script> -->
+    <!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> -->
+
+    <script src="./assets/js/jquery-3.7.1.min.js"></script>
+    <script src="./assets/js/jquery-latest.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="./assets/js/common.js"></script>
+
+    <script src="./assets/js/aos-bak.js"></script>
+    <script>AOS.init();</script>
+
+
+
+    <script src="./assets/js/main_bar.js"></script>
+</body>
+
+</html>

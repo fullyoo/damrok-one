@@ -513,7 +513,7 @@ video {
 .m-about-sec .slide_wrap {
 	position: relative;
 	margin-top: 36px;
-	display: none;
+	/* display: none; */
 }
 
 .m-about-sec .slide_wrap .slide_ctn {}
@@ -788,7 +788,7 @@ video {
 .m-brand-sec .text-box {}
 
 .m-brand-sec .video-item {
-	display: none;
+	/* display: none; */
 }
 
 .m-brand-sec .m_tit {
@@ -803,10 +803,6 @@ video {
 
 .m-brand-sec .m_tit p {
 	font-weight: 200;
-}
-
-.m-brand-sec .m_tit p br {
-	display: block;
 }
 
 .m-brand-sec .cont .link {
@@ -1509,7 +1505,7 @@ video {
 
 @media (max-width: 1000px) {
 	.m_tit p br {
-		display: none;
+		/* display: none; */
 	}
 
 	.mv-sec .slide_wrap .slide_ui {

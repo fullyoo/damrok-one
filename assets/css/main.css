@@ -506,7 +506,7 @@ video {
 /****** 2. 어바웃 영역 chair ******/
 
 .m-about-sec {
-	padding-top: 160px;
+	padding-top: 150px;
 	overflow: hidden;
 }
 
@@ -675,7 +675,8 @@ video {
 
 /****** 3. 글자롤링 영역 text-slide ******/
 .m-flow-sec {
-	display: none;
+	padding: 20px 0 70px;
+	/* display: none; */
 }
 
 .m-flow-sec .text-slide {
@@ -707,11 +708,11 @@ video {
 }
 
 .m-flow-sec .text-slide h3.origin {
-	animation: 50s linear 0s infinite normal forwards running origin_left;
+	animation: 70s linear 0s infinite normal forwards running origin_left;
 }
 
 .m-flow-sec .text-slide h3.clone {
-	animation: 50s linear 0s infinite normal none running clone_left;
+	animation: 70s linear 0s infinite normal none running clone_left;
 }
 
 @keyframes origin_left {

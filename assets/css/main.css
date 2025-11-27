@@ -1590,6 +1590,11 @@ video {
 		display: none;
 	}
 
+	.m-flow-sec {
+		padding: 0 0 30px;
+		margin-top: -30px;
+	}
+
 	.m-flow-sec .text-slide h3 {
 		font-size: 140px;
 	}

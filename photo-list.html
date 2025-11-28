@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery with Tabs</title>
+
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --background-color: #f5f7fa;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --text-secondary: #7f8c8d;
+            --border-color: #e1e4e8;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --hover-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .dark-theme {
+            --primary-color: #4a9de3;
+            --secondary-color: #ecf0f1;
+            --background-color: #1a1a2e;
+            --card-bg: #16213e;
+            --text-color: #e6e6e6;
+            --text-secondary: #b0b0b0;
+            --border-color: #2d3748;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            --hover-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+        }
+
+        .theme-switcher {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .theme-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: var(--primary-color);
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(30px);
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .tab {
+            padding: 12px 24px;
+            margin: 0 5px 10px;
+            background: none;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-secondary);
+        }
+
+        .tab:hover {
+            background-color: rgba(52, 152, 219, 0.1);
+            color: var(--primary-color);
+        }
+
+        .tab.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Gallery grid */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.5s ease forwards;
+            background-color: var(--card-bg);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .item-info {
+            padding: 15px;
+            background-color: var(--card-bg);
+        }
+
+        .item-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--secondary-color);
+        }
+
+        .item-info p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* No results text */
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 40px;
+            color: var(--text-secondary);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .theme-switcher {
+                align-self: flex-end;
+                margin-top: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .tab {
+                padding: 10px 16px;
+                font-size: 0.9rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body translate="no">
+    <div class="container">
+        <header>
+            <div>
+                <h1>Photo Gallery</h1>
+                <p class="subtitle">Explore our collection of stunning images organised by category. Click the tabs to
+                    filter the gallery or switch between light and dark mode.</p>
+            </div>
+            <div class="theme-switcher">
+                <span class="theme-label">Light</span>
+                <label class="switch">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider"></span>
+                </label>
+                <span class="theme-label">Dark</span>
+            </div>
+        </header>
+
+        <div class="tabs">
+            <button class="tab active" data-category="all">All Photos</button>
+            <button class="tab" data-category="nature">Nature</button>
+            <button class="tab" data-category="architecture">Architecture</button>
+            <button class="tab" data-category="travel">Travel</button>
+            <button class="tab" data-category="food">Food</button>
+        </div>
+
+        <div class="gallery" id="gallery">
+            <!-- Gallery items will be generated by JavaScript -->
+        </div>
+    </div>
+
+    <footer>
+        <p>Gallery with Tabs & Theme Switcher © 2025</p>
+    </footer>
+
+    <script>
+        const galleryData = [
+            {
+                id: 1,
+                title: "Mountain Landscape",
+                category: "nature",
+                image:
+                    "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=500&q=60",
+                description: "Beautiful mountain scenery with snow-capped peaks"
+            },
+
+            {
+                id: 2,
+                title: "Modern Building",
+                category: "architecture",
+                image:
+                    "https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=500&q=60",
+                description: "Contemporary architecture with clean lines"
+            },
+
+            {
+                id: 3,
+                title: "Beach Paradise",
+                category: "travel",
+                image:
+                    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=500&q=60",
+                description: "Tropical beach with crystal clear water"
+            },
+
+            {
+                id: 4,
+                title: "Gourmet Pizza",
+                category: "food",
+                image:
+                    "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=500&q=60",
+                description: "Delicious pizza with fresh ingredients"
+            },
+
+            {
+                id: 5,
+                title: "Forest Path",
+                category: "nature",
+                image:
+                    "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=500&q=60",
+                description: "Serene forest path surrounded by tall trees"
+            },
+
+            {
+                id: 6,
+                title: "Historic Castle",
+                category: "architecture",
+                image:
+                    "https://images.unsplash.com/photo-1571508601891-ca5e7a713859?auto=format&fit=crop&w=500&q=60",
+                description: "Ancient castle with rich history"
+            },
+
+            {
+                id: 7,
+                title: "City Skyline",
+                category: "travel",
+                image:
+                    "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=500&q=60",
+                description: "Vibrant cityscape at dusk"
+            },
+
+            {
+                id: 8,
+                title: "Fresh Salad",
+                category: "food",
+                image:
+                    "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=500&q=60",
+                description: "Healthy salad with colourful vegetables"
+            },
+
+            {
+                id: 9,
+                title: "Waterfall",
+                category: "nature",
+                image:
+                    "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=500&q=60",
+                description: "Majestic waterfall in the wilderness"
+            },
+
+            {
+                id: 10,
+                title: "Bridge Design",
+                category: "architecture",
+                image:
+                    "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?auto=format&fit=crop&w=500&q=60",
+                description: "Innovative bridge with unique architecture"
+            },
+
+            {
+                id: 11,
+                title: "Mountain Hike",
+                category: "travel",
+                image:
+                    "https://images.unsplash.com/photo-1539635278303-d4002c07eae3?auto=format&fit=crop&w=500&q=60",
+                description: "Adventurous hiking trail in the mountains"
+            },
+
+            {
+                id: 12,
+                title: "Dessert Platter",
+                category: "food",
+                image:
+                    "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=500&q=60",
+                description: "Decadent dessert selection"
+            }];
+
+
+
+        const tabs = document.querySelectorAll(".tab");
+        const galleryContainer = document.getElementById("gallery");
+        const themeToggle = document.getElementById("theme-toggle");
+
+        function generateGalleryItems(items) {
+            galleryContainer.innerHTML = "";
+            if (items.length === 0) {
+                galleryContainer.innerHTML =
+                    '<div class="no-results">No images found in this category.</div>';
+                return;
+            }
+            items.forEach((item, index) => {
+                const galleryItem = document.createElement("div");
+                galleryItem.className = "gallery-item";
+                galleryItem.dataset.category = item.category;
+                galleryItem.style.animationDelay = `${index * 0.1}s`;
+                galleryItem.innerHTML = `
+      <img src="${item.image}" alt="${item.title}">
+      <div class="item-info">
+        <h3>${item.title}</h3>
+        <p>${item.description}</p>
+      </div>
+    `;
+                galleryContainer.appendChild(galleryItem);
+            });
+        }
+
+        function filterGallery(category) {
+            if (category === "all") generateGalleryItems(galleryData); else
+
+                generateGalleryItems(
+                    galleryData.filter(item => item.category === category));
+
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle("dark-theme");
+            const isDark = document.body.classList.contains("dark-theme");
+            localStorage.setItem("darkMode", isDark);
+            themeToggle.checked = isDark;
+        }
+
+        tabs.forEach(tab => {
+            tab.addEventListener("click", () => {
+                tabs.forEach(t => t.classList.remove("active"));
+                tab.classList.add("active");
+                filterGallery(tab.dataset.category);
+            });
+        });
+
+        themeToggle.addEventListener("change", toggleTheme);
+
+        generateGalleryItems(galleryData);
+
+        if (localStorage.getItem("darkMode") === "true") {
+            document.body.classList.add("dark-theme");
+            themeToggle.checked = true;
+        }
+        //# sourceURL=pen.js
+    </script>
+
+
+</body>
+
+</html>

@@ -369,19 +369,20 @@ video {
 
 .bars_container {
 	display: flex;
-	gap: 2px;
+	gap: 0px;
 }
 
 /* 개선된 bar 컨테이너 - 클릭 영역 확장 */
 .mv-sec .slide_wrap .slide_ui .progress_ctn .bar {
 	position: relative;
-	width: 80px;
+	width: 70px;
 	height: 3px;
 	background: none;
 	cursor: pointer;
 	/* 클릭 영역을 위아래로 확장 */
 	padding: 15px 0px;
 	padding: 0px 0px 30px;
+	padding: 0;
 	margin: -15px 0px;
 }
 

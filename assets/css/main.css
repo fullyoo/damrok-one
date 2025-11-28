@@ -225,7 +225,7 @@ a.cta:hover .line-wrap,
 	vertical-align: top;
 	width: 0;
 	height: 100%;
-	background-color: var(--color-white);
+	/* background-color: var(--color-white); */
 }
 
 .mv-sec .slide_wrap .slide_ui .progress_ctn .play_btn {
@@ -403,7 +403,7 @@ video {
 	left: 5px;
 	width: 0;
 	height: 3px;
-	background-color: var(--color-white);
+	background-color: none;
 	transition: var(--transition-3s);
 	z-index: 1;
 }
@@ -411,6 +411,7 @@ video {
 .mv-sec .slide_wrap .slide_ui .progress_ctn .bar.active span {
 	background-color: var(--color-white);
 	background-color: var(--color-primary);
+	/* width: 90% !important; */
 }
 
 .mv-sec .slide_wrap .slide_ui .progress_ctn .bar.completed span {
@@ -421,8 +422,8 @@ video {
 
 /* 호버 효과 추가 */
 .mv-sec .slide_wrap .slide_ui .progress_ctn .bar:hover::before {
-	background-color: var(--color-primary);
 	background-color: var(--color-white);
+	background-color: var(--color-primary);
 }
 
 .play_btn {
@@ -1939,6 +1940,7 @@ video {
 
 	.instawrap {
 		gap: 15px;
+		animation: scroll-full 5s linear infinite;
 	}
 
 	.loop-container {

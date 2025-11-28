@@ -40,7 +40,7 @@ $(function () {
 
         function startCurrentProgress(duration) {
             const activeBar = $(".progress_ctn .bar.active");
-            const barWidth = activeBar.width() - 10;
+            const barWidth = activeBar.width() - 0;
 
             activeBar.find("span").stop().animate({
                 width: barWidth + "px"

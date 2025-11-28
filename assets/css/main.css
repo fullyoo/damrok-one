@@ -796,6 +796,10 @@ video {
 
 .m-brand-sec .text-box {}
 
+.m-brand-sec .text-box em {
+	padding: 0 10px;
+}
+
 .m-brand-sec .video-item {
 	/* display: none; */
 }
@@ -1795,6 +1799,18 @@ video {
 
 
 @media (max-width: 767px) {
+	.m_tit h2 {
+		font-size: 50px;
+	}
+
+	.m_tit h3 {
+		font-size: 35px;
+	}
+
+	.m_tit h4 {
+		font-size: 22px;
+	}
+
 	.m-about-sec .slide_wrap .slide_ctn .item {
 		max-width: 420px;
 	}
@@ -1960,6 +1976,11 @@ video {
 		display: flex;
 		align-items: center;
 		flex-direction: row;
+	}
+
+	.m-brand-sec .text-box em {
+		padding: 0;
+		display: none;
 	}
 
 	.m-contanct-sec .img-box {

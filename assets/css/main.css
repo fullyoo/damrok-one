@@ -403,7 +403,8 @@ video {
 	left: 5px;
 	width: 0;
 	height: 3px;
-	background-color: none;
+	background-color: var(--color-primary);
+	background: none;
 	transition: var(--transition-3s);
 	z-index: 1;
 }
@@ -418,11 +419,11 @@ video {
 	opacity: 0;
 	width: 100% !important;
 	background-color: var(--color-white);
+	background: none;
 }
 
 /* 호버 효과 추가 */
 .mv-sec .slide_wrap .slide_ui .progress_ctn .bar:hover::before {
-	background-color: var(--color-white);
 	background-color: var(--color-primary);
 }
 

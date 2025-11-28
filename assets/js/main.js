@@ -1,8 +1,9 @@
 
 $(function () {
 
+
+    /****** 1. 메인 비주얼 영역 ******/
     function initSlider() {
-        // 01. 메인비주얼
         let autoplaySpeed = 3000;
         let totalSlides = 0;
         let currentSlide = 0;
@@ -73,7 +74,7 @@ $(function () {
             fade: true,
             pauseOnHover: false,
             pauseOnFocus: false,
-            // autoplay: true, //자동재생
+            autoplay: true, //자동재생
             autoplaySpeed: autoplaySpeed,
             infinite: true,
             speed: 0,
@@ -152,8 +153,7 @@ $(function () {
 
 
 
-
-    // 02.메인어바웃 Chair
+    /****** 2. 어바웃 영역 chair ******/
 
     $(".m-about-sec .slide_wrap .slide_ctn").slick({
         arrows: false,
@@ -161,7 +161,7 @@ $(function () {
         pauseOnFocus: false,
         variableWidth: true,
         centerMode: true,
-        // autoplay: true,
+        autoplay: true,
         autoplaySpeed: 2000,
         speed: 1200,
     }).on('beforeChange', function (event, slick, currentSlide, nextSlide) {

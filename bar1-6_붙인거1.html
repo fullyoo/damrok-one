@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- iOS 전화번호, 이메일 자동링크 방지 -->
+    <meta name="format-detection" content="telephone=no, email=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>bar1-6_붙인거</title>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" /> -->
+
+    <link rel="stylesheet" href="./assets/css/slick.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@xpressengine/xeicon@2.3.3/xeicon.min.css">
+
+
+    <link rel="stylesheet" type="text/css" href="./assets/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/aos.css" />
+    <link rel="stylesheet" href="./assets/css/main.css">
+
+    <style>
+        /* 2번째 */
+        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&display=swap');
+
+        :root {
+            --mainsize: 1400px;
+            --e-font: "Anton", sans-serif;
+            --p-font: "Instrument Serif", serif
+        }
+
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            padding: 0
+        }
+
+        ul,
+        li,
+        dl,
+        dt,
+        dd,
+        p,
+        span,
+        h3,
+        h2 {
+            margin: 0;
+            padding: 0
+        }
+
+        a {
+            text-decoration: none
+        }
+
+        ul,
+        li {
+            list-style: none
+        }
+
+        *,
+        :after,
+        :before {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box
+        }
+
+        #vision1012 {
+            overflow: hidden;
+            text-align: center;
+            background: #111
+        }
+
+        #vision1012 .full_img {
+            position: relative;
+            overflow: hidden;
+            height: 100vh
+        }
+
+        #vision1012 .full_img .bg:after {
+            position: absolute;
+            content: '';
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, .5)
+        }
+
+        #vision1012 .full_img .bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://bea1025.shiningcorp.com/sh_img/index/main_banner/main_img1.jpg');
+            background-size: cover;
+            background-position: center;
+            clip-path: inset(30% 30% 30% 30%);
+            z-index: 0;
+            transition: all .3s;
+            transform: translate(-50%, -50%)
+        }
+
+        #vision1012 .full_img p {
+            font-size: 90px;
+            line-height: 1;
+            font-family: var(--e-font)
+        }
+
+        #vision1012 .full_img p span {
+            font-size: 100px;
+            font-family: var(--p-font)
+        }
+
+        #vision1012 .b_txt {
+            position: absolute;
+            z-index: 10;
+            top: 50%;
+            left: 50%;
+            color: #fff;
+            transform: translate(-50%, -50%)
+        }
+
+        #vision1012 .b_txt .top_txt {
+            transform: translateX(-300px)
+        }
+
+        #vision1012 .b_txt .btm_txt {
+            transform: translateX(300px)
+        }
+
+        #vision1012 .full_img .bg-video {}
+
+        #vision1012 .full_img .bg-video video {
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+            /*background-size: cover 와 비슷함. */
+        }
+
+
+
+        /* 반응형 [s] */
+        @media (max-width:1024px) {
+            #vision1012 .b_txt {
+                width: 100%
+            }
+
+            #vision1012 .b_txt .top_txt {
+                transform: translateX(-200px)
+            }
+
+            #vision1012 .b_txt .btm_txt {
+                transform: translateX(200px)
+            }
+
+            #vision1012 .full_img p {
+                font-size: 50px
+            }
+
+            #vision1012 .full_img p span {
+                font-size: 65px
+            }
+        }
+
+        @media (max-width:768px) {
+            #vision1012 .full_img p {
+                font-size: 40px
+            }
+
+            #vision1012 .full_img p span {
+                font-size: 50px
+            }
+
+            #vision1012 .b_txt .top_txt {
+                transform: translateX(-100px)
+            }
+
+            #vision1012 .b_txt .btm_txt {
+                transform: translateX(100px)
+            }
+        }
+
+        @media (max-width:480px) {
+            #vision1012 {
+                font-size: 14px
+            }
+
+            #vision1012 .full_img p {
+                font-size: 30px
+            }
+
+            #vision1012 .full_img p span {
+                font-size: 40px
+            }
+
+            #vision1012 .b_txt .top_txt {
+                transform: translateX(-50px)
+            }
+
+            #vision1012 .b_txt .btm_txt {
+                transform: translateX(50px)
+            }
+        }
+
+        /* 반응형 [e] */
+    </style>
+
+</head>
+
+<body>
+    <!-- <div class="intro">
+        <div class="first">
+            <img src="./assets/images/main/about04.png" alt="">
+        </div>
+    </div> -->
+
+    <main class="main wrap">
+
+
+        <div id="vision1012">
+            <div class="full_img">
+                <div class="bg">
+                    <div class="bg-video">
+                        <video loop playsinline muted autoplay>
+                            <source src="./assets/images/main/brand04.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+                <div class="b_txt">
+                    <p class="top_txt">Customer <span>First</span></p>
+                    <p class="btm_txt"><span>Sustainable</span> Growth</p>
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+
+
+
+    <!-- 스크립트 영역 -->
+    <script src="./assets/js/jquery-3.7.1.min.js"></script>
+    <script src="./assets/js/jquery-latest.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="./assets/js/aos.js"></script>
+    <script>AOS.init();</script>
+
+    <script src="./assets/js/gsap.min.js"></script>
+    <script src="./assets/js/ScrollTrigger.min.js"></script>
+
+
+    <script src="./assets/js/common.js"></script>
+    <script src="./assets/js/main.js"></script>
+
+    <script>
+
+        // 2번째 시작
+        gsap.to("#vision1012 .full_img", {
+            scrollTrigger: {
+                trigger: "#vision1012",
+                pin: true,
+                scrub: 0,
+                start: "top top",
+                end: "+=1000"
+            }
+        });
+
+        gsap.to("#vision1012 .bg", {
+            clipPath: "inset(0% 0% 0% 0%)",
+            scrollTrigger: {
+                trigger: "#vision1012 .full_img",
+                start: "top top",
+                end: "+=1000",
+                scrub: 0
+            }
+        });
+
+        gsap.to("#vision1012 .top_txt", {
+            x: 0,
+            scrollTrigger: {
+                trigger: "#vision1012 .full_img",
+                start: "top top",
+                end: "+=1000",
+                scrub: 1
+            }
+        });
+
+        gsap.to("#vision1012 .btm_txt", {
+            x: 0,
+            scrollTrigger: {
+                trigger: "#vision1012 .full_img",
+                start: "top top",
+                end: "+=1000",
+                scrub: 1
+            }
+        });
+
+    </script>
+
+
+
+</body>
+
+</html>

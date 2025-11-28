@@ -797,7 +797,7 @@ video {
 .m-brand-sec .text-box {}
 
 .m-brand-sec .video-item {
-	display: none;
+	/* display: none; */
 }
 
 .m-brand-sec .m_tit {
@@ -1839,7 +1839,7 @@ video {
 
 	.m-insta-sec {
 		min-height: auto;
-		padding: 80px 0;
+		padding: 20px 0;
 	}
 
 	.m-contanct-sec {
@@ -1908,11 +1908,11 @@ video {
 	}
 
 	.m-flow-sec .text-slide h3 {
-		font-size: 120px;
+		font-size: 80px;
 	}
 
 	.m-flow-sec .text-slide h3 span {
-		font-size: 60px;
+		font-size: 50px;
 	}
 
 	.insta-img {

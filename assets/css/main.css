@@ -891,6 +891,7 @@ video {
 	display: flex;
 	gap: 20px;
 	align-items: center;
+	width: max-content;
 	animation: scroll-full 20s linear infinite;
 }
 
@@ -915,6 +916,7 @@ video {
 	cursor: pointer;
 	position: relative;
 	overflow: hidden;
+	flex-shrink: 0;
 }
 
 .insta-img::before {
@@ -1755,9 +1757,7 @@ video {
 		display: none;
 	}
 
-	.instawrap {
-		animation: scroll-full 10s linear infinite;
-	}
+	.instawrap {}
 
 	.m-news-sec {
 		padding: 80px 0;
@@ -1942,7 +1942,6 @@ video {
 
 	.instawrap {
 		gap: 15px;
-		animation: scroll-full 5s linear infinite;
 	}
 
 	.loop-container {

@@ -425,7 +425,7 @@ video {
 
 /* 호버 효과 추가 */
 .mv-sec .slide_wrap .slide_ui .progress_ctn .bar:hover::before {
-	background-color: var(--color-white);
+	/* background-color: var(--color-white); */
 }
 
 .play_btn {

@@ -1,7 +1,6 @@
 @charset "utf-8";
 
 /***** 공통 영역 *****/
-
 .m_tit {}
 
 .m_tit h2 {
@@ -65,16 +64,29 @@
 	text-align: center;
 }
 
-a.cta {
-	color: var(--color-text);
+a.cta,
+.cta {
 	font-size: 18px;
+	background-color: var(--white-dark);
+	color: var(--color-dark);
+	border: 1px solid var(--color-text);
+	padding: 12px 20px;
+	width: fit-content;
+	margin: 40px auto 0;
 	position: relative;
 	overflow: hidden;
 	display: inline-block;
-	margin-top: 50px;
+	transition: background var(--transition-3s), color var(--transition-3s);
 }
 
-a.cta:hover .line-wrap {
+a.cta:hover,
+.cta:hover {
+	color: var(--color-primary);
+	border-color: var(--color-primary);
+}
+
+a.cta:hover .line-wrap,
+.cta:hover .line-wrap {
 	transform: translateX(0);
 }
 
@@ -90,10 +102,10 @@ a.cta:hover .line-wrap {
 
 .line-wrap .line {
 	width: 33.3333%;
-	height: 1px;
+	height: 3px;
 	display: block;
-	background-color: var(--color-dark);
 	float: left;
+	background-color: var(--color-primary);
 }
 
 .line-wrap .line:nth-of-type(1) {
@@ -441,8 +453,6 @@ video {
 	background-color: var(--color-lightbg);
 }
 
-
-
 .stop.on:before {
 	content: '';
 	width: 0;
@@ -595,7 +605,7 @@ video {
 }
 
 .m-about-sec .slide_wrap .slide_ctn .item .down_txt h4 {
-	font-weight: bold;
+	font-weight: 600;
 	font-size: 30px;
 	color: var(--color-dark);
 	margin-bottom: 14px;
@@ -672,7 +682,6 @@ video {
 }
 
 
-
 /****** 3. 글자롤링 영역 text-slide ******/
 .m-flow-sec {
 	padding: 20px 0 70px;
@@ -745,8 +754,7 @@ video {
 
 
 
-/****** 4. 브랜드 영역 brand ******/
-
+/****** 4. 브랜드 영역 영상 brand ******/
 .m-brand-sec {
 	background: url(../images/main/brand01.jpg) 50% 50% no-repeat;
 	background-size: cover;
@@ -789,7 +797,7 @@ video {
 .m-brand-sec .text-box {}
 
 .m-brand-sec .video-item {
-	/* display: none; */
+	display: none;
 }
 
 .m-brand-sec .m_tit {
@@ -842,7 +850,7 @@ video {
 }
 
 .m-brand-sec .cont .list .item .txt h3 {
-	font-weight: bold;
+	font-weight: 600;
 	font-size: 30px;
 	color: var(--color-white);
 	margin: 35px 0 24px;
@@ -856,8 +864,192 @@ video {
 }
 
 
+/****** 5. 인스타 롤링 insta ******/
+.m-insta-sec {
+	width: 100%;
+	height: 100%;
+	min-height: 700px;
+	display: flex;
+	align-items: center;
+}
 
-/****** 5. 컨택트 어스 영역 brand ******/
+.loop-container {
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+	padding: 150px 0;
+}
+
+.instawrap {
+	display: flex;
+	gap: 20px;
+	align-items: center;
+	animation: scroll-full 20s linear infinite;
+}
+
+@keyframes scroll-full {
+	0% {
+		transform: translateX(0);
+	}
+
+	100% {
+		transform: translateX(-50%);
+	}
+}
+
+.insta-img {
+	min-width: 300px;
+	height: 300px;
+	border-radius: 12px;
+	background-size: cover;
+	background-position: center;
+	box-shadow: 0 4px 6px var(--color-dimbg);
+	transition: transform var(--transition-3s);
+	cursor: pointer;
+	position: relative;
+	overflow: hidden;
+}
+
+.insta-img::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: var(--color-dimbg);
+	opacity: 0;
+	transition: opacity var(--transition-3s);
+}
+
+.insta-img::after {
+	content: '📷 Instagram';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: var(--color-white);
+	font-size: 18px;
+	font-weight: 600;
+	opacity: 0;
+	transition: opacity var(--transition-3s);
+	z-index: 1;
+}
+
+.insta-img:hover::before,
+.insta-img:hover::after {
+	opacity: 1;
+}
+
+/* 개별 이미지 위치 */
+.in-1 {
+	background-image: url('../images/main/insta01.jpg');
+	transform: translateY(-30px);
+}
+
+.in-2 {
+	background-image: url('../images/main/insta02.jpg');
+	transform: translateY(40px);
+}
+
+.in-3 {
+	background-image: url('../images/main/insta03.jpg');
+	transform: translateY(-15px);
+}
+
+.in-4 {
+	background-image: url('../images/main/insta04.jpg');
+	transform: translateY(25px);
+}
+
+.in-5 {
+	background-image: url('../images/main/insta05.jpg');
+	transform: translateY(-40px);
+}
+
+.in-6 {
+	background-image: url('../images/main/insta06.jpg');
+	transform: translateY(-40px);
+}
+
+/* 롤링 hover 시 멈춤 */
+.insta-cta:hover~.instawrap {
+	/* animation-play-state: paused; */
+}
+
+.loop-container a:hover .instawrap {
+	/* animation-play-state: paused; */
+}
+
+
+.insta-cta {
+	position: absolute;
+	/* 기본: loop-container 기준 */
+	inset: 0;
+	background-color: var(--color-lightbg);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	opacity: 1;
+	transition: opacity var(--transition-3s);
+	z-index: 10;
+	/* display: none; */
+}
+
+/* 인스타그램 cta 버튼 */
+.insta-cta a {}
+
+.insta-cta a:hover {
+	/* background-color: var(--color-dark);
+	color: var(--white-dark); */
+}
+
+.insta-cta.m_tit.b a h4 {}
+
+.insta-cta.m_tit.b a h5:nth-of-type(1) {
+	color: var(--color-primary);
+	margin-top: 15px;
+}
+
+.insta-cta.m_tit.b a h5:nth-of-type(2) {}
+
+
+/* 전체 오버레이 */
+.overlay {
+	position: absolute;
+	/* 기본: loop-container 기준 */
+	inset: 0;
+	background-color: var(--color-lightbg);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	transition: opacity var(--transition-3s);
+	z-index: 10;
+	display: none;
+}
+
+.overlay a {
+	padding: 14px 28px;
+	background-color: var(--white-dark);
+	color: var(--color-dark);
+	font-weight: 600;
+	text-decoration: none;
+	border-radius: 8px;
+	font-size: 18px;
+	transition: background var(--transition-3s), color var(--transition-3s);
+}
+
+.overlay a:hover {
+	background-color: var(--color-dark);
+	color: var(--white-dark);
+}
+
+.loop-container:hover .overlay {
+	opacity: 1;
+}
+
+
+
+/****** 6. 컨택트 어스 영역 brand ******/
 .m-contanct-sec {
 	width: 100%;
 	height: 100%;
@@ -865,7 +1057,8 @@ video {
 	display: flex;
 	align-items: center;
 	position: relative;
-	background-color: #EAE2D6;
+	background-color: var(--color-beigebg);
+	/* display: none; */
 }
 
 .m-contanct-sec .box {
@@ -891,26 +1084,8 @@ video {
 	object-fit: cover;
 }
 
-.m-contanct-sec .cta {
-	border: 1px solid var(--color-text);
-	padding: 12px 20px;
-	width: fit-content;
-	margin: 40px auto 0;
-}
 
-.m-contanct-sec .cta:hover {
-	color: var(--color-primary);
-	border-color: var(--color-primary);
-	font-weight: 500;
-}
-
-.m-contanct-sec .line-wrap .line {
-	background-color: var(--color-primary);
-	height: 3px;
-}
-
-
-/****** 6. 뉴스 영역 news ******/
+/****** 7. 뉴스 영역 news ******/
 
 .m-news-sec {
 	padding: 200px 0 170px;
@@ -1363,7 +1538,7 @@ video {
 
 
 
-/****** 반응형 브레이크 포인트 ******/
+/****** 반응형 브레이크 포인트 (모바일 반응형)******/
 
 @media (max-width: 1700px) {
 	.m-news-sec .cont .list .item .position_img {
@@ -1427,6 +1602,7 @@ video {
 	}
 }
 
+
 @media (max-width: 1200px) {
 	.m_tit h2 {
 		font-size: 60px;
@@ -1438,6 +1614,10 @@ video {
 
 	.m_tit h4 {
 		font-size: 26px;
+	}
+
+	.m_tit h5 {
+		font-size: 20px;
 	}
 
 	.m_tit p {
@@ -1465,6 +1645,11 @@ video {
 
 	.m-brand-sec .cont .link {
 		margin: 30px 0 40px;
+	}
+
+	.insta-img {
+		min-width: 250px;
+		height: 250px;
 	}
 
 	.m-news-sec {
@@ -1500,11 +1685,10 @@ video {
 		max-width: 70%;
 	}
 
-
 }
 
 
-@media (max-width: 1000px) {
+@media (max-width: 1023px) {
 	.m_tit p br {
 		/* display: none; */
 	}
@@ -1564,6 +1748,10 @@ video {
 		display: none;
 	}
 
+	.instawrap {
+		animation: scroll-full 10s linear infinite;
+	}
+
 	.m-news-sec {
 		padding: 80px 0;
 	}
@@ -1596,7 +1784,7 @@ video {
 	}
 
 	.m-flow-sec .text-slide h3 {
-		font-size: 140px;
+		font-size: 120px;
 	}
 
 	.m-flow-sec .text-slide h3 span {
@@ -1606,8 +1794,7 @@ video {
 }
 
 
-
-@media (max-width: 800px) {
+@media (max-width: 767px) {
 	.m-about-sec .slide_wrap .slide_ctn .item {
 		max-width: 420px;
 	}
@@ -1650,6 +1837,11 @@ video {
 		right: -29px;
 	}
 
+	.m-insta-sec {
+		min-height: auto;
+		padding: 80px 0;
+	}
+
 	.m-contanct-sec {
 		min-height: auto;
 		padding: 80px 0;
@@ -1663,12 +1855,6 @@ video {
 		position: static;
 		padding: 80px;
 	}
-
-}
-
-
-/* 모바일 반응형 */
-@media (max-width: 768px) {
 
 	.mv-sec .slide_wrap .slide_ui .progress_ctn .bar {
 		width: calc(33.333% - 3px);
@@ -1729,17 +1915,29 @@ video {
 		font-size: 60px;
 	}
 
-}
+	.insta-img {
+		min-width: 200px;
+		height: 200px;
+		border-radius: 8px;
+	}
 
-@media (max-width: 500px) {
-	.m-about-sec .slide_wrap .slide_ctn .item {
-		max-width: 380px;
+	.instawrap {
+		gap: 15px;
+	}
+
+	.loop-container {
+		padding: 100px 0;
 	}
 
 }
 
 /* 작은 모바일 */
 @media (max-width: 480px) {
+
+	.m-about-sec .slide_wrap .slide_ctn .item {
+		max-width: 380px;
+	}
+
 	.progress_ctn {
 		flex-direction: column;
 		align-items: flex-start;
@@ -1766,6 +1964,12 @@ video {
 
 	.m-contanct-sec .img-box {
 		padding: 40px;
+	}
+
+	.insta-img {
+		min-width: 150px;
+		height: 150px;
+		border-radius: 6px;
 	}
 
 }

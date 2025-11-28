@@ -20,13 +20,14 @@
 	--color-border: #ddd;
 
 	--color-bg: #f6f6f6;
+	--color-beigebg: #EAE2D6;
 	--color-dimbg: rgba(0 0 0 / 25%);
 	--color-lightbg: rgba(255 255 255 / 50%);
 
-	--transition-1s: all .1s ease;
-	--transition-3s: all .3s ease;
-	--transition-5s: all .5s ease;
-	--transition-10s: all 1s ease;
+	--transition-1s: .1s ease;
+	--transition-3s: .3s ease;
+	--transition-5s: .5s ease;
+	--transition-10s: 1s ease;
 
 
 	--base-font: 'Pretendard', 'Malgun Gothic', 'verdana', sans-serif;
@@ -223,7 +224,7 @@
 	display: inline-block;
 	vertical-align: top;
 	line-height: 95px;
-	font-weight: 500;
+	/* font-weight: 500; */
 	font-size: 18px;
 	color: var(--color-text);
 	padding: 0 50px;
@@ -736,8 +737,8 @@
 	font-weight: 200;
 	font-size: 14px;
 	color: var(--color-lightbg);
-	letter-spacing: 1px;
 	line-height: 1.5;
+	letter-spacing: .5px;
 	padding: 20px 16px;
 }
 
@@ -820,7 +821,7 @@
 
 	.footer .top {
 		flex-wrap: wrap;
-		padding: 60px 16px;
+		padding: 40px 16px;
 	}
 
 	.footer .top .f_logo {

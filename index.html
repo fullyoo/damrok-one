@@ -245,8 +245,6 @@
             </div>
         </section>
 
-
-
         <section class="m-brand-sec">
             <div class="video-item">
                 <video loop playsinline muted autoplay>
@@ -274,6 +272,44 @@
                         편안함과 아름다움을 동시에 담은 의자를 만듭니다.<br>
                         당신의 공간을 차분하고 자연스럽게 만들어주는,<br>
                         담록과 함께하는 특별한 순간을 경험하세요.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="m-insta-sec">
+            <div class="loop-container">
+                <div class="insta-cta m_tit b tac">
+                    <a href="https://www.instagram.com/yourprofile" target="_blank">
+                        <h4>Instagram Review</h4>
+                        <h5>@damrok_</h5>
+                        <div class="cta">Follow Us
+                            <div class="line-wrap">
+                                <span class="line"></span>
+                                <span class="line"></span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="instawrap">
+                    <div class="insta-img in-1" data-instagram="https://www.instagram.com/p/example1/"></div>
+                    <div class="insta-img in-2" data-instagram="https://www.instagram.com/p/example2/"></div>
+                    <div class="insta-img in-3" data-instagram="https://www.instagram.com/p/example3/"></div>
+                    <div class="insta-img in-4" data-instagram="https://www.instagram.com/p/example4/"></div>
+                    <div class="insta-img in-5" data-instagram="https://www.instagram.com/p/example5/"></div>
+                    <div class="insta-img in-6" data-instagram="https://www.instagram.com/p/example6/"></div>
+
+                    <!-- 무한 스크롤 복제 -->
+                    <div class="insta-img in-1" data-instagram="https://www.instagram.com/p/example1/"></div>
+                    <div class="insta-img in-2" data-instagram="https://www.instagram.com/p/example2/"></div>
+                    <div class="insta-img in-3" data-instagram="https://www.instagram.com/p/example3/"></div>
+                    <div class="insta-img in-4" data-instagram="https://www.instagram.com/p/example4/"></div>
+                    <div class="insta-img in-5" data-instagram="https://www.instagram.com/p/example5/"></div>
+                    <div class="insta-img in-6" data-instagram="https://www.instagram.com/p/example6/"></div>
+                </div>
+
+                <!-- 전체 오버레이 -->
+                <div class="overlay">
+                    <!-- <a href="https://www.instagram.com/yourprofile" target="_blank">📷 Visit Instagram</a> -->
                 </div>
             </div>
         </section>
@@ -436,6 +472,31 @@
     <script src="./assets/js/main.js"></script>
 
     <script>
+
+        $('.insta-cta a').on('click', function (e) {
+            e.preventDefault();
+            alert("담록의 새로운 이야기를 준비 중입니다.\n조금만 기다려 주세요.📸");
+        });
+
+        // 개별 이미지 클릭 이벤트
+
+        //  01- 제이쿼리 버전
+        // $('.insta-img').on('click', function () {
+        //     var instagramUrl = $(this).data('instagram'); // data-instagram 속성 가져오기
+        //     window.open(instagramUrl, '_blank');
+        // });
+
+
+        //  02-자바스크립트 버전
+        // document.querySelectorAll('.insta-img').forEach(img => {
+        //     img.addEventListener('click', function () {
+        //         const instagramUrl = this.getAttribute('data-instagram');
+        //         window.open(instagramUrl, '_blank');
+        //     });
+        // });
+
+
+
 
     </script>
 

@@ -20,6 +20,7 @@ $(function () {
             barsContainer.empty();
 
             for (let i = 0; i < totalSlides; i++) {
+                // const text = slideTexts[i] || `Slide ${i + 1}`;
                 const text = slideTexts[i] || ``;
                 barsContainer.append(`<div class="bar" data-slide="${i}"><span></span><div class="bar-text" data-slide="${i}">${text}</div></div>`);
             }
@@ -39,11 +40,11 @@ $(function () {
 
         function startCurrentProgress(duration) {
             const activeBar = $(".progress_ctn .bar.active");
-            const barWidth = activeBar.width(); // padding/margin 제거
+            const barWidth = activeBar.width() - 0;
 
             activeBar.find("span").stop().animate({
                 width: barWidth + "px"
-            }, duration, 'linear', function () { // 'linear' easing 추가
+            }, duration, function () {
                 $(this).animate({ opacity: 0 }, 500);
             });
         }
@@ -56,7 +57,7 @@ $(function () {
 
             setTimeout(function () {
                 startCurrentProgress(autoplaySpeed);
-            }, 100); // 300ms에서 100ms로 단축
+            }, 300);
         }
 
         // 슬라이더 초기화
@@ -73,11 +74,11 @@ $(function () {
             fade: true,
             pauseOnHover: false,
             pauseOnFocus: false,
-            autoplay: true,
+            autoplay: true, //자동재생
             autoplaySpeed: autoplaySpeed,
             infinite: true,
             speed: 0,
-            cssEase: 'linear' // ease-in-out에서 linear로 변경
+            cssEase: 'ease-in-out'
         }).on("beforeChange", function (e, slick, current, next) {
             var currentBgEle = $(this).find(".item").not(".slick-cloned").eq(current).find(".bg");
             var nextBgEle = $(this).find(".item").not(".slick-cloned").eq(next).find(".bg");
@@ -107,7 +108,7 @@ $(function () {
 
             setTimeout(function () {
                 startCurrentProgress(autoplaySpeed);
-            }, 100); // 300ms에서 100ms로 단축
+            }, 300);
         });
 
         // 재생/정지 버튼
@@ -121,13 +122,13 @@ $(function () {
                 $(".mv-sec .slide_wrap .slide_ctn").slick("slickPlay");
 
                 var currentProgress = parseInt($(".progress_ctn .bar.active span").css("width"));
-                var totalWidth = $(".progress_ctn .bar.active").width(); // padding 제거
+                var totalWidth = $(".progress_ctn .bar.active").width() - 10;
                 var remainingPercent = 1 - (currentProgress / totalWidth);
                 var remainingTime = autoplaySpeed * remainingPercent;
 
                 $(".progress_ctn .bar.active span").stop().animate({
                     width: totalWidth + "px"
-                }, remainingTime, 'linear', function () { // 'linear' easing 추가
+                }, remainingTime, function () {
                     $(this).animate({ opacity: 0 }, 500);
                 });
             }
@@ -142,12 +143,13 @@ $(function () {
         });
     }
 
-    // .intro 인트로가 끝난 후 슬라이더 실행
+    // .intro 인트로가 끝난 후 4초 뒤 슬라이더 실행
     $(function () {
         setTimeout(function () {
             initSlider();
-        }, 100);
+        }, 100); // 4초 대기
     });
+
 
 
 

@@ -43,7 +43,7 @@ $(function () {
 
             activeBar.find("span").stop().animate({
                 width: barWidth + "px"
-            }, duration, 'linear', function () { // 'linear' easing 추가
+            }, duration, function () { // 'linear' easing 추가
                 $(this).animate({ opacity: 0 }, 500);
             });
         }

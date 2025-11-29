@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>페이드인 효과</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px;
+            max-width: 800px;
+        }
+
+        #fadeText {
+            font-size: 32px;
+            color: white;
+            min-height: 100px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .char {
+            display: inline-block;
+            opacity: 0;
+            animation: fadeInChar 0.8s ease forwards;
+        }
+
+        @keyframes fadeInChar {
+            to {
+                opacity: 1;
+            }
+        }
+
+        input {
+            display: none;
+        }
+
+        .controls {
+            display: none;
+        }
+
+        .speed-control {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="fadeText"></div>
+        <input type="text" id="customText" placeholder="여기에 텍스트를 입력하세요..." value="글자가 하나씩 부드럽게 나타나는 효과입니다. ✨">
+
+        <div class="speed-control">
+            <label for="speed">속도:</label>
+            <input type="range" id="speed" min="20" max="200" value="80" step="10">
+            <span id="speedValue">80ms</span>
+        </div>
+
+        <div class="controls">
+            <button onclick="startFade()">시작</button>
+            <button onclick="resetFade()">초기화</button>
+        </div>
+    </div>
+
+    <script>
+        let fadeSpeed = 80;
+
+        function startFade() {
+            const inputText = document.getElementById('customText').value;
+            if (!inputText) return;
+
+            const fadeTextElement = document.getElementById('fadeText');
+            fadeTextElement.innerHTML = '';
+
+            const chars = inputText.split('');
+
+            chars.forEach((char, index) => {
+                setTimeout(() => {
+                    const span = document.createElement('span');
+                    span.className = 'char';
+
+                    if (char === ' ') {
+                        span.innerHTML = '&nbsp;';
+                    } else if (char === '\n') {
+                        fadeTextElement.appendChild(document.createElement('br'));
+                        return;
+                    } else {
+                        span.textContent = char;
+                    }
+
+                    fadeTextElement.appendChild(span);
+                }, index * fadeSpeed);
+            });
+        }
+
+        function resetFade() {
+            document.getElementById('fadeText').innerHTML = '';
+        }
+
+        document.getElementById('speed').addEventListener('input', function (e) {
+            fadeSpeed = e.target.value;
+            document.getElementById('speedValue').textContent = fadeSpeed + 'ms';
+        });
+
+        document.getElementById('customText').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                startFade();
+            }
+        });
+
+        window.onload = function () {
+            startFade();
+        };
+    </script>
+</body>
+
+</html>

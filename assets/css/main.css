@@ -1,6 +1,10 @@
 @charset "utf-8";
 
 /***** 공통 영역 *****/
+main {
+	margin-top: 95px;
+}
+
 .m_tit {}
 
 .m_tit h2 {
@@ -8,6 +12,10 @@
 	font-family: var(--key-font);
 	color: var(--color-white);
 	letter-spacing: 0;
+}
+
+.m_tit h2 em {
+	padding: 0 10px;
 }
 
 .m_tit h3 {
@@ -798,10 +806,6 @@ video {
 }
 
 .m-brand-sec .text-box {}
-
-.m-brand-sec .text-box em {
-	padding: 0 10px;
-}
 
 .m-brand-sec .video-item {
 	/* display: none; */
@@ -1613,6 +1617,10 @@ video {
 
 
 @media (max-width: 1200px) {
+	main {
+		margin-top: 70px;
+	}
+
 	.m_tit h2 {
 		font-size: 60px;
 	}
@@ -1806,6 +1814,11 @@ video {
 		font-size: 50px;
 	}
 
+	.m_tit h2 em {
+		padding: 0;
+		display: none;
+	}
+
 	.m_tit h3 {
 		font-size: 35px;
 	}
@@ -1979,11 +1992,6 @@ video {
 		display: flex;
 		align-items: center;
 		flex-direction: row;
-	}
-
-	.m-brand-sec .text-box em {
-		padding: 0;
-		display: none;
 	}
 
 	.m-contanct-sec .img-box {

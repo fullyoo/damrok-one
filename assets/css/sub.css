@@ -1,0 +1,290 @@
+@charset "utf-8";
+
+/***** 공통 영역 *****/
+#sub {
+    margin-top: 95px;
+}
+
+.sv-sec {}
+
+.sv-img-wrap {
+    position: relative;
+    top: 0px;
+    width: 100%;
+    height: var(--snb-height);
+    overflow: hidden;
+    z-index: 2;
+}
+
+.sv-sec h2 {
+    /* font-size: 60px;
+    font-weight: 400;
+    font-family: var(--key-font);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
+}
+
+h2.fade-text {
+    font-size: 60px;
+    font-weight: 400;
+    font-family: var(--key-font);
+    color: var(--color-dark);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.char {
+    display: inline-block;
+    opacity: 0;
+    animation: fadeInChar 0.8s ease forwards;
+}
+
+@keyframes fadeInChar {
+    to {
+        opacity: 1;
+    }
+}
+
+input {
+    display: none;
+}
+
+.sv-sec img {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    z-index: -1;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    /* min-width: 100%; */
+    /* max-width: inherit; */
+    min-height: var(--snb-height);
+    object-fit: cover;
+    -webkit-animation: snb 2s;
+    animation: svi 2s;
+}
+
+@keyframes svi {
+    0% {
+        filter: blur(10px);
+        -webkit-filter: blur(10px);
+        transform: translateX(-50%) scale(1.2);
+        -webkit-transform: translateX(-50%) scale(1.2);
+    }
+
+    100% {
+        -webkit-filter: blur(0);
+        filter: blur(0);
+        -webkit-transform: translateX(-50%) scale(1);
+        transform: translateX(-50%) scale(1);
+    }
+}
+
+
+#sub h3 {
+    /* margin-top: 0; */
+}
+
+#sub h3 strong {
+    font-size: 64px;
+    position: relative;
+    padding: 10px 0 0 20px;
+    font-weight: 500;
+}
+
+#sub h3 strong::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 73px;
+    height: 47px;
+    background: url(../images/sub/tit-label.png) no-repeat 0 0;
+}
+
+#sub .pdtb {
+    padding: 40px 0 150px;
+}
+
+
+
+
+
+/****** 1. Chair-뷰 영역 ******/
+
+.module-tab-gallery {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: var(--color-dark);
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.module-tab-gallery .tab-trigger {
+    display: none;
+}
+
+.module-tab-gallery .photo {
+    opacity: 0;
+    transition: var(--transition-5s);
+}
+
+.module-tab-gallery .photo:not(:first-of-type) {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.module-tab-gallery .photo>img {
+    box-shadow: 5px 5px 5px var(--color-dimbg);
+}
+
+.module-tab-gallery #tab-1-1:checked~.photo-item .photo-list #tab_1_1,
+.module-tab-gallery #tab-1-2:checked~.photo-item .photo-list #tab_1_2,
+.module-tab-gallery #tab-1-3:checked~.photo-item .photo-list #tab_1_3,
+.module-tab-gallery #tab-1-4:checked~.photo-item .photo-list #tab_1_4,
+.module-tab-gallery #tab-1-5:checked~.photo-item .photo-list #tab_1_5,
+.module-tab-gallery #tab-1-6:checked~.photo-item .photo-list #tab_1_6 {
+    opacity: 1;
+}
+
+
+.module-tab-gallery .preview-container {
+    display: inline-block;
+}
+
+.module-tab-gallery .preview-container>label {
+    display: inline-block;
+    display: block;
+    height: 30px;
+    width: 30px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.module-tab-gallery .preview-container>label>img {
+    max-height: 100%;
+    box-shadow: 5px 5px 5px var(--color-dimbg);
+}
+
+.module-tab-gallery .preview-container>label>img:hover {
+    box-shadow: 3px 3px 5px rgba(0 0 0 /70%);
+}
+
+.module-tab-gallery .preview-container>label>img:active {
+    box-shadow: 1px 1px 1px var(--color-dark);
+}
+
+.photo-item {
+    display: flex;
+    align-items: flex-end;
+}
+
+.photo-list {
+    position: relative;
+}
+
+.photo-list p {
+    width: 100%;
+}
+
+.chair-info-wrap {
+    display: flex;
+}
+
+.chair-info-wrap>div {
+    width: 50%;
+}
+
+/*  좌우 확장 효과 */
+.s-chair-view-sec {}
+
+.s-chair-view-sec .chair-view-wrap {
+    width: 100%;
+    height: 100vh;
+    height: 100%;
+    min-height: 970px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.s-chair-view-sec .chair-view-wrap::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            rgba(0, 255, 136, 0.1),
+            rgba(0, 255, 136, 0.2),
+            rgba(0, 255, 136, 0.1));
+    /* background-color: red; */
+    background: url(../images/sub/chair-view.jpg) no-repeat center / cover;
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.3, 0.5, 0.6, 0.9);
+    z-index: 0;
+}
+
+.s-chair-view-sec .chair-view-wrap.visible::before {
+    width: 100%;
+    opacity: 1;
+}
+
+
+/****** 반응형 브레이크 포인트 (모바일 반응형)******/
+
+@media (max-width: 1500px) {}
+
+@media (max-width: 1200px) {
+    #sub {
+        margin-top: 70px;
+    }
+
+    #sub .pdtb {
+        padding: 20px 0 100px;
+    }
+}
+
+@media (max-width: 1023px) {
+    h2.fade-text {
+        font-size: 50px;
+    }
+
+    .s-chair-view-sec .chair-view-wrap {
+        min-height: auto;
+        padding: 150px 0;
+    }
+}
+
+@media (max-width: 767px) {
+    h2.fade-text {
+        font-size: 40px;
+    }
+
+    #sub .pdtb {
+        padding: 10px 0 70px;
+    }
+
+}
+
+/* 작은 모바일 */
+@media (max-width: 480px) {}

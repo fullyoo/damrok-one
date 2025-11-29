@@ -350,7 +350,7 @@
                     </ul>
                     <ul>
                         <li><b>Tel : </b>02-399-8500</li>
-                        <li><b>Fax : </b></b>02-1234-5678</li>
+                        <li><b>Fax : </b>02-1234-5678</li>
                         <li><b>사업자 등록번호 : </b>123-45-67890</li>
                     </ul>
                 </div>
@@ -402,6 +402,7 @@
     <!-- 스크립트 영역 -->
     <!-- <script src="//code.jquery.com/jquery-latest.js"></script> -->
     <!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
 
     <script src="./assets/js/jquery-3.7.1.min.js"></script>
     <script src="./assets/js/jquery-latest.js"></script>
@@ -413,31 +414,11 @@
     <script src="./assets/js/main.js"></script>
 
     <script>
-
+        // 1. 인스타 얼랏창
         $('.insta-cta a').on('click', function (e) {
             e.preventDefault();
             alert("담록의 새로운 이야기를 준비 중입니다.\n조금만 기다려 주세요.📸");
         });
-
-        // 개별 이미지 클릭 이벤트
-
-        //  01- 제이쿼리 버전
-        // $('.insta-img').on('click', function () {
-        //     var instagramUrl = $(this).data('instagram'); // data-instagram 속성 가져오기
-        //     window.open(instagramUrl, '_blank');
-        // });
-
-
-        //  02-자바스크립트 버전
-        // document.querySelectorAll('.insta-img').forEach(img => {
-        //     img.addEventListener('click', function () {
-        //         const instagramUrl = this.getAttribute('data-instagram');
-        //         window.open(instagramUrl, '_blank');
-        //     });
-        // });
-
-
-
 
     </script>
 

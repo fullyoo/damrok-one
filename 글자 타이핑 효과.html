@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>글자 타이핑 효과</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+        }
+
+        #typingText {
+            font-size: 32px;
+            color: white;
+            min-height: 100px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            height: 32px;
+            background-color: white;
+            margin-left: 2px;
+            animation: blink 0.7s infinite;
+            vertical-align: text-bottom;
+        }
+
+        @keyframes blink {
+
+            0%,
+            50% {
+                opacity: 1;
+            }
+
+            51%,
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 12px 30px;
+            font-size: 16px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            background: white;
+            color: #667eea;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        input {
+            width: 100%;
+            max-width: 600px;
+            padding: 15px;
+            font-size: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            margin-bottom: 20px;
+            outline: none;
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        input:focus {
+            border-color: white;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .speed-control {
+            margin-top: 20px;
+            color: white;
+        }
+
+        .speed-control label {
+            margin-right: 10px;
+            font-size: 16px;
+        }
+
+        .speed-control input[type="range"] {
+            width: 200px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="typingText"></div>
+
+        <input type="text" id="customText" placeholder="여기에 텍스트를 입력하세요..." value="안녕하세요! 글자가 하나씩 나타나는 타이핑 효과입니다. 😊">
+
+        <div class="speed-control">
+            <label for="speed">속도:</label>
+            <input type="range" id="speed" min="20" max="200" value="100" step="10">
+            <span id="speedValue">100ms</span>
+        </div>
+
+        <div class="controls">
+            <button onclick="startTyping()">시작</button>
+            <button onclick="stopTyping()">정지</button>
+            <button onclick="resetTyping()">초기화</button>
+        </div>
+    </div>
+
+    <script>
+        let typingInterval;
+        let currentIndex = 0;
+        let currentText = '';
+        let typingSpeed = 100;
+
+        function startTyping() {
+            stopTyping();
+
+            const inputText = document.getElementById('customText').value;
+            if (!inputText) return;
+
+            currentText = inputText;
+            currentIndex = 0;
+            document.getElementById('typingText').innerHTML = '<span class="cursor"></span>';
+
+            typingInterval = setInterval(() => {
+                if (currentIndex < currentText.length) {
+                    const textElement = document.getElementById('typingText');
+                    const textWithoutCursor = currentText.substring(0, currentIndex + 1);
+                    textElement.innerHTML = textWithoutCursor + '<span class="cursor"></span>';
+                    currentIndex++;
+                } else {
+                    clearInterval(typingInterval);
+                }
+            }, typingSpeed);
+        }
+
+        function stopTyping() {
+            if (typingInterval) {
+                clearInterval(typingInterval);
+            }
+        }
+
+        function resetTyping() {
+            stopTyping();
+            currentIndex = 0;
+            document.getElementById('typingText').innerHTML = '<span class="cursor"></span>';
+        }
+
+        document.getElementById('speed').addEventListener('input', function (e) {
+            typingSpeed = e.target.value;
+            document.getElementById('speedValue').textContent = typingSpeed + 'ms';
+
+            if (typingInterval) {
+                startTyping();
+            }
+        });
+
+        document.getElementById('customText').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                startTyping();
+            }
+        });
+
+        window.onload = function () {
+            startTyping();
+        };
+    </script>
+</body>
+
+</html>

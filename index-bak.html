@@ -22,7 +22,77 @@
     <link rel="stylesheet" href="./assets/css/main.css">
 
     <style>
+        .m-brand-sec.add {
+            display: initial;
+        }
 
+        /* Section 2 - 좌우 확장 효과 */
+        #about .section2 {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: #0a0a0a;
+        }
+
+        #about .section2 .content {
+            position: relative;
+            padding: 60px 0;
+            z-index: 1;
+        }
+
+        #about .section2::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                    rgba(0, 255, 136, 0.1),
+                    rgba(0, 255, 136, 0.2),
+                    rgba(0, 255, 136, 0.1));
+            /* background-color: red; */
+            /* background-image: url(./assets/images/main/brand01.jpg); */
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 0;
+        }
+
+        #about .section2.visible::before {
+            width: 100%;
+            opacity: 1;
+        }
+
+        #about .section2 h2 {
+            font-size: 48px;
+            text-align: center;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease 0.3s;
+        }
+
+        #about .section2.visible h2 {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #about .section2 p {
+            font-size: 18px;
+            text-align: center;
+            color: #999;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease 0.5s;
+        }
+
+        #about .section2.visible p {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 
@@ -245,6 +315,19 @@
             </div>
         </section>
 
+        <section id="about" class="m-brand-sec add">
+            <div class="section2">
+                <div class="content">
+                    <h2>EXPAND EFFECT</h2>
+                    <p>스크롤하면 선이 좌우로 확장됩니다</p>
+                </div>
+                <!-- <video autoplay loop playsinline muted poster="./assets/images/main/brand01.jpg" aria-hidden="true"
+                    style="object-position: left top">
+                    <source src="https://damrok-one.netlify.app/assets/images/main/brand04.mp4" type="video/mp4">
+                </video> -->
+            </div>
+        </section>
+
         <section class="m-brand-sec">
             <div class="video-item">
                 <video loop playsinline muted autoplay>
@@ -409,7 +492,7 @@
                     </ul>
                     <ul>
                         <li><b>Tel : </b>02-399-8500</li>
-                        <li><b>Fax : </b></b>02-1234-5678</li>
+                        <li><b>Fax : </b>02-1234-5678</li>
                         <li><b>사업자 등록번호 : </b>123-45-67890</li>
                     </ul>
                 </div>
@@ -461,6 +544,7 @@
     <!-- 스크립트 영역 -->
     <!-- <script src="//code.jquery.com/jquery-latest.js"></script> -->
     <!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
 
     <script src="./assets/js/jquery-3.7.1.min.js"></script>
     <script src="./assets/js/jquery-latest.js"></script>
@@ -472,13 +556,49 @@
     <script src="./assets/js/main.js"></script>
 
     <script>
-
+        // 1. 인스타 얼랏창
         $('.insta-cta a').on('click', function (e) {
             e.preventDefault();
             alert("담록의 새로운 이야기를 준비 중입니다.\n조금만 기다려 주세요.📸");
         });
 
-        // 개별 이미지 클릭 이벤트
+
+        // 2. 좌우확장 애니메이션
+        $(window).on('scroll resize', function () {
+            checkVisible();
+        });
+
+        // 화면에 들어왔는지 체크하는 함수
+        function checkVisible() {
+            $('.watch-visible').each(function () {
+                const $el = $(this);
+                const rect = this.getBoundingClientRect();
+                const windowHeight = $(window).height();
+
+                // 요소가 화면 30% 지점에 들어오면 visible 추가
+                if (rect.top < windowHeight * 0.7 && rect.bottom > 0) {
+                    $el.addClass('visible');
+                } else {
+                    // 다시 올라갈 때 리셋 (옵션)
+                    $el.removeClass('visible');
+                }
+            });
+        }
+
+        // 감시할 요소들에게 공통 클래스 부여
+        $('#about .section1 i').addClass('watch-visible');
+        $('#about .section2').addClass('watch-visible');
+        $('.scale-box').addClass('watch-visible');
+        $('.expand-line').addClass('watch-visible');
+
+        // 페이지 로드시 1회 실행
+        $(document).ready(function () {
+            checkVisible();
+        });
+
+
+
+        // 3. 인스타 개별 이미지 클릭 이벤트
 
         //  01- 제이쿼리 버전
         // $('.insta-img').on('click', function () {

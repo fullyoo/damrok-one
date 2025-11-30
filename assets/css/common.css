@@ -850,8 +850,8 @@
 
 	.foot-wrap {
 		flex-direction: column;
-		gap: 30px;
-		margin-bottom: 30px;
+		gap: 15px;
+		margin-bottom: 10px;
 	}
 
 	.footer .top .addr ul li {

@@ -21,6 +21,7 @@
 
 	--color-bg: #f6f6f6;
 	--color-beigebg: #EAE2D6;
+	--color-dimbg-soft: rgba(0 0 0 / 10%);
 	--color-dimbg: rgba(0 0 0 / 25%);
 	--color-lightbg: rgba(255 255 255 / 50%);
 
@@ -29,7 +30,7 @@
 	--transition-5s: .5s ease;
 	--transition-10s: 1s ease;
 
-	--snb-height: 600px;
+	--snb-height: 500px;
 
 
 	--base-font: 'Pretendard', 'Malgun Gothic', 'verdana', sans-serif;
@@ -818,7 +819,7 @@
 	}
 
 	.header .logo {
-		/* width: 180px; */
+		width: 180px;
 	}
 
 	.footer .top {

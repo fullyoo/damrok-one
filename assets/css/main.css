@@ -1827,6 +1827,11 @@ video {
 		font-size: 22px;
 	}
 
+	a.cta,
+	.cta {
+		/* padding: 12px 10px; */
+	}
+
 	.m-about-sec .slide_wrap .slide_ctn .item {
 		max-width: 420px;
 	}

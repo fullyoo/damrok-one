@@ -32,7 +32,6 @@
 
 	--snb-height: 500px;
 
-
 	--base-font: 'Pretendard', 'Malgun Gothic', 'verdana', sans-serif;
 	--key-font: "Noto Serif", serif;
 	--key-font-kr: "Noto Serif KR", serif;
@@ -56,6 +55,11 @@
 	max-width: 1600px;
 	margin: 0 auto;
 }
+
+.hidden {
+	display: none;
+}
+
 
 /* privacy */
 .privacy {

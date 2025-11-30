@@ -319,15 +319,13 @@ input {
     /* opacity: 0; */
 }
 
-.gallery-item:hover .item-info {
-    opacity: 1;
-}
-
 .item-info h3 {
     font-size: 30px;
     margin-bottom: 10px;
     color: var(--color-white);
     font-weight: 600;
+    transform: translateY(50%);
+    transition: var(--transition-5s);
 }
 
 .item-info a {
@@ -335,12 +333,27 @@ input {
     color: var(--color-white);
     border-color: var(--color-lightbg);
     margin: 5px 0;
+    opacity: 0;
+    transition: var(--transition-5s);
 }
 
 .item-info a:hover {
     color: var(--color-white);
     border-color: var(--color-white);
 }
+
+.gallery-item:hover .item-info {
+    opacity: 1;
+}
+
+.gallery-item:hover a {
+    opacity: 1;
+}
+
+.gallery-item:hover h3 {
+    transform: translateY(0%);
+}
+
 
 /* Fade-in animation */
 @keyframes fadeIn {

@@ -16,9 +16,6 @@
     <link rel="stylesheet" href="./assets/css/slick.css">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@xpressengine/xeicon@2.3.3/xeicon.min.css">
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css" />
-
-
     <link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/common.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/aos.css">
@@ -176,16 +173,15 @@
 
         .pagination button {
             padding: 10px 15px;
-            background-color: var(--color-white);
+            background-color: #fff;
             border: 1px solid var(--color-border);
             border-radius: 5px;
             cursor: pointer;
-            font-size: 18px;
+            font-size: 14px;
             color: var(--color-subtext);
             transition: all var(--transition-3s);
             font-family: var(--key-font);
             min-width: 40px;
-            min-height: 40px;
         }
 
         .pagination button:hover:not(:disabled) {
@@ -198,24 +194,20 @@
             background-color: var(--color-primary);
             color: var(--color-white);
             border-color: var(--color-primary);
+            font-weight: 600;
         }
 
         .pagination button:disabled {
-            opacity: 0.6;
+            opacity: 0.3;
             cursor: not-allowed;
-        }
-
-        .pagination button:disabled i {
-            opacity: 0.6;
         }
 
         .pagination .page-nav {
             padding: 10px 12px;
-            color: var(--color-dark);
         }
 
         .pagination .page-number {
-            background-color: var(--color-border);
+            min-width: 40px;
         }
 
 
@@ -233,7 +225,7 @@
 
         @media (max-width: 767px) {
             .gallery {
-                /* grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); */
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
             }
 
             .gallery-item {
@@ -265,15 +257,14 @@
 
             .pagination button {
                 padding: 8px 12px;
-                font-size: 14px;
+                font-size: 13px;
                 min-width: 35px;
-                min-height: 35px;
             }
         }
 
         @media (max-width: 480px) {
             .gallery {
-                /* grid-template-columns: 1fr; */
+                grid-template-columns: 1fr;
             }
 
             .tab {
@@ -470,22 +461,7 @@
             const $galleryContainer = $('#gallery-list');
             const $paginationContainer = $('#pagination');
 
-            /**************************************
-             *  버튼 생성 (HTML 아이콘 허용)
-            **************************************/
-            function createButton(html, onClick, disabled = false, active = false) {
-                const $btn = $('<button></button>').html(html);
-
-                if (disabled) $btn.prop('disabled', true);
-                if (active) $btn.addClass('active');
-
-                $btn.on('click', onClick);
-                return $btn;
-            }
-
-            /**************************************
-             *  갤러리 생성
-            **************************************/
+            // 갤러리 생성
             function generateGalleryItems(items) {
                 $galleryContainer.empty();
 
@@ -515,9 +491,58 @@
                 });
             }
 
-            /**************************************
-             *  페이지 번호 구성
-            **************************************/
+            // 페이지네이션 생성
+            function generatePagination() {
+                const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+                $paginationContainer.empty();
+
+                if (totalPages <= 1) return;
+
+                // 버튼 생성 함수
+                function createButton(text, onClick, disabled = false, active = false) {
+                    const $btn = $('<button></button>').text(text);
+                    if (disabled) $btn.prop('disabled', true);
+                    if (active) $btn.addClass('active');
+                    $btn.on('click', onClick);
+                    return $btn;
+                }
+
+                // 처음
+                $paginationContainer.append(
+                    createButton('≪', () => goToPage(1), currentPage === 1).addClass('page-nav')
+                );
+
+                // 이전
+                $paginationContainer.append(
+                    createButton('‹', () => goToPage(currentPage - 1), currentPage === 1).addClass('page-nav')
+                );
+
+                // 페이지 번호
+                const pageNumbers = getPageNumbers(currentPage, totalPages);
+
+                $.each(pageNumbers, function (_, num) {
+                    if (num === '...') {
+                        $paginationContainer.append(`<span style="padding:10px 5px;">...</span>`);
+                    } else {
+                        $paginationContainer.append(
+                            createButton(num, () => goToPage(num), false, num === currentPage)
+                                .addClass('page-number' + (num === currentPage ? ' active' : ''))
+                        );
+                    }
+                });
+
+                // 다음
+                $paginationContainer.append(
+                    createButton('›', () => goToPage(currentPage + 1), currentPage === totalPages).addClass('page-nav')
+                );
+
+                // 끝
+                $paginationContainer.append(
+                    createButton('≫', () => goToPage(totalPages), currentPage === totalPages).addClass('page-nav')
+                );
+            }
+
+            // 페이지 번호 구성
             function getPageNumbers(current, total) {
                 const pages = [];
 
@@ -544,66 +569,14 @@
                 return pages;
             }
 
-            /**************************************
-             *  페이지네이션 생성 (아이콘 버전)
-            **************************************/
-            function generatePagination() {
-                const totalPages = Math.ceil(filteredData.length / itemsPerPage);
-                $paginationContainer.empty();
-
-                if (totalPages <= 1) return;
-
-                // 처음 <<
-                $paginationContainer.append(
-                    createButton('<i class="iconoir-fast-arrow-left"></i>', () => goToPage(1), currentPage === 1)
-                        .addClass('page-nav')
-                );
-
-                // 이전 <
-                $paginationContainer.append(
-                    createButton('<i class="iconoir-nav-arrow-left"></i>', () => goToPage(currentPage - 1), currentPage === 1)
-                        .addClass('page-nav')
-                );
-
-                // 페이지 번호
-                const pageNumbers = getPageNumbers(currentPage, totalPages);
-
-                $.each(pageNumbers, function (_, num) {
-                    if (num === '...') {
-                        $paginationContainer.append('<span class="dots">...</span>');
-                    } else {
-                        $paginationContainer.append(
-                            createButton(num, () => goToPage(num), false, num === currentPage)
-                                .addClass('page-number')
-                        );
-                    }
-                });
-
-                // 다음 >
-                $paginationContainer.append(
-                    createButton('<i class="iconoir-nav-arrow-right"></i>', () => goToPage(currentPage + 1), currentPage === totalPages)
-                        .addClass('page-nav')
-                );
-
-                // 끝 >>
-                $paginationContainer.append(
-                    createButton('<i class="iconoir-fast-arrow-right"></i>', () => goToPage(totalPages), currentPage === totalPages)
-                        .addClass('page-nav')
-                );
-            }
-
-            /**************************************
-             *  페이지 이동
-            **************************************/
+            // 페이지 이동
             function goToPage(page) {
                 currentPage = page;
                 updateDisplay();
                 $('html, body').animate({ scrollTop: 0 }, 400);
             }
 
-            /**************************************
-             *  카테고리 필터링
-            **************************************/
+            // 카테고리 필터링
             function filterGallery(category) {
                 currentCategory = category;
                 currentPage = 1;
@@ -615,9 +588,7 @@
                 updateDisplay();
             }
 
-            /**************************************
-             *  화면 업데이트
-            **************************************/
+            // 화면 업데이트
             function updateDisplay() {
                 const startIndex = (currentPage - 1) * itemsPerPage;
                 const itemsToShow = filteredData.slice(startIndex, startIndex + itemsPerPage);
@@ -626,18 +597,14 @@
                 generatePagination();
             }
 
-            /**************************************
-             *  탭 클릭 이벤트
-            **************************************/
+            // 탭 버튼 클릭
             $('.tab').on('click', function () {
                 $('.tab').removeClass('active');
                 $(this).addClass('active');
                 filterGallery($(this).data('category'));
             });
 
-            /**************************************
-             *  초기 실행
-            **************************************/
+            // 초기 실행
             updateDisplay();
 
 

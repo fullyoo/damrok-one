@@ -51,7 +51,209 @@ $(function () {
 
 
 
-    /****** 2. Chair-view 영역 ******/
+    /****** 2. Chair-list 영역 ******/
+
+    const galleryData = [
+        { id: 1, title: "Goyo", category: "living", image: "./assets/images/sub/chair-list1.jpg", description: "자세히 보기" },
+        { id: 3, title: "Seonyu", category: "living", image: "./assets/images/sub/chair-list3.jpg", description: "자세히 보기" },
+        { id: 6, title: "Ongyeol", category: "living", image: "./assets/images/sub/chair-list6.jpg", description: "자세히 보기" },
+        { id: 11, title: "Seori", category: "living", image: "./assets/images/sub/chair-list11.jpg", description: "자세히 보기" },
+
+        { id: 9, title: "Yeobaek", category: "office", image: "./assets/images/sub/chair-list9.jpg", description: "자세히 보기" },
+        { id: 2, title: "Dajeong", category: "office", image: "./assets/images/sub/chair-list2.jpg", description: "자세히 보기" },
+        { id: 5, title: "Haeon", category: "office", image: "./assets/images/sub/chair-list5.jpg", description: "자세히 보기" },
+        { id: 7, title: "Daon", category: "office", image: "./assets/images/sub/chair-list7.jpg", description: "자세히 보기" },
+        { id: 10, title: "Sodam", category: "office", image: "./assets/images/sub/chair-list10.jpg", description: "자세히 보기" },
+
+        { id: 4, title: "Cheongyu", category: "cafe", image: "./assets/images/sub/chair-list4.jpg", description: "자세히 보기" },
+        { id: 8, title: "Narae", category: "cafe", image: "./assets/images/sub/chair-list8.jpg", description: "자세히 보기" },
+
+    ];
+
+    let currentPage = 1;
+    let itemsPerPage = 8;
+    let currentCategory = 'all';
+    let filteredData = [...galleryData];
+
+    const $galleryContainer = $('#gallery-list');
+    const $paginationContainer = $('#pagination');
+
+    /**************************************
+     *  버튼 생성 (HTML 아이콘 허용)
+    **************************************/
+    function createButton(html, onClick, disabled = false, active = false) {
+        const $btn = $('<button></button>').html(html);
+
+        if (disabled) $btn.prop('disabled', true);
+        if (active) $btn.addClass('active');
+
+        $btn.on('click', onClick);
+        return $btn;
+    }
+
+    /**************************************
+     *  갤러리 생성
+    **************************************/
+    function generateGalleryItems(items) {
+        $galleryContainer.empty();
+
+        if (items.length === 0) {
+            $galleryContainer.html('<div class="no-results">No images found in this category.</div>');
+            return;
+        }
+
+        $.each(items, function (index, item) {
+            const $itemDiv = $(`
+                <div class="gallery-item" data-category="${item.category}" style="animation-delay:${index * 0.1}s">
+                    <img src="${item.image}" alt="${item.title}">
+                    <div class="item-info">
+                        <h3>${item.title}</h3>
+                        <a href="./chair-view.html" class="cta">
+                            ${item.description}
+                            <div class="line-wrap">
+                                <span class="line"></span>
+                                <span class="line"></span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            `);
+
+            $galleryContainer.append($itemDiv);
+        });
+    }
+
+    /**************************************
+     *  페이지 번호 구성
+    **************************************/
+    function getPageNumbers(current, total) {
+        const pages = [];
+
+        if (total <= 7) {
+            for (let i = 1; i <= total; i++) pages.push(i);
+        } else {
+            if (current <= 3) {
+                for (let i = 1; i <= 4; i++) pages.push(i);
+                pages.push('...');
+                pages.push(total);
+            } else if (current >= total - 2) {
+                pages.push(1);
+                pages.push('...');
+                for (let i = total - 3; i <= total; i++) pages.push(i);
+            } else {
+                pages.push(1);
+                pages.push('...');
+                for (let i = current - 1; i <= current + 1; i++) pages.push(i);
+                pages.push('...');
+                pages.push(total);
+            }
+        }
+
+        return pages;
+    }
+
+    /**************************************
+     *  페이지네이션 생성 (아이콘 버전)
+    **************************************/
+    function generatePagination() {
+        const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+        $paginationContainer.empty();
+
+        if (totalPages <= 1) return;
+
+        // 처음 <<
+        $paginationContainer.append(
+            createButton('<i class="iconoir-fast-arrow-left"></i>', () => goToPage(1), currentPage === 1)
+                .addClass('page-nav')
+        );
+
+        // 이전 <
+        $paginationContainer.append(
+            createButton('<i class="iconoir-nav-arrow-left"></i>', () => goToPage(currentPage - 1), currentPage === 1)
+                .addClass('page-nav')
+        );
+
+        // 페이지 번호
+        const pageNumbers = getPageNumbers(currentPage, totalPages);
+
+        $.each(pageNumbers, function (_, num) {
+            if (num === '...') {
+                $paginationContainer.append('<span class="dots">...</span>');
+            } else {
+                $paginationContainer.append(
+                    createButton(num, () => goToPage(num), false, num === currentPage)
+                        .addClass('page-number')
+                );
+            }
+        });
+
+        // 다음 >
+        $paginationContainer.append(
+            createButton('<i class="iconoir-nav-arrow-right"></i>', () => goToPage(currentPage + 1), currentPage === totalPages)
+                .addClass('page-nav')
+        );
+
+        // 끝 >>
+        $paginationContainer.append(
+            createButton('<i class="iconoir-fast-arrow-right"></i>', () => goToPage(totalPages), currentPage === totalPages)
+                .addClass('page-nav')
+        );
+    }
+
+    /**************************************
+     *  페이지 이동
+    **************************************/
+    function goToPage(page) {
+        currentPage = page;
+        updateDisplay();
+        $('html, body').animate({ scrollTop: 0 }, 400);
+    }
+
+    /**************************************
+     *  카테고리 필터링
+    **************************************/
+    function filterGallery(category) {
+        currentCategory = category;
+        currentPage = 1;
+
+        filteredData = category === 'all'
+            ? [...galleryData]
+            : galleryData.filter(item => item.category === category);
+
+        updateDisplay();
+    }
+
+    /**************************************
+     *  화면 업데이트
+    **************************************/
+    function updateDisplay() {
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const itemsToShow = filteredData.slice(startIndex, startIndex + itemsPerPage);
+
+        generateGalleryItems(itemsToShow);
+        generatePagination();
+    }
+
+    /**************************************
+     *  탭 클릭 이벤트
+    **************************************/
+    $('.tab').on('click', function () {
+        $('.tab').removeClass('active');
+        $(this).addClass('active');
+        filterGallery($(this).data('category'));
+    });
+
+    /**************************************
+     *  초기 실행
+    **************************************/
+    updateDisplay();
+
+
+
+
+
+
+    /****** 3. Chair-view 영역 ******/
     $(window).on('scroll resize', function () {
         checkVisible();
     });

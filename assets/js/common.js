@@ -33,7 +33,8 @@ $(function () {
 
 
 	$(".header .header_ui .m_gnb > ul > li > a").on("click", function (e) {
-		e.preventDefault();
+		// e.preventDefault() : 모든 메뉴 링크 이동 막음()
+		// e.preventDefault();
 
 		// 클릭한 a 이외의 서브메뉴는 닫기
 		// $(this).next().stop().slideToggle();

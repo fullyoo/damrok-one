@@ -537,6 +537,7 @@
 }
 
 .header .header_ui .m_gnb.on {
+	right: -50%;
 	right: 0;
 }
 

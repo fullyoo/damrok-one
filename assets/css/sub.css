@@ -560,9 +560,6 @@ input {
 
 /* 작은 모바일 */
 @media (max-width: 480px) {
-    .header .logo {
-        width: 150px;
-    }
 
     .gallery {
         /* grid-template-columns: 1fr; */

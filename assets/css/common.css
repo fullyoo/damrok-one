@@ -824,7 +824,7 @@
 	}
 
 	.header .logo {
-		width: 180px;
+		width: 200px;
 	}
 
 	.footer .top {
@@ -833,7 +833,9 @@
 	}
 
 	.footer .top .f_logo {
-		margin-right: 0
+		margin-right: 0;
+		width: 180px;
+
 	}
 
 	.footer .top .addr {
@@ -913,10 +915,13 @@
 	}
 
 
-
 }
 
-@media (max-width:500px) {
+@media (max-width:480px) {
+	.header .logo {
+		width: 170px;
+	}
+
 	.header .header_ui .m_btn {
 		margin-left: 20px;
 	}
@@ -924,4 +929,9 @@
 	.header .header_ui .m_gnb>ul>li>ul>li>a {
 		padding: 8px 16px;
 	}
+
+	.footer .top .f_logo {
+		width: 160px;
+	}
+
 }

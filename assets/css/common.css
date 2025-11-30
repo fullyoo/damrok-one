@@ -852,7 +852,7 @@
 
 	.foot-wrap {
 		flex-direction: column;
-		gap: 15px;
+		gap: 10px;
 		margin-bottom: 10px;
 	}
 
@@ -888,6 +888,7 @@
 
 	.footer .top .addr ul {
 		flex-wrap: wrap;
+		margin-bottom: 10px;
 	}
 
 	.footer .top .addr ul li:last-of-type {
@@ -932,6 +933,10 @@
 
 	.footer .top .f_logo {
 		width: 160px;
+	}
+
+	.sns-box img {
+		width: 30px;
 	}
 
 }

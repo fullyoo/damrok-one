@@ -21,8 +21,11 @@
 
 	--color-bg: #f6f6f6;
 	--color-beigebg: #EAE2D6;
-	--color-dimbg-soft: rgba(0 0 0 / 10%);
+
+	--color-dimbg-soft: rgba(0 0 0 / 15%);
 	--color-dimbg: rgba(0 0 0 / 25%);
+	--color-dimbg-deep: rgba(0 0 0 / 50%);
+
 	--color-lightbg: rgba(255 255 255 / 50%);
 
 	--transition-1s: .1s ease;
@@ -32,7 +35,7 @@
 
 	--snb-height: 500px;
 
-	--base-font: 'Pretendard', 'Malgun Gothic', 'verdana', sans-serif;
+	--base-font: "Pretendard Variable", Pretendard, -apple-system, 'Outfit', BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 	--key-font: "Noto Serif", serif;
 	--key-font-kr: "Noto Serif KR", serif;
 }
@@ -160,6 +163,11 @@
 	z-index: 500;
 	background-color: var(--color-white);
 	box-shadow: 0 0 5px 2px rgba(0 0 0 / 5%);
+
+	background: linear-gradient(to top, rgba(255 255 255 / 10%) 0%, rgba(255 255 255 / 20%) 100%);
+	backdrop-filter: blur(5px);
+	border-bottom: 1px solid rgba(255 255 255 / 20%);
+	box-shadow: 0 4px 20px rgba(0 0 0 / 5%);
 }
 
 .header::after {

@@ -146,7 +146,7 @@ $(function () {
     $(function () {
         setTimeout(function () {
             initSlider();
-        }, 100);
+        }, 4000);
     });
 
 

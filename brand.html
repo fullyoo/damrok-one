@@ -1,0 +1,243 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- iOS 전화번호, 이메일 자동링크 방지 -->
+    <meta name="format-detection" content="telephone=no, email=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Damrok, 淡綠 l Why Damrok?</title>
+    <link rel="icon" href="./assets/images/common/favicon.ico" type="image/x-icon">
+
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" > -->
+    <link rel="stylesheet" href="./assets/css/slick.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@xpressengine/xeicon@2.3.3/xeicon.min.css">
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css">
+
+
+    <link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/common.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/aos.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/sub.css">
+
+    <style>
+        /* 인트로 중 스크롤바 숨김 */
+        body.intro-active {
+            overflow: hidden;
+        }
+
+        /* 기존 .intro 클래스를 이렇게 수정 */
+        .intro {
+            position: fixed;
+            overflow: hidden;
+            width: 100vw;
+            /* 100%에서 100vw로 변경 */
+            height: 100vh;
+            background-color: var(--color-primary);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            z-index: -1;
+            animation: introBg 4.6s cubic-bezier(1, 0, 0.8, 1);
+            display: block;
+        }
+
+        /* 추가: 인트로가 표시될 때 body 스크롤 제거 */
+        body:has(.intro[style*="display: block"]) {
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="intro">
+        <div class="first">
+            <img src="./assets/images/common/intro-logo.svg" alt="">
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="bg"></div>
+        <div class="header-wrap w1500">
+            <h1 class="logo">
+                <a href="/"><img src="./assets/images/common/logo.svg" alt="로고"></a>
+            </h1>
+            <nav class="gnb">
+                <ul>
+                    <li>
+                        <a href="./chair-list.html">CHAIR</a>
+                    </li>
+                    <li>
+                        <a href="./brand.html">Why Damrok?</a>
+                    </li>
+                    <li>
+                        <a href="./cummunity.html">COMMUNITY</a>
+                    </li>
+                    <li>
+                        <a href="./contact.html">CONTACT</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header_ui">
+                <div class="m_btn">
+                    <span></span>
+                </div>
+                <div class="m_gnb"></div>
+            </div>
+        </div>
+    </header>
+
+    <div id="sub">
+        <section class="sv-sec">
+            <div class="sv-img-wrap m_tit b tac">
+                <div class="sv-title-wrap">
+                    <h2 class="fade-text">Why Damrok?/h2>
+                        <input type="text" id="custom-text" placeholder="" value="Why Damrok?">
+                        <input type="range" id="speed" min="20" max="200" value="80" step="10">
+                </div>
+                <img src="./assets/images/sub/topbg-brand.jpg" alt="Brand 탑이미지">
+            </div>
+        </section>
+
+        <div class="w1500">
+            <div class="m_tit b aos-init aos-animate" data-aos="fade-down" data-aos-duration="800" data-aos-delay="100">
+                <h3 class="title-big"><strong>Y</strong>eobaek</h3>
+            </div>
+        </div>
+
+        <section class="m-brand-sec s-brand-sec">
+            <div class="video-item">
+                <!-- autoplay -->
+                <video loop playsinline muted style="object-position: left top">
+                    <source src="./assets/images/sub/brand.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="w1500 text-box-wrap">
+                <div class="m_tit tac" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                    <h4>A Damrok chair is more than furniture</h4>
+                    <p>담록의 의자는 단순한 가구가 아니라, 삶을 더 편안하게 만드는 동반자입니다.<br>
+                        자연에서 얻은 색감과 곡선으로, 집 안 공간에 따스함을 더합니다.<br>
+                        하루의 휴식과 여유를 담록과 함께 느껴보세요.</p>
+                </div>
+
+                <ul class="dim-box m_tit">
+                    <li data-aos="flip-left" data-aos-duration="800" data-aos-delay="200">
+                        <h5>Sodam</h5>
+                        <h6>아담함, 아늑함, 작은 공간 최적</h6>
+                    </li>
+                    <li data-aos="flip-left" data-aos-duration="800" data-aos-delay="300">
+                        <h5>Haeon</h5>
+                        <h6>햇살 같은 따스함, 편안한 휴식</h6>
+                    </li>
+                    <li data-aos="flip-left" data-aos-duration="800" data-aos-delay="400">
+                        <h5>Noeul</h5>
+                        <h6>석양빛 감성, 공간 분위기 완성</h6>
+                    </li>
+                </ul>
+
+            </div>
+        </section>
+
+    </div>
+
+    <footer class="footer">
+        <div class="top_btn">
+            <!-- <img src="./assets/images/common/top_arrow.png" alt=""> -->
+        </div>
+        <div class="top w1500">
+            <div class="foot-wrap">
+                <h2 class="f_logo"><img src="./assets/images/common/f_logo.png" alt="풋터로고"></h2>
+                <div class="addr">
+                    <ul>
+                        <li>
+                            <address><b>Address : </b>서울특별시 성동구 성수1동 담록사거리</address>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li><b>Tel : </b>02-399-8500</li>
+                        <li><b>Fax : </b>02-1234-5678</li>
+                        <li><b>사업자 등록번호 : </b>123-45-67890</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="family-wrap">
+                <ul class="sns-box">
+                    <li>
+                        <a href="#">
+                            <img src="./assets/images/common/f_youtube.svg" alt="유투브">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="./assets/images/common/f_insta.svg" alt="인스타그램">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="./assets/images/common/f_kakao.svg" alt="카카오톡">
+                        </a>
+                    </li>
+                </ul>
+                <div class="family">
+                    <div>
+                        <p>Family Site </p>
+                        <span>+</span>
+                    </div>
+                    <ul>
+                        <li><a href="#" target="_blank">담록 다정 (Dajeong)</a></li>
+                        <li><a href="#" target="_blank">담록 해온 (Haeon)</a></li>
+                        <li><a href="#" target="_blank">담록 소담 (Sodam)</a></li>
+                        <li><a href="#" target="_blank">담록 여백 (Yeobaek)</a></li>
+                        <li><a href="#" target="_blank">담록 온결 (Ongyeol)</a></li>
+                        <li><a href="#" target="_blank">담록 고요 (Goyo)</a></li>
+                        <li><a href="#" target="_blank">담록 선유 (Seonyu)</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <div class="copy">
+            <p>Copyright © 2026 DAMROK Co., Ltd. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+
+
+
+    <!-- 스크립트 영역 -->
+    <!-- <script src="//code.jquery.com/jquery-latest.js"></script> -->
+    <!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
+
+    <script src="./assets/js/jquery-3.7.1.min.js"></script>
+    <script src="./assets/js/jquery-latest.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="./assets/js/aos.js"></script>
+    <script>AOS.init();</script>
+
+    <script src="./assets/js/common.js"></script>
+    <!-- <script src="./assets/js/main.js"></script> -->
+    <script src="./assets/js/sub.js"></script>
+
+    <script>
+        // 페이지 로드 시
+        document.body.classList.add('intro-active');
+
+        // 인트로 애니메이션 종료 후 (4.6초 후)
+        setTimeout(() => {
+            document.body.classList.remove('intro-active');
+        }, 4600);
+
+    </script>
+
+
+
+
+</body>
+
+</html>

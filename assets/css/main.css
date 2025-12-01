@@ -1,6 +1,7 @@
 @charset "utf-8";
 
 /***** 공통 영역 *****/
+
 main {
 	margin-top: 95px;
 	background-color: var(--color-white);
@@ -40,6 +41,13 @@ main {
 	margin-top: 30px;
 }
 
+.m_tit h6 {
+	font-size: 18px;
+	font-family: var(--key-font);
+	color: var(--color-white);
+	margin-top: 30px;
+}
+
 .m_tit.b h2 {
 	color: var(--color-dark);
 }
@@ -53,6 +61,10 @@ main {
 }
 
 .m_tit.b h5 {
+	color: var(--color-dark);
+}
+
+.m_tit.b h6s {
 	color: var(--color-dark);
 }
 
@@ -805,8 +817,6 @@ video {
 	/* 보이는 영역 기준 위치 */
 }
 
-.m-brand-sec .text-box {}
-
 .m-brand-sec .video-item {
 	/* display: none; */
 }
@@ -1246,7 +1256,6 @@ video {
 	width: 100%;
 }
 
-
 .intro {
 	position: fixed;
 	overflow: hidden;
@@ -1279,6 +1288,58 @@ video {
 	-ms-animation: logoBounce 3.7s ease;
 	-o-animation: logoBounce 3.7s ease;
 	animation: logoBounce 3.7s ease;
+}
+
+@keyframes introBg {
+	0% {
+		z-index: 1000;
+		transform: translateY(-95px);
+	}
+
+	80% {
+		z-index: 1000;
+		transform: translateY(-95px);
+	}
+
+	99% {
+		z-index: 1000;
+	}
+
+	100% {
+		z-index: -1px;
+		transform: translateY(-100%);
+	}
+}
+
+@keyframes logoBounce {
+	0% {
+		opacity: 0;
+		transform: translateY(-50px);
+	}
+
+	30% {
+		opacity: 1;
+		transform: translateY(20px);
+	}
+
+	50% {
+		opacity: 1;
+		transform: translateY(-10px);
+	}
+
+	60% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	70% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	100% {
+		opacity: 0;
+	}
 }
 
 /* @-webkit-keyframes introBg {
@@ -1365,26 +1426,7 @@ video {
 	}
 } */
 
-@keyframes introBg {
-	0% {
-		z-index: 1000;
-		transform: translateY(-95px);
-	}
 
-	80% {
-		z-index: 1000;
-		transform: translateY(-95px);
-	}
-
-	99% {
-		z-index: 1000;
-	}
-
-	100% {
-		z-index: -1px;
-		transform: translateY(-100%);
-	}
-}
 
 /* @-webkit-keyframes logoBounce {
 	0% {
@@ -1510,38 +1552,6 @@ video {
 	}
 } */
 
-@keyframes logoBounce {
-	0% {
-		opacity: 0;
-		transform: translateY(-50px);
-	}
-
-	30% {
-		opacity: 1;
-		transform: translateY(20px);
-	}
-
-	50% {
-		opacity: 1;
-		transform: translateY(-10px);
-	}
-
-	60% {
-		opacity: 1;
-		transform: translateY(0);
-	}
-
-	70% {
-		opacity: 1;
-		transform: translateY(0);
-	}
-
-	100% {
-		opacity: 0;
-	}
-}
-
-
 
 
 
@@ -1626,6 +1636,10 @@ video {
 
 	.m_tit h5 {
 		font-size: 20px;
+	}
+
+	.m_tit h6 {
+		font-size: 16px;
 	}
 
 	.m_tit p {

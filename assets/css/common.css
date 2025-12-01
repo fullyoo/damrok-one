@@ -234,6 +234,7 @@
 	position: relative;
 	display: inline-block;
 	vertical-align: top;
+	line-height: 95px;
 	/* font-weight: 500; */
 	font-size: 18px;
 	color: var(--color-text);

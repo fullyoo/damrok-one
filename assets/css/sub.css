@@ -25,6 +25,17 @@
     z-index: 2;
 }
 
+.sv-img-wrap:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--color-dimbg);
+    z-index: -1;
+}
+
 .sv-sec h2 {
     /* font-size: 60px;
     font-weight: 400;
@@ -36,16 +47,24 @@
     transform: translate(-50%, -50%); */
 }
 
+.sv-title-wrap {}
+
 h2.fade-text {
     font-size: 60px;
     font-weight: 400;
     font-family: var(--key-font);
     color: var(--color-dark);
+    color: var(--color-white);
     position: absolute;
     left: 50%;
     top: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+}
+
+.sv-title-wrap h2.fade-text {
+    color: var(--color-white);
+    width: 100%;
 }
 
 .char {
@@ -68,7 +87,7 @@ input {
     position: absolute;
     left: 50%;
     top: 0;
-    z-index: -1;
+    z-index: -2;
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
     /* min-width: 100%; */
@@ -585,9 +604,43 @@ input {
 }
 
 
+/****** 3. Why Damrok? 브랜드 영역 ******/
+.s-brand-sec {}
 
+.text-box-wrap {
+    position: relative;
+    z-index: 2;
+}
 
+.s-brand-sec .dim-box {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background-color: var(--color-dimbg);
+    padding: 100px 50px 100px 300px;
+    z-index: 1;
+}
 
+.s-brand-sec .dim-box li {
+    border-bottom: 1px solid var(--color-border);
+    padding: 30px 0;
+    text-align: right;
+}
+
+.s-brand-sec h4 {
+    font-size: 40px;
+}
+
+.s-brand-sec .dim-box h5 {
+    margin-top: 0;
+    font-weight: 600;
+}
+
+.s-brand-sec .dim-box h6 {
+    margin-top: 10px;
+    font-weight: 100;
+}
 
 
 

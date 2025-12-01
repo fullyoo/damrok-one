@@ -5,7 +5,7 @@
 
 /* 공통영역 */
 * {
-	line-height: 1.2;
+	line-height: 1.5;
 	letter-spacing: -.5px;
 	word-break: keep-all;
 	box-sizing: border-box;
@@ -38,7 +38,6 @@
 	--base-font: "Pretendard Variable", Pretendard, -apple-system, 'Outfit', BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 
 	--key-font: "Noto Serif", "Noto Serif KR", serif;
-	--key-font-kr: "Noto Serif KR", serif;
 }
 
 
@@ -72,7 +71,6 @@
 	overflow: hidden;
 	padding: 20px;
 	font-size: 15px;
-	line-height: 140%;
 	word-break: break-all;
 }
 
@@ -111,7 +109,6 @@
 	padding-bottom: 10px;
 	text-align: justify;
 	font-size: 15px;
-	line-height: 140%;
 }
 
 .privacy>dl>dd ul {
@@ -119,7 +116,6 @@
 }
 
 .privacy>dl>dd ul li {
-	line-height: 120%;
 	margin-top: 10px;
 }
 
@@ -129,7 +125,6 @@
 
 .privacy>dl>dd ul li p {
 	margin: 0 10px 5px;
-	line-height: 140%;
 }
 
 .sTxt h3 {
@@ -239,7 +234,6 @@
 	position: relative;
 	display: inline-block;
 	vertical-align: top;
-	line-height: 95px;
 	/* font-weight: 500; */
 	font-size: 18px;
 	color: var(--color-text);
@@ -754,7 +748,6 @@
 	font-weight: 200;
 	font-size: 14px;
 	color: var(--color-lightbg);
-	line-height: 1.5;
 	letter-spacing: .5px;
 	padding: 20px 16px;
 }

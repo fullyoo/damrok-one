@@ -38,7 +38,6 @@ main {
 	font-family: var(--key-font);
 	color: var(--color-white);
 	margin-top: 30px;
-	line-height: 1.6;
 }
 
 .m_tit.b h2 {
@@ -62,7 +61,6 @@ main {
 	font-size: 22px;
 	color: var(--color-white);
 	margin-top: 24px;
-	line-height: 1.6;
 	letter-spacing: 0
 }
 
@@ -212,7 +210,6 @@ a.cta:hover .line-wrap,
 	font-size: 20px;
 	color: var(--color-white);
 	margin-top: 24px;
-	line-height: 1.6;
 	animation: fadeUp 1s 0.3s both
 }
 
@@ -873,7 +870,6 @@ video {
 	font-weight: 200;
 	font-size: 16px;
 	color: var(--color-white);
-	line-height: 1.7;
 }
 
 

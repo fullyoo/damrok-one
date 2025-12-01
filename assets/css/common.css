@@ -36,7 +36,8 @@
 	--snb-height: 500px;
 
 	--base-font: "Pretendard Variable", Pretendard, -apple-system, 'Outfit', BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
-	--key-font: "Noto Serif", serif;
+
+	--key-font: "Noto Serif", "Noto Serif KR", serif;
 	--key-font-kr: "Noto Serif KR", serif;
 }
 

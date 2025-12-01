@@ -60,7 +60,7 @@ main {
 	font-weight: 300;
 	font-size: 22px;
 	color: var(--color-white);
-	margin-top: 24px;
+	margin-top: 35px;
 	letter-spacing: 0
 }
 
@@ -615,7 +615,7 @@ video {
 }
 
 .m-about-sec .slide_wrap .slide_ctn .item .down_txt h4 {
-	font-weight: 700;
+	font-weight: 800;
 	font-size: 30px;
 	color: var(--color-dark);
 	margin-bottom: 14px;
@@ -814,11 +814,6 @@ video {
 .m-brand-sec .m_tit {
 	position: relative;
 	z-index: 2;
-}
-
-.m-brand-sec h4 {
-	font-weight: 300;
-	margin: 35px 0 55px;
 }
 
 .m-brand-sec .m_tit p {
@@ -1832,7 +1827,7 @@ video {
 
 @media (max-width: 767px) {
 	.m_tit h2 {
-		font-size: 50px;
+		font-size: 48px;
 	}
 
 	.m_tit h2 em {
@@ -1845,7 +1840,8 @@ video {
 	}
 
 	.m_tit h4 {
-		font-size: 22px;
+		font-size: 20px;
+		/* margin: 5px 0 40px; */
 	}
 
 	a.cta,

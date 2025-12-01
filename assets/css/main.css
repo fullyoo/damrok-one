@@ -30,7 +30,7 @@ main {
 	font-size: 30px;
 	font-family: var(--key-font);
 	color: var(--color-white);
-	margin-top: 30px;
+	margin-top: 5px;
 }
 
 .m_tit h5 {
@@ -615,10 +615,11 @@ video {
 }
 
 .m-about-sec .slide_wrap .slide_ctn .item .down_txt h4 {
-	font-weight: 600;
+	font-weight: 700;
 	font-size: 30px;
 	color: var(--color-dark);
 	margin-bottom: 14px;
+	font-family: var(--key-font);
 }
 
 .m-about-sec .slide_wrap .slide_ctn .item .down_txt p {
@@ -1266,7 +1267,7 @@ video {
 	-ms-animation: introBg 4.6s cubic-bezier(1, 0, 0.8, 1);
 	-o-animation: introBg 4.6s cubic-bezier(1, 0, 0.8, 1);
 	animation: introBg 4.6s cubic-bezier(1, 0, 0.8, 1);
-	/* display: none; */
+	display: none;
 }
 
 .intro .first {

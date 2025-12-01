@@ -1394,7 +1394,7 @@ video {
 	}
 }
 
-@-webkit-keyframes logoBounce {
+/* @-webkit-keyframes logoBounce {
 	0% {
 		opacity: 0;
 		transform: translateY(-50px);
@@ -1516,7 +1516,7 @@ video {
 	100% {
 		opacity: 0;
 	}
-}
+} */
 
 @keyframes logoBounce {
 	0% {
@@ -1994,7 +1994,7 @@ video {
 
 @media (max-width: 640px) {
 	.intro .first img {
-		max-width: 300px;
+		max-width: 270px;
 	}
 }
 

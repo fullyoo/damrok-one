@@ -275,13 +275,13 @@ input {
     justify-content: space-between;
 }
 
-.chair-info-wrap>div:first-child {
-    width: 80%;
+.chair-info-wrap>div:first-child {}
+
+.chair-info-wrap>div:last-child {
+    width: 40%;
 }
 
-.chair-info-wrap>div {
-    width: 50%;
-}
+.chair-info-wrap>div {}
 
 .chair-info-box {}
 
@@ -617,8 +617,8 @@ input {
         font-size: 18px;
     }
 
-    .module-tab-gallery .photo>img {
-        /* height: 100%; */
+    .chair-info-wrap>div:last-child {
+        width: 80%;
     }
 
 
@@ -645,32 +645,23 @@ input {
     }
 
     .module-tab-gallery .photo>img {
-        height: 100%;
+        height: 700px;
     }
 
     .chair-info-wrap>div {
-        width: 80%;
         text-align: center;
     }
 
     .chair-info-wrap {
         flex-direction: column;
         align-items: center;
-        gap: 70px;
-    }
-
-    .photo-item {
-        display: block;
-    }
-
-    .module-tab-gallery .preview-container {
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
+        gap: 50px;
     }
 
     .module-tab-gallery .preview-container>label {
         margin: 10px;
+        width: 32px;
+        height: 32px;
     }
 
 }
@@ -732,8 +723,39 @@ input {
         min-height: 35px;
     }
 
+    .module-tab-gallery .photo>img {
+        height: 400px;
+    }
+
+    .tit-wrap h4 {
+        font-size: 24px;
+    }
+
+    .tit-wrap h5:not(:last-of-type) {
+        margin: 5px 0 0px;
+    }
+
+    .tit-wrap h5:last-of-type {
+        margin-top: 15px;
+        font-size: 18px;
+    }
+
+    .chair-info-box .cta {
+        font-size: 14px;
+        margin-top: 30px;
+    }
+
+    .chair-info-box .m_tit.b p {
+        font-size: 16px;
+    }
+
+    .info-item li {
+        font-size: 14px;
+    }
+
 
 }
+
 
 @media (max-width: 640px) {
     .chair-info-wrap>div:first-child {
@@ -741,6 +763,10 @@ input {
     }
 
     .chair-info-wrap>div {
+        width: 100%;
+    }
+
+    .chair-info-wrap>div:last-child {
         width: 100%;
     }
 }
@@ -751,7 +777,6 @@ input {
     .gallery {
         /* grid-template-columns: 1fr; */
         gap: 10px;
-
     }
 
     .tab {
@@ -765,4 +790,9 @@ input {
         /* width: 100%; */
         width: calc(50% - 5px);
     }
+
+    .module-tab-gallery .photo>img {
+        height: 100%;
+    }
+
 }

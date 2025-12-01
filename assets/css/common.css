@@ -811,6 +811,8 @@
 		align-items: center;
 		justify-content: space-between;
 		/* padding: 0 16px; */
+		background-color: var(--color-white);
+		backdrop-filter: none;
 	}
 
 	.header::before {

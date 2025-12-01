@@ -3,6 +3,7 @@
 /***** 공통 영역 *****/
 main {
 	margin-top: 95px;
+	background-color: var(--color-white);
 }
 
 .m_tit {}
@@ -298,6 +299,7 @@ a.cta:hover .line-wrap,
 
 
 /* 메인비주얼-추가영역 */
+
 .mv-sec {
 	position: relative;
 	width: 100%;
@@ -1287,15 +1289,15 @@ video {
 	animation: logoBounce 3.7s ease;
 }
 
-@-webkit-keyframes introBg {
+/* @-webkit-keyframes introBg {
 	0% {
 		z-index: 1000;
-		transform: translateY(-95px);
+		transform: translateY(0%);
 	}
 
 	80% {
 		z-index: 1000;
-		transform: translateY(-95px);
+		transform: translateY(0%);
 	}
 
 	99% {
@@ -1311,12 +1313,12 @@ video {
 @-moz-keyframes introBg {
 	0% {
 		z-index: 1000;
-		transform: translateY(-95px);
+		transform: translateY(0%);
 	}
 
 	80% {
 		z-index: 1000;
-		transform: translateY(-95px);
+		transform: translateY(0%);
 	}
 
 	99% {
@@ -1332,12 +1334,12 @@ video {
 @-ms-keyframes introBg {
 	0% {
 		z-index: 1000;
-		transform: translateY(-95px);
+		transform: translateY(0%);
 	}
 
 	80% {
 		z-index: 1000;
-		transform: translateY(-95px);
+		transform: translateY(0%);
 	}
 
 	99% {
@@ -1353,12 +1355,12 @@ video {
 @-o-keyframes introBg {
 	0% {
 		z-index: 1000;
-		transform: translateY(-95px);
+		transform: translateY(0%);
 	}
 
 	80% {
 		z-index: 1000;
-		transform: translateY(-95px);
+		transform: translateY(0%);
 	}
 
 	99% {
@@ -1369,7 +1371,7 @@ video {
 		z-index: -1px;
 		transform: translateY(-100%);
 	}
-}
+} */
 
 @keyframes introBg {
 	0% {
@@ -1703,90 +1705,6 @@ video {
 		max-width: 70%;
 	}
 
-	@-webkit-keyframes introBg {
-		0% {
-			z-index: 1000;
-			transform: translateY(-70px);
-		}
-
-		80% {
-			z-index: 1000;
-			transform: translateY(-70px);
-		}
-
-		99% {
-			z-index: 1000;
-		}
-
-		100% {
-			z-index: -1px;
-			transform: translateY(-100%);
-		}
-	}
-
-	@-moz-keyframes introBg {
-		0% {
-			z-index: 1000;
-			transform: translateY(-70px);
-		}
-
-		80% {
-			z-index: 1000;
-			transform: translateY(-70px);
-		}
-
-		99% {
-			z-index: 1000;
-		}
-
-		100% {
-			z-index: -1px;
-			transform: translateY(-100%);
-		}
-	}
-
-	@-ms-keyframes introBg {
-		0% {
-			z-index: 1000;
-			transform: translateY(-70px);
-		}
-
-		80% {
-			z-index: 1000;
-			transform: translateY(-70px);
-		}
-
-		99% {
-			z-index: 1000;
-		}
-
-		100% {
-			z-index: -1px;
-			transform: translateY(-100%);
-		}
-	}
-
-	@-o-keyframes introBg {
-		0% {
-			z-index: 1000;
-			transform: translateY(-70px);
-		}
-
-		80% {
-			z-index: 1000;
-			transform: translateY(-70px);
-		}
-
-		99% {
-			z-index: 1000;
-		}
-
-		100% {
-			z-index: -1px;
-			transform: translateY(-100%);
-		}
-	}
-
 	@keyframes introBg {
 		0% {
 			z-index: 1000;
@@ -2073,6 +1991,14 @@ video {
 	}
 
 }
+
+@media (max-width: 640px) {
+	.intro .first img {
+		max-width: 300px;
+	}
+}
+
+
 
 /* 작은 모바일 */
 @media (max-width: 480px) {

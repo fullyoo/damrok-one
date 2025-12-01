@@ -3,6 +3,7 @@
 /***** 공통 영역 *****/
 #sub {
     margin-top: 95px;
+    background-color: var(--color-white);
 }
 
 #sub .sub-content {

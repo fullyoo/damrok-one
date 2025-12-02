@@ -4,143 +4,127 @@ $(function () {
 
     /****** 1. 메인 비주얼 영역 ******/
     function initSlider() {
+        const slider = $(".mv-sec .slide_wrap .slide_ctn");
         let autoplaySpeed = 3000;
-        let totalSlides = 0;
-        let currentSlide = 0;
 
-        const slideTexts = [
-            // "Global",
-            // "Service",
-            // "Solution"
-        ];
+        const bars = $(".progress_ctn .bars_container");
 
-        function createProgressBars() {
-            totalSlides = $(".mv-sec .slide_wrap .slide_ctn .item").length;
-            const barsContainer = $(".bars_container");
-            barsContainer.empty();
+        const updateBars = (i) => {
+            bars.find(".bar").removeClass("active");
+            bars.find(".bar").eq(i).addClass("active");
+        };
 
-            for (let i = 0; i < totalSlides; i++) {
-                const text = slideTexts[i] || ``;
-                barsContainer.append(`<div class="bar" data-slide="${i}"><span></span><div class="bar-text" data-slide="${i}">${text}</div></div>`);
-            }
-        }
+        const startProgress = (duration) => {
+            const bar = bars.find(".bar.active span");
 
-        function updateProgressBars(current) {
-            $(".progress_ctn .bar").each(function (index) {
-                if (index === current) {
-                    $(this).addClass("active").removeClass("completed");
-                    $(this).find("span").css("width", "0%").css("opacity", "1");
-                } else {
-                    $(this).removeClass("active completed");
-                    $(this).find("span").css("width", "0%").css("opacity", "1");
+            bar.stop(true, true)
+                .css({
+                    width: 0,
+                    opacity: 1
+                })
+                .animate(
+                    { width: "90%" },
+                    duration,
+                    "linear",
+                    () => {
+                        bar.animate({ opacity: 0 }, 500);
+                    }
+                );
+        };
+
+        slider
+            .on("init", function (e, slick) {
+                const total = slick.slideCount;
+
+                bars.empty();
+                for (let i = 0; i < total; i++) {
+                    bars.append(`
+                    <div class="bar" data-slide="${i}">
+                        <span></span>
+                    </div>
+                `);
                 }
+
+                updateBars(0);
+
+                // 전체 초기화
+                bars.find(".bar span").css({ width: 0, opacity: 0 });
+
+                startProgress(autoplaySpeed);
+            })
+
+            .on("beforeChange", (e, slick, current, next) => {
+
+                // 🔥 무조건 전체 초기화 (핵심)
+                bars.find(".bar span").stop(true, true).css({
+                    width: 0,
+                    opacity: 0
+                });
+
+                updateBars(next);
+
+                // next span만 애니메이션 준비 상태
+                bars.find(".bar").eq(next).find("span").css({
+                    width: 0,
+                    opacity: 1
+                });
+            })
+
+            .on("afterChange", (e, slick, current) => {
+                startProgress(autoplaySpeed);
+            })
+
+            .slick({
+                arrows: false,
+                fade: true,
+                autoplay: true,
+                autoplaySpeed: autoplaySpeed,
+                infinite: true,
+                speed: 0,
+                pauseOnHover: false,
+                pauseOnFocus: false,
+                cssEase: "linear",
             });
-        }
 
-        function startCurrentProgress(duration) {
-            const activeBar = $(".progress_ctn .bar.active");
-            const barWidth = activeBar.width(); // padding/margin 제거
 
-            activeBar.find("span").stop().animate({
-                width: barWidth + "px"
-            }, duration, function () { // 'linear' easing 추가
-                $(this).animate({ opacity: 0 }, 500);
-            });
-        }
+        let isPaused = false;
 
-        function goToSlide(slideIndex) {
-            $(".progress_ctn .bar span").stop(true, false);
-            currentSlide = slideIndex;
-            updateProgressBars(currentSlide);
-            $(".mv-sec .slide_wrap .slide_ctn").slick('slickGoTo', slideIndex);
+        $(".play_btn .stop").on("click", function () {
+            const activeBar = bars.find(".bar.active");
+            const bar = activeBar.find("span");
 
-            setTimeout(function () {
-                startCurrentProgress(autoplaySpeed);
-            }, 100); // 300ms에서 100ms로 단축
-        }
-
-        // 슬라이더 초기화
-        createProgressBars();
-
-        $(".mv-sec .slide_wrap .slide_ctn").on("init", function (e, slick) {
-            currentSlide = 0;
-            updateProgressBars(currentSlide);
-            setTimeout(function () {
-                startCurrentProgress(autoplaySpeed);
-            }, 50);
-        }).slick({
-            arrows: false,
-            fade: true,
-            pauseOnHover: false,
-            pauseOnFocus: false,
-            autoplay: true,
-            autoplaySpeed: autoplaySpeed,
-            infinite: true,
-            speed: 0,
-            cssEase: 'linear' // ease-in-out에서 linear로 변경
-        }).on("beforeChange", function (e, slick, current, next) {
-            var currentBgEle = $(this).find(".item").not(".slick-cloned").eq(current).find(".bg");
-            var nextBgEle = $(this).find(".item").not(".slick-cloned").eq(next).find(".bg");
-
-            if (currentBgEle.find("video").length) {
-                currentBgEle.find("video")[0].pause();
-            }
-
-            if (nextBgEle.find("video").length) {
-                nextBgEle.find("video")[0].currentTime = 0;
-                nextBgEle.find("video")[0].pause();
-            }
-
-            currentSlide = next;
-            updateProgressBars(currentSlide);
-        }).on("afterChange", function (e, slick, current) {
-            var bgEle = $(this).find(".item").not(".slick-cloned").eq(current).find(".bg");
-
-            if (bgEle.find("video").length) {
-                setTimeout(function () {
-                    bgEle.find("video")[0].play();
-                }, 0);
-            }
-
-            autoplaySpeed = 3000;
-            $(".mv-sec .slide_wrap .slide_ctn").slick('slickSetOption', 'autoplaySpeed', autoplaySpeed, false);
-
-            setTimeout(function () {
-                startCurrentProgress(autoplaySpeed);
-            }, 100); // 300ms에서 100ms로 단축
-        });
-
-        // 재생/정지 버튼
-        $(".mv-sec .progress_ctn .play_btn .stop").on("click", function () {
             if (!$(this).hasClass("on")) {
+                // 정지
                 $(this).addClass("on");
-                $(".mv-sec .slide_wrap .slide_ctn").slick("slickPause");
-                $(".progress_ctn .bar.active span").clearQueue().stop();
+                slider.slick("slickPause");
+
+                // 현재 active span 숨기기
+                bar.stop(true, true).css({
+                    width: 0,
+                    opacity: 0
+                });
             } else {
+                // 재생
                 $(this).removeClass("on");
-                $(".mv-sec .slide_wrap .slide_ctn").slick("slickPlay");
+                slider.slick("slickPlay");
 
-                var currentProgress = parseInt($(".progress_ctn .bar.active span").css("width"));
-                var totalWidth = $(".progress_ctn .bar.active").width(); // padding 제거
-                var remainingPercent = 1 - (currentProgress / totalWidth);
-                var remainingTime = autoplaySpeed * remainingPercent;
-
-                $(".progress_ctn .bar.active span").stop().animate({
-                    width: totalWidth + "px"
-                }, remainingTime, 'linear', function () { // 'linear' easing 추가
-                    $(this).animate({ opacity: 0 }, 500);
+                // 항상 0%에서 시작
+                bar.css({
+                    width: 0,
+                    opacity: 1
+                }).animate({ width: "100%" }, autoplaySpeed, "linear", function () {
+                    bar.animate({ opacity: 0 }, 500);
                 });
             }
         });
 
-        // 진행바 클릭
-        $(document).on("click", ".progress_ctn .bar, .bar-text", function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            var index = $(this).data('slide');
-            goToSlide(index);
+
+
+        $(document).on("click", ".progress_ctn .bar", function () {
+            slider.slick("slickGoTo", $(this).data("slide"));
         });
     }
+
 
     // .intro 인트로가 끝난 후 슬라이더 실행
     $(function () {

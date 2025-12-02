@@ -247,15 +247,15 @@ a.cta:hover .line-wrap,
 }
 
 .mv-sec .slide_wrap .slide_ui .progress_ctn .play_btn {
-	width: 40px;
-	height: 40px;
-	margin-left: 18px;
+	width: 30px;
+	height: 30px;
+	margin-left: 5px;
 	cursor: pointer;
 }
 
 .mv-sec .slide_wrap .slide_ui .progress_ctn .play_btn .stop {
-	width: 40px;
-	height: 40px;
+	width: 30px;
+	height: 30px;
 	background: url(../images/main/icon_stop.png) 50% 50% no-repeat;
 }
 
@@ -266,12 +266,12 @@ a.cta:hover .line-wrap,
 .mv-sec .slide_wrap .slide_ctn .item.slick-active .bg02,
 .mv-sec .slide_wrap .slide_ctn .item.slick-active .bg03,
 .mv-sec .slide_wrap .slide_ctn .item.slick-active .bg04 {
-	animation: zoom 4s both;
+	animation: zoom 2s both;
 }
 
 .mv-sec .slide_wrap .slide_ctn .item.slick-active .bg01,
 .mv-sec .slide_wrap .slide_ctn .item.slick-active .bg05 {
-	animation: fade 4s both;
+	animation: fade 2s both;
 }
 
 @keyframes fadeUp {
@@ -394,7 +394,7 @@ video {
 /* 개선된 bar 컨테이너 - 클릭 영역 확장 */
 .mv-sec .slide_wrap .slide_ui .progress_ctn .bar {
 	position: relative;
-	width: 70px;
+	width: 50px;
 	height: 3px;
 	background: none;
 	cursor: pointer;
@@ -449,8 +449,8 @@ video {
 }
 
 .mv-sec .slide_wrap .slide_ui .progress_ctn .play_btn .stop {
-	width: 40px;
-	height: 40px;
+	width: 30px;
+	height: 30px;
 	background-color: var(--color-lightbg);
 	border-radius: 50%;
 	cursor: pointer;
@@ -1773,6 +1773,7 @@ body:has(.intro[style*="display: block"]) {
 
 	.mv-sec .slide_wrap .slide_ui .progress_ctn {
 		margin-top: 60px;
+		gap: 5px;
 	}
 
 	.m-about-sec {
@@ -1948,9 +1949,7 @@ body:has(.intro[style*="display: block"]) {
 	}
 
 	.mv-sec .slide_wrap .slide_ui .progress_ctn .bar {
-		width: calc(33.333% - 3px);
-		min-width: 50px;
-		/* width: 70px; */
+		width: 40px;
 		margin: -12px 0;
 	}
 
@@ -1971,13 +1970,13 @@ body:has(.intro[style*="display: block"]) {
 	}
 
 	.mv-sec .slide_wrap .slide_ui .progress_ctn .play_btn .stop {
-		width: 30px;
-		height: 30px;
+		width: 25px;
+		height: 25px;
 	}
 
 	.mv-sec .slide_wrap .slide_ui .progress_ctn .play_btn {
-		width: 30px;
-		height: 30px;
+		width: 25px;
+		height: 25px;
 	}
 
 	.stop:before {
@@ -2063,6 +2062,7 @@ body:has(.intro[style*="display: block"]) {
 		display: flex;
 		align-items: center;
 		flex-direction: row;
+		gap: 5px;
 	}
 
 	.m-contanct-sec .img-box {

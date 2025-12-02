@@ -289,7 +289,130 @@ $(function () {
 
 
     /****** 4. Why Damrok? 어바웃 영역 ******/
+    function initSlider() {
+        const slider = $(".mv-sec .slide_wrap .slide_ctn");
+        let autoplaySpeed = 3000;
 
+        const bars = $(".progress_ctn .bars_container");
+
+        const updateBars = (i) => {
+            bars.find(".bar").removeClass("active");
+            bars.find(".bar").eq(i).addClass("active");
+        };
+
+        const startProgress = (duration) => {
+            const bar = bars.find(".bar.active span");
+
+            bar.stop(true, true)
+                .css({
+                    width: 0,
+                    opacity: 1
+                })
+                .animate(
+                    { width: "90%" },
+                    duration,
+                    "linear",
+                    () => {
+                        bar.animate({ opacity: 0 }, 500);
+                    }
+                );
+        };
+
+        slider
+            .on("init", function (e, slick) {
+                const total = slick.slideCount;
+
+                bars.empty();
+                for (let i = 0; i < total; i++) {
+                    bars.append(`
+                    <div class="bar" data-slide="${i}">
+                        <span></span>
+                    </div>
+                `);
+                }
+
+                updateBars(0);
+
+                // 전체 초기화
+                bars.find(".bar span").css({ width: 0, opacity: 0 });
+
+                startProgress(autoplaySpeed);
+            })
+
+            .on("beforeChange", (e, slick, current, next) => {
+
+                // 🔥 무조건 전체 초기화 (핵심)
+                bars.find(".bar span").stop(true, true).css({
+                    width: 0,
+                    opacity: 0
+                });
+
+                updateBars(next);
+
+                // next span만 애니메이션 준비 상태
+                bars.find(".bar").eq(next).find("span").css({
+                    width: 0,
+                    opacity: 1
+                });
+            })
+
+            .on("afterChange", (e, slick, current) => {
+                startProgress(autoplaySpeed);
+            })
+
+            .slick({
+                arrows: false,
+                fade: true,
+                autoplay: true,
+                autoplaySpeed: autoplaySpeed,
+                infinite: true,
+                speed: 0,
+                pauseOnHover: false,
+                pauseOnFocus: false,
+                cssEase: "linear",
+            });
+
+
+        let isPaused = false;
+
+        $(".play_btn .stop").on("click", function () {
+            const activeBar = bars.find(".bar.active");
+            const bar = activeBar.find("span");
+
+            if (!$(this).hasClass("on")) {
+                // 정지
+                $(this).addClass("on");
+                slider.slick("slickPause");
+
+                // 현재 active span 숨기기
+                bar.stop(true, true).css({
+                    width: 0,
+                    opacity: 0
+                });
+            } else {
+                // 재생
+                $(this).removeClass("on");
+                slider.slick("slickPlay");
+
+                // 항상 0%에서 시작
+                bar.css({
+                    width: 0,
+                    opacity: 1
+                }).animate({ width: "100%" }, autoplaySpeed, "linear", function () {
+                    bar.animate({ opacity: 0 }, 500);
+                });
+            }
+        });
+
+
+
+        $(document).on("click", ".progress_ctn .bar", function () {
+            slider.slick("slickGoTo", $(this).data("slide"));
+        });
+    }
+
+
+    initSlider();
 
 
 

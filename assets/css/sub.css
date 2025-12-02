@@ -637,9 +637,14 @@ input {
     transform: translate(0);
 }
 
+.about-box-wrap .slide_wrap .slide_ui .progress_ctn .bar span {
+    top: 13px;
+}
+
 .about-box-wrap .slide_wrap .slide_ui .progress_ctn .bar::before {
     background-color: var(--color-border);
     height: 5px;
+    top: 13px;
 }
 
 .about-box-wrap .slide_wrap .slide_ui .progress_ctn .bar.active span {
@@ -676,6 +681,12 @@ input {
 
 .about-box-wrap .slide_wrap .slide_ctn .item .bg03 {
     background: url(../images/sub/brand-about03.jpg) 50% 50% no-repeat;
+}
+
+.about-box-wrap .slide_wrap .slide_ctn .item.slick-active .bg01,
+.about-box-wrap .slide_wrap .slide_ctn .item.slick-active .bg02,
+.about-box-wrap .slide_wrap .slide_ctn .item.slick-active .bg03 {
+    animation: zoom 2s both;
 }
 
 
@@ -1086,6 +1097,14 @@ input {
     .s-brand-sec .dim-box {
         width: 100%;
         padding: 40px 30px;
+    }
+
+    .about-box-wrap .slide_wrap .slide_ui .progress_ctn .bar::before {
+        top: 10px;
+    }
+
+    .about-box-wrap .slide_wrap .slide_ui .progress_ctn .bar span {
+        top: 10px;
     }
 
 

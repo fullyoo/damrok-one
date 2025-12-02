@@ -766,6 +766,10 @@
 		padding: 0 30px;
 	}
 
+	.header.hover .gnb>ul>li>a {
+		padding: 0 35px;
+	}
+
 	.footer .top {
 		padding: 50px 40px;
 		gap: 0;
@@ -788,11 +792,7 @@
 	}
 }
 
-@media (max-width: 1400px) {
-	.header.hover .gnb>ul>li>a {
-		padding: 0 3vw;
-	}
-}
+@media (max-width: 1400px) {}
 
 @media (max-width: 1200px) {
 

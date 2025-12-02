@@ -146,12 +146,13 @@ $(function () {
     $(function () {
         setTimeout(function () {
             initSlider();
-        }, 4000);
+        }, 3600);
     });
 
 
 
     /****** 2. 인트로-페이지 로드 시 ******/
+
     $('body').addClass('intro-active');
 
     // 인트로 애니메이션 종료 후 (4.6초 후)

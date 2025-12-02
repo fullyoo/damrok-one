@@ -363,7 +363,7 @@ $(function () {
             .slick({
                 arrows: false,
                 fade: true,
-                autoplay: true,
+                // autoplay: true,
                 autoplaySpeed: autoplaySpeed,
                 infinite: true,
                 speed: 0,

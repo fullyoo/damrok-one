@@ -7,7 +7,7 @@
 }
 
 #sub .sub-content {
-    padding: 80px 0 120px;
+    padding: 70px 0 120px;
 }
 
 #sub .title-big {
@@ -131,7 +131,7 @@ input {
     position: absolute;
     top: 0;
     left: 0;
-    width: 73px;
+    width: 76px;
     height: 47px;
     background: url(../images/sub/tit-label.png) no-repeat 0 0;
 }
@@ -606,28 +606,35 @@ input {
 
 /****** 3. Why Damrok? 브랜드 영역 ******/
 .s-about-sec {
+    padding: 70px 0 120px;
     height: 100%;
 }
 
-.about-box-wrap {}
+.about-box-wrap {
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+}
 
-.about-box-wrap .slide_wrap {
+.about-box {}
+
+.about-box .slide_wrap {
     background-color: var(--color-white);
     width: 810px;
     height: 650px;
 }
 
-.about-box-wrap .slide_wrap .slide_ctn {
+.about-box .slide_wrap .slide_ctn {
     height: 600px;
     overflow: hidden;
 }
 
-.about-box-wrap .slide_wrap .slide_ui .progress_ctn {
+.about-box .slide_wrap .slide_ui .progress_ctn {
     margin-top: 0;
     gap: 0;
 }
 
-.about-box-wrap .slide_wrap .slide_ui {
+.about-box .slide_wrap .slide_ui {
     width: 100%;
     max-width: 100%;
     position: absolute;
@@ -637,67 +644,77 @@ input {
     transform: translate(0);
 }
 
-.about-box-wrap .slide_wrap .slide_ui .progress_ctn .bar span {
+.about-box .slide_wrap .slide_ui .progress_ctn .bar span {
     top: 13px;
 }
 
-.about-box-wrap .slide_wrap .slide_ui .progress_ctn .bar::before {
+.about-box .slide_wrap .slide_ui .progress_ctn .bar::before {
     background-color: var(--color-border);
     height: 5px;
     top: 13px;
 }
 
-.about-box-wrap .slide_wrap .slide_ui .progress_ctn .bar.active span {
+.about-box .slide_wrap .slide_ui .progress_ctn .bar.active span {
     height: 5px;
 }
 
-.about-box-wrap .slide_wrap .slide_ui .progress_ctn .bar.active span {
+.about-box .slide_wrap .slide_ui .progress_ctn .bar.active span {
     /* width: 90% !important; */
 }
 
-.about-box-wrap.slide_wrap .slide_ui .progress_ctn .play_btn .stop.on {
+.about-box.slide_wrap .slide_ui .progress_ctn .play_btn .stop.on {
     background-color: var(--color-border);
 }
 
-.about-box-wrap .slide_wrap .slide_ui .progress_ctn .play_btn .stop {
+.about-box .slide_wrap .slide_ui .progress_ctn .play_btn .stop {
     background-color: var(--color-border);
 }
 
-.about-box-wrap .slide_wrap .slide_ui .progress_ctn .play_btn .stop.on {
+.about-box .slide_wrap .slide_ui .progress_ctn .play_btn .stop.on {
     background-color: var(--color-border);
 }
 
-.about-box-wrap .slide_wrap .slide_ctn .item .bg {
+.about-box .slide_wrap .slide_ctn .item .bg {
     height: 650px;
 }
 
-.about-box-wrap .slide_wrap .slide_ctn .item .bg01 {
+.about-box .slide_wrap .slide_ctn .item .bg01 {
     background: url(../images/sub/brand-about01.jpg) 50% 50% no-repeat;
 }
 
-.about-box-wrap .slide_wrap .slide_ctn .item .bg02 {
+.about-box .slide_wrap .slide_ctn .item .bg02 {
     background: url(../images/sub/brand-about02.jpg) 50% 50% no-repeat;
 }
 
-.about-box-wrap .slide_wrap .slide_ctn .item .bg03 {
+.about-box .slide_wrap .slide_ctn .item .bg03 {
     background: url(../images/sub/brand-about03.jpg) 50% 50% no-repeat;
 }
 
-.about-box-wrap .slide_wrap .slide_ctn .item.slick-active .bg01,
-.about-box-wrap .slide_wrap .slide_ctn .item.slick-active .bg02,
-.about-box-wrap .slide_wrap .slide_ctn .item.slick-active .bg03 {
+.about-box .slide_wrap .slide_ctn .item.slick-active .bg01,
+.about-box .slide_wrap .slide_ctn .item.slick-active .bg02,
+.about-box .slide_wrap .slide_ctn .item.slick-active .bg03 {
     animation: zoom 2s both;
 }
 
+.about-txt {
+    padding: 100px;
+    position: absolute;
+    right: 0;
+    background-color: var(--color-beigebg);
+}
 
+.about-txt h5 {
+    margin-top: 0;
+}
 
-.about-txt-wrap {}
-
+.about-txt h6 {}
 
 
 /* 어바웃-브랜드 영역 */
 
-.s-brand-sec {}
+.s-brand-sec {
+    /* display: none; */
+}
 
 
 .text-box-wrap {
@@ -742,8 +759,7 @@ input {
 }
 
 .s-story-sec {
-    padding: 80px 0 120px;
-    padding: 100px 0;
+    padding: 120px 0;
 }
 
 .s-story-sec h5 {
@@ -845,7 +861,7 @@ input {
 /****** 반응형 브레이크 포인트 (모바일 반응형)******/
 
 @media (max-width: 1500px) {
-    .about-box-wrap .slide_wrap .slide_ui {
+    .about-box .slide_wrap .slide_ui {
         padding: 0;
     }
 }
@@ -979,7 +995,7 @@ input {
         transform: translateY(320px);
     }
 
-    .about-box-wrap .slide_wrap {
+    .about-box .slide_wrap {
         width: 100%;
     }
 
@@ -1099,11 +1115,11 @@ input {
         padding: 40px 30px;
     }
 
-    .about-box-wrap .slide_wrap .slide_ui .progress_ctn .bar::before {
+    .about-box .slide_wrap .slide_ui .progress_ctn .bar::before {
         top: 10px;
     }
 
-    .about-box-wrap .slide_wrap .slide_ui .progress_ctn .bar span {
+    .about-box .slide_wrap .slide_ui .progress_ctn .bar span {
         top: 10px;
     }
 

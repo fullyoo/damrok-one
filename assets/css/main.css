@@ -260,7 +260,7 @@ a.cta:hover .line-wrap,
 }
 
 .mv-sec .slide_wrap .slide_ui .progress_ctn .play_btn .stop.on {
-	background: url(../images/main/icon_play.png) 55% 50% no-repeat;
+	background: url(../images/main/icon_play.png) 50% 50% no-repeat;
 }
 
 .mv-sec .slide_wrap .slide_ctn .item.slick-active .bg02,
@@ -476,9 +476,9 @@ video {
 	content: '';
 	width: 0;
 	height: 0;
-	/* border-left: 8px solid var(--color-white); */
-	/* border-top: 5px solid transparent; */
-	/* border-bottom: 5px solid transparent; */
+	border-left: 8px solid var(--color-white);
+	border-top: 5px solid transparent;
+	border-bottom: 5px solid transparent;
 	margin-left: 2px;
 	background: none;
 	box-shadow: none;

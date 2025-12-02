@@ -266,6 +266,108 @@
 
     <script>
 
+        function initSlider() {
+            const slider = $(".mv-sec .slide_wrap .slide_ctn");
+            let autoplaySpeed = 3000;
+            let currentSlide = 0;
+            const slideTexts = []; // 필요하면 텍스트 추가
+
+            // bars_container가 없으면 생성
+            if ($(".progress_ctn .bars_container").length === 0) {
+                $(".progress_ctn").append('<div class="bars_container"></div>');
+            }
+            const bars = $(".progress_ctn .bars_container");
+
+            // 진행바 상태 업데이트
+            const updateBars = (i) => {
+                bars.find(".bar").removeClass("active completed");
+                bars.find(".bar").eq(i).addClass("active");
+                bars.find("span").css({ width: 0, opacity: 1 });
+            };
+
+            // 진행바 애니메이션
+            const startProgress = (duration) => {
+                const bar = bars.find(".bar.active span");
+                bar.stop().animate({ width: "95%" }, duration, "linear", () => {
+                    bar.animate({ opacity: 0 }, 500);
+                });
+            };
+
+            // 슬라이드 이동
+            const goToSlide = (i) => {
+                bars.find("span").stop(true);
+                currentSlide = i;
+                updateBars(i);
+                slider.slick("slickGoTo", i);
+                setTimeout(() => startProgress(autoplaySpeed), 80);
+            };
+
+            // slick 초기화
+            slider.on("init", function (e, slick) {
+                // slick 원본 슬라이드 개수 가져오기
+                const total = slick.slideCount;
+
+                // 진행바 생성
+                bars.empty();
+                for (let i = 0; i < total; i++) {
+                    bars.append(`
+                    <div class="bar" data-slide="${i}">
+                        <span></span>
+                        <div class="bar-text">${slideTexts[i] || ""}</div>
+                    </div>
+                `);
+                }
+
+                updateBars(0);
+                startProgress(autoplaySpeed);
+            }).slick({
+                arrows: false,
+                fade: true,
+                autoplay: true,
+                autoplaySpeed: autoplaySpeed,
+                infinite: true,
+                speed: 0,
+                pauseOnHover: false,
+                pauseOnFocus: false,
+                cssEase: "linear"
+            }).on("beforeChange", (e, slick, current, next) => {
+                currentSlide = next;
+                updateBars(next);
+            }).on("afterChange", (e, slick, current) => {
+                startProgress(autoplaySpeed);
+            });
+
+            // 재생/정지 버튼
+            $(".play_btn .stop").on("click", function () {
+                const bar = bars.find(".bar.active span");
+                const total = bars.find(".bar.active").width();
+
+                if (!$(this).hasClass("on")) {
+                    $(this).addClass("on");
+                    slider.slick("slickPause");
+                    bar.stop();
+                } else {
+                    $(this).removeClass("on");
+                    slider.slick("slickPlay");
+
+                    const current = parseInt(bar.css("width"));
+                    const remain = autoplaySpeed * (1 - current / total);
+
+                    bar.stop().animate({ width: total }, remain, "linear")
+                        .animate({ opacity: 0 }, 500);
+                }
+            });
+
+            // 진행바 클릭 이동
+            $(document).on("click", ".progress_ctn .bar, .bar-text", function (e) {
+                e.preventDefault();
+                goToSlide($(this).data("slide"));
+            });
+        }
+
+        // 즉시 실행
+        initSlider();
+
     </script>
 
 

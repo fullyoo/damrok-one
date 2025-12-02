@@ -605,7 +605,89 @@ input {
 
 
 /****** 3. Why Damrok? 브랜드 영역 ******/
+.s-about-sec {
+    height: 100%;
+}
+
+.about-box-wrap {}
+
+.about-box-wrap .slide_wrap {
+    background-color: var(--color-white);
+    width: 810px;
+    height: 650px;
+}
+
+.about-box-wrap .slide_wrap .slide_ctn {
+    height: 600px;
+    overflow: hidden;
+}
+
+.about-box-wrap .slide_wrap .slide_ui .progress_ctn {
+    margin-top: 0;
+    gap: 0;
+}
+
+.about-box-wrap .slide_wrap .slide_ui {
+    width: 100%;
+    max-width: 100%;
+    position: absolute;
+    top: auto;
+    bottom: 0px;
+    left: 0;
+    transform: translate(0);
+}
+
+.about-box-wrap .slide_wrap .slide_ui .progress_ctn .bar::before {
+    background-color: var(--color-border);
+    height: 5px;
+}
+
+.about-box-wrap .slide_wrap .slide_ui .progress_ctn .bar.active span {
+    height: 5px;
+}
+
+.about-box-wrap .slide_wrap .slide_ui .progress_ctn .bar.active span {
+    /* width: 90% !important; */
+}
+
+.about-box-wrap.slide_wrap .slide_ui .progress_ctn .play_btn .stop.on {
+    background-color: var(--color-border);
+}
+
+.about-box-wrap .slide_wrap .slide_ui .progress_ctn .play_btn .stop {
+    background-color: var(--color-border);
+}
+
+.about-box-wrap .slide_wrap .slide_ui .progress_ctn .play_btn .stop.on {
+    background-color: var(--color-border);
+}
+
+.about-box-wrap .slide_wrap .slide_ctn .item .bg {
+    height: 650px;
+}
+
+.about-box-wrap .slide_wrap .slide_ctn .item .bg01 {
+    background: url(../images/sub/brand-about01.jpg) 50% 50% no-repeat;
+}
+
+.about-box-wrap .slide_wrap .slide_ctn .item .bg02 {
+    background: url(../images/sub/brand-about02.jpg) 50% 50% no-repeat;
+}
+
+.about-box-wrap .slide_wrap .slide_ctn .item .bg03 {
+    background: url(../images/sub/brand-about03.jpg) 50% 50% no-repeat;
+}
+
+
+
+.about-txt-wrap {}
+
+
+
+/* 어바웃-브랜드 영역 */
+
 .s-brand-sec {}
+
 
 .text-box-wrap {
     position: relative;
@@ -751,7 +833,11 @@ input {
 
 /****** 반응형 브레이크 포인트 (모바일 반응형)******/
 
-@media (max-width: 1500px) {}
+@media (max-width: 1500px) {
+    .about-box-wrap .slide_wrap .slide_ui {
+        padding: 0;
+    }
+}
 
 
 @media (max-width: 1300px) {
@@ -881,6 +967,11 @@ input {
     .story-box-wrap li:nth-of-type(3) {
         transform: translateY(320px);
     }
+
+    .about-box-wrap .slide_wrap {
+        width: 100%;
+    }
+
 
 }
 

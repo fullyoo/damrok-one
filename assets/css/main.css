@@ -1274,6 +1274,32 @@ video {
 	display: none;
 }
 
+/* 인트로 중 스크롤바 숨김 */
+body.intro-active {
+	overflow: hidden;
+}
+
+/* 기존 .intro 클래스를 이렇게 수정 */
+.intro {
+	position: fixed;
+	overflow: hidden;
+	width: 100vw;
+	/* 100%에서 100vw로 변경 */
+	height: 100vh;
+	background-color: var(--color-primary);
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	z-index: -1;
+	animation: introBg 4.6s cubic-bezier(1, 0, 0.8, 1);
+	display: block;
+}
+
+/* 추가: 인트로가 표시될 때 body 스크롤 제거 */
+body:has(.intro[style*="display: block"]) {
+	overflow: hidden;
+}
+
 .intro .first {
 	position: absolute;
 	top: 50%;

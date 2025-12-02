@@ -26,11 +26,40 @@
     <link rel="stylesheet" href="./assets/css/sub.css">
 
     <style>
+        /* 인트로 중 스크롤바 숨김 */
+        body.intro-active {
+            overflow: hidden;
+        }
 
+        /* 기존 .intro 클래스를 이렇게 수정 */
+        .intro {
+            position: fixed;
+            overflow: hidden;
+            width: 100vw;
+            /* 100%에서 100vw로 변경 */
+            height: 100vh;
+            background-color: var(--color-primary);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            z-index: -1;
+            animation: introBg 4.6s cubic-bezier(1, 0, 0.8, 1);
+            display: block;
+        }
+
+        /* 추가: 인트로가 표시될 때 body 스크롤 제거 */
+        body:has(.intro[style*="display: block"]) {
+            overflow: hidden;
+        }
     </style>
 </head>
 
 <body>
+    <div class="intro">
+        <div class="first">
+            <img src="./assets/images/common/intro-logo.svg" alt="">
+        </div>
+    </div>
 
     <header class="header">
         <div class="bg"></div>
@@ -197,6 +226,28 @@
 
     <script>
 
+        /////// 01. 자바스크립트 버전
+        // 페이지 로드 시
+        // document.body.classList.add('intro-active');
+
+        // 인트로 애니메이션 종료 후 (4.6초 후)
+        // setTimeout(() => {
+        //     document.body.classList.remove('intro-active');
+        // }, 4600);
+
+
+        /////// 02. 제이쿼리 버전
+        $(function () {
+
+            // 페이지 로드 시
+            $('body').addClass('intro-active');
+
+            // 인트로 애니메이션 종료 후 (4.6초 후)
+            setTimeout(function () {
+                $('body').removeClass('intro-active');
+            }, 4600);
+
+        });
     </script>
 
 

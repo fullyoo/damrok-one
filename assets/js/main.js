@@ -151,7 +151,17 @@ $(function () {
 
 
 
-    /****** 2. 어바웃 영역 chair ******/
+    /****** 2. 인트로-페이지 로드 시 ******/
+    $('body').addClass('intro-active');
+
+    // 인트로 애니메이션 종료 후 (4.6초 후)
+    setTimeout(function () {
+        $('body').removeClass('intro-active');
+    }, 4600);
+
+
+
+    /****** 3. 어바웃 영역 chair ******/
 
     $(".m-about-sec .slide_wrap .slide_ctn").slick({
         arrows: false,

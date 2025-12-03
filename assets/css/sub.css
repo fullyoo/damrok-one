@@ -606,7 +606,6 @@ input {
 
 /****** 3. Why Damrok? 브랜드 영역 ******/
 .s-about-sec {
-    padding: 70px 0 120px;
     height: 100%;
 }
 
@@ -642,6 +641,10 @@ input {
     bottom: 0px;
     left: 0;
     transform: translate(0);
+}
+
+.about-box .slide_wrap .slide_ui .progress_ctn .bar {
+    width: 100px;
 }
 
 .about-box .slide_wrap .slide_ui .progress_ctn .bar span {
@@ -701,13 +704,20 @@ input {
     position: absolute;
     right: 0;
     background-color: var(--color-beigebg);
+    text-align: center;
+}
+
+.about-txt h4 {
+    margin-top: 0;
+    font-size: 36px;
+    font-weight: 600;
 }
 
 .about-txt h5 {
-    margin-top: 0;
+    margin-top: 5px;
 }
 
-.about-txt h6 {}
+.about-txt p {}
 
 
 /* 어바웃-브랜드 영역 */
@@ -902,7 +912,6 @@ input {
 
     .s-brand-sec {
         min-height: auto;
-        padding: 150px 0;
     }
 
     .s-brand-sec h4 {
@@ -923,6 +932,14 @@ input {
         width: 30%;
         text-align: center;
         padding-top: 0;
+    }
+
+    .about-txt {
+        padding: 80px;
+    }
+
+    .about-txt h4 {
+        font-size: 30px;
     }
 
 
@@ -995,10 +1012,40 @@ input {
         transform: translateY(320px);
     }
 
-    .about-box .slide_wrap {
+    .about-box {
         width: 100%;
     }
 
+    .about-box-wrap {
+        display: block;
+    }
+
+    .about-box .slide_wrap {
+        width: 100%;
+        height: 500px;
+    }
+
+    .about-box .slide_wrap .slide_ui .progress_ctn .bar::before {
+        top: 10px;
+    }
+
+    .about-box .slide_wrap .slide_ui .progress_ctn .bar span {
+        top: 10px;
+    }
+
+    .about-box .slide_wrap .slide_ctn .item .bg {
+        height: 450px;
+    }
+
+    .about-box .slide_wrap .slide_ui .progress_ctn {
+        justify-content: center;
+    }
+
+    .about-txt {
+        position: inherit;
+        padding: 60px;
+        margin: 30px;
+    }
 
 }
 
@@ -1115,13 +1162,6 @@ input {
         padding: 40px 30px;
     }
 
-    .about-box .slide_wrap .slide_ui .progress_ctn .bar::before {
-        top: 10px;
-    }
-
-    .about-box .slide_wrap .slide_ui .progress_ctn .bar span {
-        top: 10px;
-    }
 
 
 }
@@ -1158,6 +1198,7 @@ input {
     .s-story-sec {
         /* height: 1980px; */
         height: 1700px;
+        padding: 80px 0;
     }
 
     .story-box-wrap {
@@ -1180,6 +1221,11 @@ input {
 
     .story-box-wrap li:nth-of-type(3) {
         /* transform: translateY(0px); */
+    }
+
+    .about-txt {
+        margin: 30px 0px;
+        padding: 40px;
     }
 
 }
@@ -1207,5 +1253,10 @@ input {
     .module-tab-gallery .photo>img {
         height: auto;
     }
+
+    .about-box .slide_wrap .slide_ui .progress_ctn .bar {
+        width: 80px;
+    }
+
 
 }

@@ -5,7 +5,7 @@
 
 /* 공통영역 */
 * {
-	line-height: 1.5;
+	line-height: 1.6;
 	letter-spacing: -.5px;
 	word-break: keep-all;
 	box-sizing: border-box;
@@ -883,7 +883,7 @@
 
 @media (max-width: 1023px) {
 	:root {
-		--snb-height: 300px;
+		--snb-height: 400px;
 	}
 }
 

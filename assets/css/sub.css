@@ -17,10 +17,10 @@
 .sv-sec {}
 
 .sv-img-wrap {
-    position: relative;
-    top: 0px;
     width: 100%;
     height: var(--snb-height);
+    position: relative;
+    top: 0px;
     overflow: hidden;
     z-index: 2;
 }
@@ -84,15 +84,17 @@ input {
 }
 
 .sv-sec img {
+    width: 100%;
+    height: 100%;
+    /* min-width: 100%; */
+    /* max-width: inherit; */
+    min-height: var(--snb-height);
     position: absolute;
     left: 50%;
     top: 0;
     z-index: -2;
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
-    /* min-width: 100%; */
-    /* max-width: inherit; */
-    min-height: var(--snb-height);
     object-fit: cover;
     -webkit-animation: snb 2s;
     animation: svi 2s;
@@ -124,6 +126,7 @@ input {
     position: relative;
     padding: 10px 0 0 20px;
     font-weight: 500;
+    text-transform: uppercase;
 }
 
 #sub h3 strong::before {
@@ -563,12 +566,11 @@ input {
     padding: 10px 15px;
     background-color: var(--color-white);
     border: 1px solid var(--color-border);
-    border-radius: 5px;
+    /* border-radius: 5px; */
     cursor: pointer;
     font-size: 18px;
     color: var(--color-subtext);
     transition: all var(--transition-3s);
-    font-family: var(--key-font);
     min-width: 40px;
     min-height: 40px;
 }
@@ -605,6 +607,7 @@ input {
 
 
 /****** 3. Why Damrok? 브랜드 영역 ******/
+
 .s-about-sec {
     height: 100%;
 }
@@ -865,6 +868,125 @@ input {
 
 
 
+/****** 4. Community 영역 ******/
+.s-community-sec {}
+
+.s-community-sec .chair-view-wrap {
+    min-height: 800px;
+}
+
+.s-community-sec .chair-view-wrap::before {
+    background: url(../images/sub/community-bg.jpg) no-repeat center / cover;
+}
+
+.link-box {
+    margin-top: 70px;
+}
+
+.s-community-sec a.cta {
+    color: var(--color-white);
+    border-color: var(--color-lightbg);
+    margin: 0px 5px;
+    font-size: 16px;
+    width: 180px;
+}
+
+.s-community-sec a.cta:hover {
+    background-color: var(--color-primary);
+}
+
+.s-community-sec a.cta .line-wrap .line,
+.s-community-sec a.cta:hover .line-wrap .line {
+    background-color: #fff;
+}
+
+/* faq-자주묻는 질문 */
+
+.topic:nth-of-type(1) {
+    border-top: 3px solid var(--color-text);
+}
+
+.topic {
+    border-bottom: 1px solid var(--color-text);
+}
+
+.open {
+    padding: 20px 40px;
+    position: relative;
+    cursor: pointer;
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 30px;
+    color: var(--color-text);
+}
+
+.question-q,
+.answer-a {
+    font-size: 45px;
+    font-family: var(--key-font);
+    font-weight: 500;
+    color: var(--color-primary);
+}
+
+.question-categ {
+    font-size: 22px;
+    color: var(--color-primary);
+}
+
+.expanded {
+    transition: var(--transition-3s);
+}
+
+.question {
+    font-size: 18px;
+    padding-top: 6px;
+    font-weight: 600;
+}
+
+.answer {
+    position: relative;
+    display: none;
+    padding: 30px 40px 0 40px;
+    height: 200px;
+    text-align: justify;
+    padding-right: 200px;
+    background-color: var(--color-beigebg);
+}
+
+.answer p {
+    font-size: 20px;
+    position: absolute;
+    top: 30%;
+    right: 0;
+    padding: 0 100px 40px 200px;
+}
+
+.faq-t {
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    display: inline-block;
+    position: absolute;
+    top: 40%;
+    right: 50px;
+    width: 15px;
+    height: 15px;
+    background: transparent;
+    border-left: 3px solid var(--color-text);
+    border-bottom: 3px solid var(--color-text);
+    transition: var(--transition-3s);
+}
+
+.faq-o {
+    -moz-transform: rotate(-224deg);
+    -ms-transform: rotate(-224deg);
+    -webkit-transform: rotate(-224deg);
+    transform: rotate(-224deg);
+}
+
 
 
 
@@ -942,11 +1064,11 @@ input {
         font-size: 30px;
     }
 
-
 }
 
 
 @media (max-width: 1023px) {
+
     h2.fade-text {
         font-size: 50px;
     }
@@ -1047,6 +1169,42 @@ input {
         margin: 30px;
     }
 
+    .s-community-sec .chair-view-wrap {
+        padding: 100px 0;
+    }
+
+    /* faq  */
+    .open {
+        padding: 30px;
+    }
+
+    .question-q,
+    .answer-a {
+        font-size: 40px;
+    }
+
+    .question-categ {
+        font-size: 20px;
+    }
+
+    .question {
+        font-size: 16px;
+    }
+
+    .answer p {
+        font-size: 16px;
+    }
+
+
+    /* support */
+    .community-support-desc p {
+        font-size: 16px;
+    }
+
+    .community-support-desc h3 {
+        font-size: 40px;
+    }
+
 }
 
 
@@ -1056,7 +1214,7 @@ input {
     }
 
     #sub .sub-content {
-        padding: 30px 0;
+        padding: 60px 0;
     }
 
     #sub .title-big {
@@ -1162,6 +1320,49 @@ input {
         padding: 40px 30px;
     }
 
+    .link-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    /* faq  */
+    .open {
+        padding: 20px;
+    }
+
+    .question-q,
+    .answer-a {
+        font-size: 32px;
+    }
+
+    .question-categ {
+        font-size: 16px;
+    }
+
+    .question {
+        font-size: 12px;
+    }
+
+    .answer {
+        height: 150px;
+    }
+
+    .answer p {
+        font-size: 12px;
+        padding-left: 150px;
+        top: 20%;
+    }
+
+    .pagination li {
+        width: 25px;
+        height: 25px;
+    }
+
+    .pagination li a span {
+        font-size: 12px;
+    }
 
 
 }
@@ -1256,6 +1457,16 @@ input {
 
     .about-box .slide_wrap .slide_ui .progress_ctn .bar {
         width: 80px;
+    }
+
+    /* faq  */
+    .answer {
+        height: 180px;
+    }
+
+    .answer p {
+        padding-right: 30px;
+        padding-left: 80px;
     }
 
 

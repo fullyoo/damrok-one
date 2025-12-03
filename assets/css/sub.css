@@ -1056,7 +1056,7 @@ input {
     }
 
     #sub .sub-content {
-        padding: 30px 0 60px;
+        padding: 30px 0;
     }
 
     #sub .title-big {
@@ -1197,8 +1197,8 @@ input {
 
     .s-story-sec {
         /* height: 1980px; */
-        height: 1700px;
-        padding: 80px 0;
+        height: 1620px;
+        padding: 60px 0;
     }
 
     .story-box-wrap {

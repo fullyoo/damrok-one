@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact&Visit</title>
+    <link rel="stylesheet" href="./asset/css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="header-container">
+            <h1><a href="#">Damrok,<p>淡綠</p></a>
+
+            </h1>
+
+            <nav class="header-nav">
+                <ul class="header-menu">
+                    <li><a href="#">CHAIR</a></li>
+                    <li><a href="#">Why Damrok?</a></li>
+                    <li><a href="#">COMMUNITY</a></li>
+                    <li><a href="#">CONTACT</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger-btn" id="hamburgerBtn">
+                <img src="./asset/images/hamburgerbtn.png" alt="메뉴 버튼">
+            </button>
+        </div>
+    </header>
+
+
+
+    <section class="main-banner">
+        <div class="hero-text">
+            <h2>Contact & Visit</h2>
+
+        </div>
+    </section>
+    <main>
+        <section class="contact-section">
+            <div class="contact-info-container">
+                <h2>Address</h2>
+
+                <div class="address-details">
+                    <h3>오시는 길</h3>
+                    <p class="address-desc">서울특별시 성동구 성수1동 담록사거리
+                        아디다스 건물, 12층</p>
+                    <p class="subway-desc">예술회관역 1번출구 도보 2분</p>
+                </div>
+
+
+
+                <div class="button-group">
+                    <button><a href="#">카카오 길찾기 →</a></button>
+                    <button><a href="#">네이버 길찾기 →</a></button>
+                </div>
+
+
+                <div class="time-info">
+                    <p class="time-desc"><span>평 일</span>AM 10:00 ~ PM 07:00</p>
+                    <p class="time-desc"><span>주 말</span>AM 10:00 ~ PM 04:00</p>
+                    <p class="time-desc"><span>점심시간</span>PM 01:00 ~ PM 02:00</p>
+                </div>
+            </div>
+            <!-- * 카카오맵 - 지도퍼가기 -->
+            <!-- 1. 지도 노드 -->
+            <div id="daumRoughmapContainer1764818555972" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+
+            <!--
+	2. 설치 스크립트
+	* 지도 퍼가기 서비스를 2개 이상 넣을 경우, 설치 스크립트는 하나만 삽입합니다.
+-->
+            <script charset="UTF-8" class="daum_roughmap_loader_script"
+                src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+
+            <!-- 3. 실행 스크립트 -->
+            <script charset="UTF-8">
+                new daum.roughmap.Lander({
+                    "timestamp": "1764818555972",
+                    "key": "doe577emrtf",
+                    "mapWidth": "640",
+                    "mapHeight": "360"
+                }).render();
+            </script>
+
+        </section>
+
+    </main>
+
+
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-left">
+
+                <p class="footer-info">
+                    <a href="#">Damrok,<b>淡綠</b></a>
+                </p>
+                <div class="add">
+                    <p>Address: 서울특별시 성동구 성수1동 담록사거리</p>
+                </div>
+
+                <div class="info">
+                    <p>Tel: 02-123-456</p>
+                    <p>Fax : 02-1234-4567 </p>
+                    <p>사업자 등록번호 : 000-000-0000 </p>
+                    <p>대표이사 : 홍길동 </p>
+                </div>
+
+                <p class="copyright">Copyright 주식회사 담록 ALL RIGHTS RESERVED.</p>
+            </div>
+            <div class="footer-right">
+                <div class="sns-sec">
+                    <img src="./asset/images/youtube.png" alt="youtube">
+                    <img src="./asset/images/insta.png" alt="instagram">
+                    <img src="./asset/images/kakao.png" alt="kakao">
+                </div>
+                <ul>
+                    <li>개인정보처리방침 </li>
+                    <li>이용약관</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="../asset/js/jquery-1.12.3.js"></script>
+    <script src="../asset/js/huescript.js"></script>
+
+</body>
+
+</html>

@@ -573,6 +573,9 @@ input {
     transition: all var(--transition-3s);
     min-width: 40px;
     min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .pagination button:hover:not(:disabled) {
@@ -597,7 +600,7 @@ input {
 }
 
 .pagination .page-nav {
-    padding: 10px 12px;
+    padding: 10px;
     color: var(--color-dark);
 }
 
@@ -871,6 +874,10 @@ input {
 /****** 4. Community 영역 ******/
 .s-community-sec {}
 
+#sub .sub-content.s-community-sec {
+    padding-top: 0;
+}
+
 .s-community-sec .chair-view-wrap {
     min-height: 800px;
 }
@@ -948,19 +955,20 @@ input {
 .answer {
     position: relative;
     display: none;
-    padding: 30px 40px 0 40px;
-    height: 200px;
-    text-align: justify;
-    padding-right: 200px;
+    padding: 40px;
+    padding-right: 100px;
+    /* text-align: justify; */
     background-color: var(--color-beigebg);
+    display: none;
+}
+
+.answer-box {
+    display: flex;
+    gap: 30px;
 }
 
 .answer p {
-    font-size: 20px;
-    position: absolute;
-    top: 30%;
-    right: 0;
-    padding: 0 100px 40px 200px;
+    font-size: 17px;
 }
 
 .faq-t {
@@ -971,7 +979,7 @@ input {
     display: inline-block;
     position: absolute;
     top: 40%;
-    right: 50px;
+    right: 40px;
     width: 15px;
     height: 15px;
     background: transparent;
@@ -985,6 +993,7 @@ input {
     -ms-transform: rotate(-224deg);
     -webkit-transform: rotate(-224deg);
     transform: rotate(-224deg);
+    top: 50%;
 }
 
 
@@ -1173,37 +1182,6 @@ input {
         padding: 100px 0;
     }
 
-    /* faq  */
-    .open {
-        padding: 30px;
-    }
-
-    .question-q,
-    .answer-a {
-        font-size: 40px;
-    }
-
-    .question-categ {
-        font-size: 20px;
-    }
-
-    .question {
-        font-size: 16px;
-    }
-
-    .answer p {
-        font-size: 16px;
-    }
-
-
-    /* support */
-    .community-support-desc p {
-        font-size: 16px;
-    }
-
-    .community-support-desc h3 {
-        font-size: 40px;
-    }
 
 }
 
@@ -1262,6 +1240,10 @@ input {
         font-size: 14px;
         min-width: 35px;
         min-height: 35px;
+    }
+
+    .pagination .page-nav {
+        padding: 9px;
     }
 
     .module-tab-gallery .photo>img {
@@ -1328,32 +1310,33 @@ input {
     }
 
     /* faq  */
+    .question-q,
+    .answer-a {
+        font-size: 40px;
+    }
+
+    .question-categ {
+        font-size: 20px;
+    }
+
+    .question {
+        font-size: 16px;
+        width: calc(100% - 100px);
+    }
+
+    .answer p {
+        font-size: 15px;
+    }
+
     .open {
         padding: 20px;
     }
 
-    .question-q,
-    .answer-a {
-        font-size: 32px;
-    }
-
-    .question-categ {
-        font-size: 16px;
-    }
-
-    .question {
-        font-size: 12px;
-    }
-
     .answer {
-        height: 150px;
+        padding: 30px 20px;
+        padding-right: 50px;
     }
 
-    .answer p {
-        font-size: 12px;
-        padding-left: 150px;
-        top: 20%;
-    }
 
     .pagination li {
         width: 25px;
@@ -1362,6 +1345,10 @@ input {
 
     .pagination li a span {
         font-size: 12px;
+    }
+
+    .faq-t {
+        right: 20px;
     }
 
 
@@ -1429,6 +1416,30 @@ input {
         padding: 40px;
     }
 
+
+    /* faq  */
+    .question-q,
+    .answer-a {
+        font-size: 30px;
+    }
+
+    .question-categ {
+        display: none;
+    }
+
+    .open {
+        gap: 20px;
+    }
+
+    .faq-t {
+        width: 12px;
+        height: 12px;
+        border-left: 2px solid var(--color-text);
+        border-bottom: 2px solid var(--color-text);
+    }
+
+    .answer-box {}
+
 }
 
 
@@ -1457,16 +1468,6 @@ input {
 
     .about-box .slide_wrap .slide_ui .progress_ctn .bar {
         width: 80px;
-    }
-
-    /* faq  */
-    .answer {
-        height: 180px;
-    }
-
-    .answer p {
-        padding-right: 30px;
-        padding-left: 80px;
     }
 
 

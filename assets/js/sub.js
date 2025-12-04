@@ -363,7 +363,7 @@ $(function () {
 
     const $faqTopicsContainer = $('.topics');
     const $faqAllTopics = $('.topic');
-    let faqItemsPerPage = 3;
+    let faqItemsPerPage = 4;
     let faqCurrentPage = 1;
 
     function showFaqPage(page) {

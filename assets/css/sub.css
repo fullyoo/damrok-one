@@ -748,7 +748,7 @@ input {
     position: absolute;
     top: 50%;
     right: 0px;
-    transform: translateY(-50%);
+    transform: translateY(-65%);
     background-color: var(--color-dimbg);
     padding: 100px 50px 100px 300px;
     z-index: 1;

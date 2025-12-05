@@ -1268,7 +1268,7 @@ video {
 	-ms-animation: introBg 4.6s cubic-bezier(1, 0, 0.8, 1);
 	-o-animation: introBg 4.6s cubic-bezier(1, 0, 0.8, 1);
 	animation: introBg 4.6s cubic-bezier(1, 0, 0.8, 1);
-	display: none;
+	/* display: none; */
 }
 
 /* 인트로 중 스크롤바 숨김 */

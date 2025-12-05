@@ -614,7 +614,7 @@ input {
 
 .s-about-sec {
     height: 100%;
-    display: none;
+    /* display: none; */
 }
 
 .about-box-wrap {

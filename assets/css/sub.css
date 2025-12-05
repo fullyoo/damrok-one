@@ -614,6 +614,7 @@ input {
 
 .s-about-sec {
     height: 100%;
+    display: none;
 }
 
 .about-box-wrap {
@@ -1209,8 +1210,6 @@ input {
         width: 32px;
         height: 32px;
     }
-
-    .s-brand-sec .dim-box {}
 
     .s-story-sec {
         height: 1130px;

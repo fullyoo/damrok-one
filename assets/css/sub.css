@@ -1513,6 +1513,10 @@ input {
         padding: 40px;
     }
 
+    .about-box .slide_wrap .slide_ui .progress_ctn .bar {
+        width: 50px;
+    }
+
 
     /* faq  */
     .question-q,

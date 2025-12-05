@@ -76,76 +76,42 @@
                 <div class="m_tit b" data-aos="fade-down" data-aos-duration="800" data-aos-delay="400">
                     <h3 class="title-big"><strong>A</strong>ddress</h3>
                 </div>
-                <div class="contact-info-wrap chair-info-wrap">
-                    <div class="map-info-box">지도
 
-                        <!-- * 카카오맵 - 지도퍼가기 -->
-                        <!-- 1. 지도 노드 -->
-                        <div id="daumRoughmapContainer1764818555972"
-                            class="root_daum_roughmap root_daum_roughmap_landing"></div>
-
-                        <!--
-	2. 설치 스크립트
-	* 지도 퍼가기 서비스를 2개 이상 넣을 경우, 설치 스크립트는 하나만 삽입합니다.
--->
-                        <script class="daum_roughmap_loader_script"
-                            src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
-
-                        <!-- 3. 실행 스크립트 -->
-                        <script>
-                            new daum.roughmap.Lander({
-                                "timestamp": "1764818555972",
-                                "key": "doe577emrtf",
-                                "mapWidth": "640",
-                                "mapHeight": "360"
-                            }).render();
-                        </script>
-
-
-                    </div>
+                <div class="contact-info-wrap">
+                    <div id="map" class="map-info-box"></div>
                     <div class="chair-info-box" data-aos="fade-left" data-aos-duration="800" data-aos-delay="600">
-                        <div class="tit-wrap m_tit b w1500">
-                            <h4>담록 여백</h4>
-                            <h5>Yeobaek</h5>
-                            <h5>“여유와 간결함을 표현한 미니멀 의자”</h5>
-                            <a href="./cummunity.html" class="cta">문의하기
-                                <div class="line-wrap">
-                                    <span class="line"></span>
-                                    <span class="line"></span>
-                                </div>
-                            </a>
+                        <div class="tit-wrap m_tit b">
+                            <h4>오시는 길</h4>
+                            <h5>서울특별시 성동구 성수1동 담록사거리 아디다스 건물, 12층</h5>
+                            <p>2호선 성수역 4번출구 도보 5분</p>
+                            <div class="link-box">
+                                <a href="https://kko.kakao.com/ysY2wvG1EJ" target="_blank" class="cta">카카오 길찾기
+                                    <div class="line-wrap">
+                                        <span class="line"></span>
+                                        <span class="line"></span>
+                                    </div>
+                                </a>
+                                <a href="https://naver.me/GDL4frj9" target="_blank" class="cta">네이버 길찾기
+                                    <div class="line-wrap">
+                                        <span class="line"></span>
+                                        <span class="line"></span>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                        <div class="info-wrap m_tit b w1500">
-                            <h5>제품 설명</h5>
-                            <p>비움의 미학을 실현한 ‘여백’ <br>
-                                불필요한 장식을 덜어내고 본질에 집중했습니다.<br>
-                                곧고 단정한 선이 주는 정갈한 아름다움이 특징입니다.<br>
-                                다양한 인테리어와 조화롭게 어울립니다. <br>
-                                앉는 순간, 마음까지 가벼워지는 경험을 선사합니다.</p>
-                            <h5>제품 정보</h5>
+                        <div class="info-wrap m_tit b">
+                            <h5>운영 시간</h5>
                             <ul class="info-item">
-                                <li><b>용도: </b>다이닝 체어 / 데스크 체어 / 포인트 체어</li>
-                                <li><b>소재: </b>천연 원목(오크/월넛) + 친환경 마감제</li>
-                                <li><b>색상: </b>내추럴 우드, 라이트 베이지, 다크 브라운</li>
-                                <li><b>크기: </b>W 450mm × D 52 0mm × H 800mm</li>
-                                <li><b>무게: </b>약 5kg (가벼운 이동 가능)</li>
-                                <li><b>제조 방식: </b>전통 목공 결합 방식 + 친환경 오일 마감</li>
-                                <li><b>원산지: </b>대한민국</li>
+                                <li><b>평 &nbsp;&nbsp;&nbsp;&nbsp;일 </b>AM 10:00 ~ PM 07:00</li>
+                                <li><b>주 &nbsp;&nbsp;&nbsp;&nbsp;말 </b>AM 10:00 ~ PM 04:00</li>
+                                <li><b>점심시간 </b>PM 01:00 ~ PM 02:00</li>
                             </ul>
-                            <a href="./chair-list.html" class="cta">다른 담록 의자 보기
-                                <div class="line-wrap">
-                                    <span class="line"></span>
-                                    <span class="line"></span>
-                                </div>
-                            </a>
+
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
-
-
     </div>
 
     <footer class="footer">
@@ -224,6 +190,34 @@
     <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="./assets/js/aos.js"></script>
     <script>AOS.init();</script>
+
+    <script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5e8fe49c121c1ec2749e6e7f23267822"></script>
+
+    <script>
+        var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+            mapOption = {
+                center: new kakao.maps.LatLng(37.544918, 127.051669), // 지도의 중심좌표
+                level: 3 // 지도의 확대 레벨
+            };
+
+        var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+        var iwContent = '<div class="map-label"><a href="https://kko.kakao.com/ysY2wvG1EJ" target="_blank">Damrok, 淡綠</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+            iwPosition = new kakao.maps.LatLng(37.544918, 127.051669), //인포윈도우 표시 위치입니다
+            iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+
+        // 인포윈도우를 생성하고 지도에 표시합니다
+        var infowindow = new kakao.maps.InfoWindow({
+            map: map, // 인포윈도우가 표시될 지도
+            position: iwPosition,
+            content: iwContent,
+            removable: iwRemoveable
+        });
+
+        // 아래 코드는 인포윈도우를 지도에서 제거합니다
+        // infowindow.close();        
+    </script>
 
     <script src="./assets/js/common.js"></script>
     <!-- <script src="./assets/js/main.js"></script> -->

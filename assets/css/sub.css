@@ -313,6 +313,7 @@ input {
 
 .chair-info-box .cta {
     font-size: 16px;
+    margin-top: 0;
 }
 
 .tit-wrap {}
@@ -890,12 +891,17 @@ input {
     margin-top: 70px;
 }
 
+.link-box a {
+    margin: 40px 2px 0;
+    text-align: center;
+    width: 180px;
+}
+
 .s-community-sec a.cta {
     color: var(--color-white);
     border-color: var(--color-lightbg);
     margin: 0px 5px;
     font-size: 16px;
-    width: 180px;
 }
 
 .s-community-sec a.cta:hover {
@@ -1018,10 +1024,47 @@ input {
 
 
 
-/****** 5. Contact & Visit 영역 ******/
+/****** 5. Contact & Visit 오시는길 영역 ******/
 .contact-info-wrap {
+    display: flex;
+    gap: 50px;
     flex-direction: row-reverse;
 }
+
+.contact-info-wrap>div {
+    width: 50%;
+}
+
+.map-info-box {
+    height: 550px;
+}
+
+.map-label {
+    padding: 5px;
+    line-height: 1.8;
+}
+
+.map-label a {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--color-primary);
+    vertical-align: middle;
+}
+
+.contact-info-wrap .chair-info-box {
+    padding-left: 20px;
+}
+
+.contact-info-wrap .link-box {
+    margin-top: 40px;
+}
+
+.contact-info-wrap .info-item li b {
+    padding-right: 10px;
+    width: 70px;
+    display: inline-block;
+}
+
 
 
 
@@ -1209,6 +1252,22 @@ input {
         padding: 100px 0;
     }
 
+    .contact-info-wrap {
+        flex-direction: column-reverse;
+    }
+
+    .contact-info-wrap>div {
+        width: 100%;
+    }
+
+    .map-info-box {
+        height: 350px;
+    }
+
+    .contact-info-wrap .link-box {
+        flex-direction: row;
+    }
+
 
 }
 
@@ -1292,7 +1351,6 @@ input {
 
     .chair-info-box .cta {
         font-size: 14px;
-        margin-top: 30px;
     }
 
     .chair-info-box .m_tit.b p {
@@ -1465,8 +1523,6 @@ input {
         border-bottom: 2px solid var(--color-text);
     }
 
-    .answer-box {}
-
 }
 
 
@@ -1495,6 +1551,15 @@ input {
 
     .about-box .slide_wrap .slide_ui .progress_ctn .bar {
         width: 80px;
+    }
+
+    .contact-info-wrap .link-box {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .contact-info-wrap .info-item li b {
+        display: block;
     }
 
 

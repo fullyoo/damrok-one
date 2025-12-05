@@ -248,7 +248,7 @@
 	bottom: -1px;
 	left: 50%;
 	width: 0;
-	height: 4px;
+	height: 3px;
 	background-color: var(--color-primary);
 	transition: var(--transition-3s);
 	transform: translateX(-50%);
@@ -493,6 +493,7 @@
 
 .header .gnb>ul>li:hover>a::after {
 	width: 100%;
+	width: calc(100% - 90px);
 }
 
 .header .gnb>ul>li:hover>a {
@@ -506,7 +507,7 @@
 }
 
 .header.hover .gnb>ul>li>a {
-	padding: 0 55px;
+	padding: 0 50px;
 }
 
 .header.hover .gnb>ul>li:first-of-type>ul::before,
@@ -766,7 +767,11 @@
 	}
 
 	.header.hover .gnb>ul>li>a {
-		padding: 0 35px;
+		padding: 0 30px;
+	}
+
+	.header .gnb>ul>li:hover>a::after {
+		width: calc(100% - 60px);
 	}
 
 	.footer .top {

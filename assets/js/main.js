@@ -5,7 +5,7 @@ $(function () {
     /****** 1. 메인 비주얼 영역 ******/
     function initSlider() {
         const slider = $(".mv-sec .slide_wrap .slide_ctn");
-        let autoplaySpeed = 3000;
+        let autoplaySpeed = 4000;
 
         const bars = $(".progress_ctn .bars_container");
 
@@ -146,7 +146,7 @@ $(function () {
 
 
 
-    /****** 3. 어바웃 영역 chair ******/
+    /****** 3. 어바웃 chair 영역  ******/
 
     $(".m-about-sec .slide_wrap .slide_ctn").slick({
         arrows: false,
@@ -155,8 +155,8 @@ $(function () {
         variableWidth: true,
         centerMode: true,
         autoplay: true,
-        autoplaySpeed: 2000,
-        speed: 1200,
+        autoplaySpeed: 4000,
+        speed: 2000,
     }).on('beforeChange', function (event, slick, currentSlide, nextSlide) {
         var count = slick.slideCount;
         var selectors = [nextSlide, nextSlide - count, nextSlide + count].map(function (n) {

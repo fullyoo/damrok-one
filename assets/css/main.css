@@ -660,7 +660,7 @@ video {
 	height: 100%;
 	background: url(../images/main/icon_txt_btn_n.png) 50% 50% no-repeat;
 	z-index: -1;
-	animation: rotate 15s linear infinite;
+	animation: rotate 18s linear infinite;
 }
 
 .m-about-sec .slide_wrap .slide_btn>div {
@@ -737,11 +737,11 @@ video {
 }
 
 .m-flow-sec .text-slide h3.origin {
-	animation: 70s linear 0s infinite normal forwards running origin_left;
+	animation: 120s linear 0s infinite normal forwards running origin_left;
 }
 
 .m-flow-sec .text-slide h3.clone {
-	animation: 70s linear 0s infinite normal none running clone_left;
+	animation: 120s linear 0s infinite normal none running clone_left;
 }
 
 @keyframes origin_left {
@@ -897,7 +897,7 @@ video {
 	gap: 20px;
 	align-items: center;
 	width: max-content;
-	animation: scroll-full 20s linear infinite;
+	animation: scroll-full 60s linear infinite;
 }
 
 @keyframes scroll-full {

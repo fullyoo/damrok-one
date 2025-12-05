@@ -248,7 +248,7 @@ $(function () {
                     opacity: 1
                 })
                 .animate(
-                    { width: "90%" },
+                    { width: "95%" },
                     duration,
                     "linear",
                     () => {
@@ -302,7 +302,7 @@ $(function () {
             .slick({
                 arrows: false,
                 fade: true,
-                // autoplay: true,
+                autoplay: true,
                 autoplaySpeed: autoplaySpeed,
                 infinite: true,
                 speed: 0,

@@ -228,7 +228,6 @@ $(function () {
 
 
     /****** 4. Why Damrok? 어바웃 영역 ******/
-
     function initSlider() {
         const slider = $(".mv-sec .slide_wrap .slide_ctn");
         let autoplaySpeed = 3000;
@@ -240,25 +239,16 @@ $(function () {
             bars.find(".bar").eq(i).addClass("active");
         };
 
-        // 화면 크기에 따라 진행바 목표값 결정 (mobile이면 100%, 아니면 95%)
-        function getProgressTargetPercent() {
-            // 모바일 기준: 너비 768px 이하(필요시 수치 변경)
-            const isMobile = window.matchMedia("(max-width: 768px)").matches;
-            return isMobile ? "100%" : "95%";
-        }
-
         const startProgress = (duration) => {
-            const target = getProgressTargetPercent(); // 동적으로 결정
             const bar = bars.find(".bar.active span");
 
-            // 안전하게 애니메이션 초기화
             bar.stop(true, true)
                 .css({
                     width: 0,
                     opacity: 1
                 })
                 .animate(
-                    { width: target }, // 모바일이면 100%로 애니메이트
+                    { width: "95%" },
                     duration,
                     "linear",
                     () => {
@@ -322,10 +312,11 @@ $(function () {
             });
 
 
+        let isPaused = false;
+
         $(".play_btn .stop").on("click", function () {
             const activeBar = bars.find(".bar.active");
             const bar = activeBar.find("span");
-            const target = getProgressTargetPercent(); // 재생시에도 동일한 목표 사용
 
             if (!$(this).hasClass("on")) {
                 // 정지
@@ -342,35 +333,24 @@ $(function () {
                 $(this).removeClass("on");
                 slider.slick("slickPlay");
 
-                // 항상 0%에서 시작 — 모바일이면 target이 100%로 동작
+                // 항상 0%에서 시작
                 bar.css({
                     width: 0,
                     opacity: 1
-                }).animate({ width: target }, autoplaySpeed, "linear", function () {
+                }).animate({ width: "100%" }, autoplaySpeed, "linear", function () {
                     bar.animate({ opacity: 0 }, 500);
                 });
             }
         });
 
-        // 진행바 클릭으로 이동
+
+
         $(document).on("click", ".progress_ctn .bar", function () {
             slider.slick("slickGoTo", $(this).data("slide"));
-        });
-
-        // (선택) 창 크기 변경시 진행 target이 바뀔 수 있으므로, resize 이벤트에서 현재 활성 span을 리셋해주면 안정적
-        $(window).on("resize", function () {
-            // 현재 active span 애니메이션 초기화 (resize시 보정)
-            bars.find(".bar span").stop(true, true).css({ width: 0, opacity: 0 });
-            // 현재 슬라이드의 진행을 다시 시작
-            const currentIndex = slider.slick("slickCurrentSlide");
-            updateBars(currentIndex);
-            bars.find(".bar").eq(currentIndex).find("span").css({ width: 0, opacity: 1 });
-            startProgress(autoplaySpeed);
         });
     }
 
     initSlider();
-
 
 
 

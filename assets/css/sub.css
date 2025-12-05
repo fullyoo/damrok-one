@@ -1035,7 +1035,7 @@ input {
     width: 50%;
 }
 
-.map-info-box {
+#map {
     height: 550px;
 }
 
@@ -1260,7 +1260,7 @@ input {
         width: 100%;
     }
 
-    .map-info-box {
+    #map {
         height: 350px;
     }
 

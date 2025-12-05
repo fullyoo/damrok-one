@@ -753,6 +753,7 @@ input {
     z-index: 1;
 }
 
+
 .s-brand-sec .dim-box li {
     border-bottom: 1px solid var(--color-border);
     padding: 30px 0;
@@ -1140,14 +1141,12 @@ input {
     }
 
     .s-brand-sec .dim-box {
-        position: unset;
-        padding: 50px;
-        display: flex;
-        transform: translateY(30%);
-        justify-content: space-between;
-        right: 0;
-        box-sizing: border-box;
+        position: static;
+        padding: 50px 30px;
+        transform: none;
         width: 100%;
+        box-sizing: border-box;
+        right: auto;
     }
 
     .s-brand-sec .dim-box li {
@@ -1410,13 +1409,19 @@ input {
     }
 
     .s-brand-sec .dim-box {
-        width: 100%;
-        padding: 40px 30px;
-        box-sizing: border-box;
+        /* padding: 40px 30px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        transform: translateY(10%);
+        transform: translateY(10%); */
+    }
+
+    .s-brand-sec .dim-box {
+        position: static;
+        padding: 40px 20px;
+        transform: none;
+        width: 100%;
+        right: auto;
     }
 
     .s-brand-sec {

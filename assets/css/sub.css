@@ -1051,6 +1051,20 @@ input {
     vertical-align: middle;
 }
 
+#map .root_daum_roughmap {
+    width: 100%;
+}
+
+#map .root_daum_roughmap .cont {
+    display: none;
+}
+
+#map .root_daum_roughmap .wrap_map {
+    border-bottom: 1px solid var(--color-border);
+    height: 550px;
+}
+
+
 .contact-info-wrap .chair-info-box {
     padding-left: 20px;
 }
@@ -1261,6 +1275,10 @@ input {
     }
 
     #map {
+        height: 350px;
+    }
+
+    #map .root_daum_roughmap .wrap_map {
         height: 350px;
     }
 

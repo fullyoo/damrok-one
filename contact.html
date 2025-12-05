@@ -78,12 +78,34 @@
                 </div>
 
                 <div class="contact-info-wrap">
-                    <div id="map"></div>
+                    <div id="map">
+                        <!-- * 카카오맵 - 지도퍼가기 -->
+                        <!-- 1. 지도 노드 -->
+                        <div id="daumRoughmapContainer1764905397943"
+                            class="root_daum_roughmap root_daum_roughmap_landing"></div>
+
+                        <!--
+                        2. 설치 스크립트
+                        * 지도 퍼가기 서비스를 2개 이상 넣을 경우, 설치 스크립트는 하나만 삽입합니다.
+                    -->
+                        <script charset="UTF-8" class="daum_roughmap_loader_script"
+                            src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+
+                        <!-- 3. 실행 스크립트 -->
+                        <script charset="UTF-8">
+                            new daum.roughmap.Lander({
+                                "timestamp": "1764905397943",
+                                "key": "dq4i2fgndgz",
+                                "mapWidth": "100%",
+                                "mapHeight": "100%"
+                            }).render();
+                        </script>
+                    </div>
                     <div class="chair-info-box" data-aos="fade-left" data-aos-duration="800" data-aos-delay="600">
                         <div class="tit-wrap m_tit b">
                             <h4>오시는 길</h4>
-                            <h5>서울특별시 성동구 성수1동 담록사거리 아디다스 건물, 12층</h5>
-                            <p>2호선 성수역 4번출구 도보 5분</p>
+                            <h5>서울특별시 성동구 성수2가 1동 담록사거리 아디다스 건물, 12층</h5>
+                            <p>2호선 성수역 3번출구 도보 5분</p>
                             <div class="link-box">
                                 <a href="https://kko.kakao.com/ysY2wvG1EJ" target="_blank" class="cta">카카오 길찾기
                                     <div class="line-wrap">
@@ -126,7 +148,7 @@
                 <div class="addr">
                     <ul>
                         <li>
-                            <address><b>Address : </b>서울특별시 성동구 성수1동 담록사거리</address>
+                            <address><b>Address : </b>서울특별시 성동구 성수2가 1동 담록사거리</address>
                         </li>
                     </ul>
                     <ul>
@@ -193,34 +215,7 @@
 
 
     <!-- 카카오 지도 API -->
-    <script type="text/javascript"
-        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5e8fe49c121c1ec2749e6e7f23267822"></script>
-    <script>
-        var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-            mapOption = {
-                center: new kakao.maps.LatLng(37.54699, 127.09598), // 지도의 중심좌표
-                level: 4 // 지도의 확대 레벨
-            };
 
-        var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-        var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png', // 마커이미지의 주소입니다    
-            imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
-            imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
-
-        // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
-        var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
-            markerPosition = new kakao.maps.LatLng(37.54699, 127.09598); // 마커가 표시될 위치입니다
-
-        // 마커를 생성합니다
-        var marker = new kakao.maps.Marker({
-            position: markerPosition,
-            image: markerImage // 마커이미지 설정 
-        });
-
-        // 마커가 지도 위에 표시되도록 설정합니다
-        marker.setMap(map);  
-    </script>
 
     <script src="./assets/js/common.js"></script>
     <!-- <script src="./assets/js/main.js"></script> -->

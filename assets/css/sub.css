@@ -1242,6 +1242,7 @@ input {
 
     .about-box-wrap {
         display: block;
+        padding: 0;
     }
 
     .about-box .slide_wrap {
@@ -1307,7 +1308,7 @@ input {
     }
 
     #sub .sub-content {
-        padding: 60px 0;
+        padding: 50px 0;
     }
 
     #sub .title-big {

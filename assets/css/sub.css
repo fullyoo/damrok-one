@@ -1561,7 +1561,9 @@ input {
         height: auto;
     }
 
-    .about-box .slide_wrap .slide_ui .progress_ctn .bar {}
+    .dim-box-wrap .dim-box {
+        display: none;
+    }
 
     .contact-info-wrap .link-box {
         flex-direction: column;

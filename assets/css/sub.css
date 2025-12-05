@@ -1268,6 +1268,28 @@ input {
         padding: 100px 0;
     }
 
+    .contact-info-wrap {
+        flex-direction: column-reverse;
+        gap: 50px;
+    }
+
+    .contact-info-wrap>div {
+        width: 100%;
+    }
+
+    #map {
+        height: 350px;
+        width: 100%;
+    }
+
+    #map .root_daum_roughmap .wrap_map {
+        height: 350px;
+    }
+
+    .contact-info-wrap .link-box {
+        flex-direction: row;
+    }
+
 
 }
 
@@ -1434,28 +1456,6 @@ input {
 
     .faq-t {
         right: 20px;
-    }
-
-    .contact-info-wrap {
-        flex-direction: column-reverse;
-        gap: 50px;
-    }
-
-    .contact-info-wrap>div {
-        width: 100%;
-    }
-
-    #map {
-        height: 350px;
-        width: 100%;
-    }
-
-    #map .root_daum_roughmap .wrap_map {
-        height: 350px;
-    }
-
-    .contact-info-wrap .link-box {
-        flex-direction: row;
     }
 
 

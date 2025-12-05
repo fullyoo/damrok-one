@@ -712,6 +712,7 @@ input {
     right: 0;
     background-color: var(--color-beigebg);
     text-align: center;
+    display: none;
 }
 
 .about-txt h4 {

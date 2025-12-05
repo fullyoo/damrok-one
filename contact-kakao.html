@@ -78,12 +78,34 @@
                 </div>
 
                 <div class="contact-info-wrap">
-                    <div id="map"></div>
+                    <div id="map">
+                        <!-- * 카카오맵 - 지도퍼가기 -->
+                        <!-- 1. 지도 노드 -->
+                        <div id="daumRoughmapContainer1764905397943"
+                            class="root_daum_roughmap root_daum_roughmap_landing"></div>
+
+                        <!--
+                        2. 설치 스크립트
+                        * 지도 퍼가기 서비스를 2개 이상 넣을 경우, 설치 스크립트는 하나만 삽입합니다.
+                    -->
+                        <script charset="UTF-8" class="daum_roughmap_loader_script"
+                            src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+
+                        <!-- 3. 실행 스크립트 -->
+                        <script charset="UTF-8">
+                            new daum.roughmap.Lander({
+                                "timestamp": "1764905397943",
+                                "key": "dq4i2fgndgz",
+                                "mapWidth": "100%",
+                                "mapHeight": "100%"
+                            }).render();
+                        </script>
+                    </div>
                     <div class="chair-info-box" data-aos="fade-left" data-aos-duration="800" data-aos-delay="600">
                         <div class="tit-wrap m_tit b">
                             <h4>오시는 길</h4>
-                            <h5>서울시 성동구 성수2가 1동 담록사거리 <br> 아디다스 건물, 12층</h5>
-                            <p>2호선 성수역 4번출구 도보 5분</p>
+                            <h5>서울시 성동구 성수2가 1동 담록사거리 <br>아디다스 건물, 12층</h5>
+                            <p>2호선 성수역 3번출구 도보 5분</p>
                             <div class="link-box">
                                 <a href="https://kko.kakao.com/ysY2wvG1EJ" target="_blank" class="cta">카카오 길찾기
                                     <div class="line-wrap">
@@ -193,33 +215,7 @@
 
 
     <!-- 카카오 지도 API -->
-    <script type="text/javascript"
-        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5e8fe49c121c1ec2749e6e7f23267822"></script>
 
-    <script>
-        var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-            mapOption = {
-                center: new kakao.maps.LatLng(37.544918, 127.051669), // 지도의 중심좌표
-                level: 3 // 지도의 확대 레벨
-            };
-
-        var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-        var iwContent = '<div class="map-label"><a href="https://kko.kakao.com/ysY2wvG1EJ" target="_blank">Damrok, 淡綠</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-            iwPosition = new kakao.maps.LatLng(37.544918, 127.051669), //인포윈도우 표시 위치입니다
-            iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
-
-        // 인포윈도우를 생성하고 지도에 표시합니다
-        var infowindow = new kakao.maps.InfoWindow({
-            map: map, // 인포윈도우가 표시될 지도
-            position: iwPosition,
-            content: iwContent,
-            removable: iwRemoveable
-        });
-
-        // 아래 코드는 인포윈도우를 지도에서 제거합니다
-        // infowindow.close();        
-    </script>
 
     <script src="./assets/js/common.js"></script>
     <!-- <script src="./assets/js/main.js"></script> -->

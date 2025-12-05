@@ -324,7 +324,7 @@ input {
 }
 
 .tit-wrap h5:not(:last-of-type) {
-    margin: 15px 0 30px;
+    margin: 5px 0 30px;
 }
 
 .tit-wrap h5:last-of-type {
@@ -1027,7 +1027,7 @@ input {
 /****** 5. Contact & Visit 오시는길 영역 ******/
 .contact-info-wrap {
     display: flex;
-    gap: 50px;
+    gap: 100px;
     flex-direction: row-reverse;
 }
 
@@ -1036,7 +1036,9 @@ input {
 }
 
 #map {
+    width: 60%;
     height: 550px;
+    border: 1px solid var(--color-border);
 }
 
 .map-label {
@@ -1266,26 +1268,6 @@ input {
         padding: 100px 0;
     }
 
-    .contact-info-wrap {
-        flex-direction: column-reverse;
-    }
-
-    .contact-info-wrap>div {
-        width: 100%;
-    }
-
-    #map {
-        height: 350px;
-    }
-
-    #map .root_daum_roughmap .wrap_map {
-        height: 350px;
-    }
-
-    .contact-info-wrap .link-box {
-        flex-direction: row;
-    }
-
 
 }
 
@@ -1452,6 +1434,28 @@ input {
 
     .faq-t {
         right: 20px;
+    }
+
+    .contact-info-wrap {
+        flex-direction: column-reverse;
+        gap: 50px;
+    }
+
+    .contact-info-wrap>div {
+        width: 100%;
+    }
+
+    #map {
+        height: 350px;
+        width: 100%;
+    }
+
+    #map .root_daum_roughmap .wrap_map {
+        height: 350px;
+    }
+
+    .contact-info-wrap .link-box {
+        flex-direction: row;
     }
 
 

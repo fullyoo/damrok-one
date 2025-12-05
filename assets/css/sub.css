@@ -1143,15 +1143,12 @@ input {
 
     .s-brand-sec .dim-box {
         position: static;
-        padding: 50px 30px;
-        transform: none;
-        width: 100%;
-        box-sizing: border-box;
-        margin: 30px auto 0;
+        padding: 30px;
         display: flex;
-        justify-content: center;
+        flex-direction: column;
         align-items: center;
-        gap: 30px;
+        margin: 40px auto 0;
+        transform: translateY(0%);
     }
 
     .s-brand-sec .dim-box li {

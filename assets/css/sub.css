@@ -1566,7 +1566,7 @@ input {
     }
 
     .dim-box-wrap .dim-box {
-        display: none;
+        /* display: none; */
     }
 
     .contact-info-wrap .link-box {

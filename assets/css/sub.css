@@ -1567,9 +1567,7 @@ input {
         height: auto;
     }
 
-    .about-box .slide_wrap .slide_ui .progress_ctn .bar {
-        width: 80px;
-    }
+    .about-box .slide_wrap .slide_ui .progress_ctn .bar {}
 
     .contact-info-wrap .link-box {
         flex-direction: column;

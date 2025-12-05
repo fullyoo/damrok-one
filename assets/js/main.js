@@ -23,7 +23,7 @@ $(function () {
                     opacity: 1
                 })
                 .animate(
-                    { width: "90%" },
+                    { width: "95%" },
                     duration,
                     "linear",
                     () => {
@@ -112,7 +112,7 @@ $(function () {
                 bar.css({
                     width: 0,
                     opacity: 1
-                }).animate({ width: "100%" }, autoplaySpeed, "linear", function () {
+                }).animate({ width: "95%" }, autoplaySpeed, "linear", function () {
                     bar.animate({ opacity: 0 }, 500);
                 });
             }

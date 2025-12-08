@@ -938,28 +938,6 @@ input {
     background-color: #fff;
 }
 
-.s-community-sec .line-wrap {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    overflow: hidden;
-    width: 100%;
-    height: 2px;
-}
-
-.s-community-sec .line-wrap .line {
-    display: block;
-    width: 300%;
-    height: 2px;
-    transform: translateX(-100%);
-    transition: var(--transition-10s);
-}
-
-
-.s-community-sec .cta:hover .line-wrap .line {
-    transform: translateX(0);
-}
-
 
 
 /* faq-자주묻는 질문 */
@@ -1339,6 +1317,23 @@ input {
 
     .contact-info-wrap .link-box {
         flex-direction: row;
+    }
+
+    .s-community-sec .line-wrap {
+        width: 100%;
+        height: 2px;
+    }
+
+    .s-community-sec .line-wrap .line {
+        display: block;
+        width: 300%;
+        height: 2px;
+        transform: translateX(-100%);
+        transition: var(--transition-10s);
+    }
+
+    .s-community-sec .cta:hover .line-wrap .line {
+        transform: translateX(0);
     }
 
 

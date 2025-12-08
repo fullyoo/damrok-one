@@ -373,7 +373,6 @@ input {
     align-items: center;
     justify-content: center;
     position: relative;
-    z-index: 2;
 }
 
 .s-chair-view-sec .chair-view-wrap::before {
@@ -394,7 +393,6 @@ input {
     opacity: 0;
     transition: all .8s cubic-bezier(0.3, 0.5, 0.6, 0.9);
     z-index: 0;
-    pointer-events: none;
 }
 
 .s-chair-view-sec .chair-view-wrap.visible::before {
@@ -910,6 +908,11 @@ input {
     margin-top: 15px;
 }
 
+.s-community-sec .link-box {
+    display: flex;
+    flex-direction: row;
+}
+
 .link-box {
     margin-top: 60px;
 }
@@ -919,8 +922,6 @@ input {
     text-align: center;
     width: 180px;
 }
-
-.s-community-sec .link-box {}
 
 .s-community-sec a.cta {
     color: var(--color-white);
@@ -1511,6 +1512,10 @@ input {
     .faq-t {
         right: 20px;
     }
+
+    .s-community-sec .link-box {}
+
+
 
 
 }

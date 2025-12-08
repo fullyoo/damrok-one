@@ -908,10 +908,6 @@ input {
     margin-top: 15px;
 }
 
-.s-community-sec .link-box {
-    display: flex;
-    flex-direction: row;
-}
 
 .link-box {
     margin-top: 60px;
@@ -922,6 +918,12 @@ input {
     text-align: center;
     width: 180px;
 }
+
+.s-community-sec .link-box {
+    display: flex;
+    flex-direction: row;
+}
+
 
 .s-community-sec a.cta {
     color: var(--color-white);
@@ -938,6 +940,14 @@ input {
 .s-community-sec a.cta:hover .line-wrap .line {
     background-color: #fff;
 }
+
+.s-community-sec .line-wrap {
+    transform: none !important;
+}
+
+.cta:hover .line-wrap {}
+
+
 
 /* faq-자주묻는 질문 */
 .topics {

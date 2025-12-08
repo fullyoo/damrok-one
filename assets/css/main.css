@@ -163,6 +163,9 @@ a.cta:hover .line-wrap,
 
 .mv-sec .slide_wrap {
 	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .mv-sec .slide_wrap .slide_ctn {}
@@ -315,6 +318,10 @@ a.cta:hover .line-wrap,
 	height: 100vh;
 	overflow: hidden;
 	/* margin-top: 95px; */
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .slide_wrap {
@@ -1292,6 +1299,8 @@ body.intro-active {
 	z-index: -1;
 	animation: introBg 4.6s cubic-bezier(1, 0, 0.8, 1);
 	display: block;
+
+	/* 추가_251208 */
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -1308,6 +1317,7 @@ body:has(.intro[style*="display: block"]) {
 	left: 50%;
 	transform: translate(-50%, -50%);
 
+	/* 추가_251208 */
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -1320,6 +1330,7 @@ body:has(.intro[style*="display: block"]) {
 	-ms-animation: logoBounce 3.7s ease;
 	-o-animation: logoBounce 3.7s ease; */
 	animation: logoBounce 3s ease;
+	/* 추가_251208 */
 	animation: logoBounce 3s ease forwards;
 }
 

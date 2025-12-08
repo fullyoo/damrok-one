@@ -951,8 +951,6 @@ input {
     display: block;
     width: 300%;
     height: 2px;
-    background: #0f0;
-    /* 원하는 색 */
     transform: translateX(-100%);
     transition: var(--transition-10s);
 }

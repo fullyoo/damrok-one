@@ -1645,6 +1645,7 @@ body:has(.intro[style*="display: block"]) {
 	.m-about-sec .slide_wrap .slide_ctn .item .img_box .on {
 		font-size: 60px;
 		right: 10px;
+		bottom: 10px;
 	}
 
 	.m-about-sec .slide_wrap .slide_ctn .item .down_txt {

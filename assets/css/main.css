@@ -1284,6 +1284,7 @@ body.intro-active {
 	width: 100vw;
 	/* 100%에서 100vw로 변경 */
 	height: 100vh;
+	height: 100%;
 	background-color: var(--color-primary);
 	background-position: center;
 	background-size: cover;
@@ -1291,6 +1292,9 @@ body.intro-active {
 	z-index: -1;
 	animation: introBg 4.6s cubic-bezier(1, 0, 0.8, 1);
 	display: block;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 /* 추가: 인트로가 표시될 때 body 스크롤 제거 */
@@ -1303,6 +1307,10 @@ body:has(.intro[style*="display: block"]) {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .intro .first img {
@@ -1312,6 +1320,7 @@ body:has(.intro[style*="display: block"]) {
 	-ms-animation: logoBounce 3.7s ease;
 	-o-animation: logoBounce 3.7s ease; */
 	animation: logoBounce 3s ease;
+	animation: logoBounce 3s ease forwards;
 }
 
 @keyframes introBg {

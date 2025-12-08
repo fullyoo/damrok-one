@@ -899,6 +899,11 @@ input {
     background: url(../images/sub/community-bg.jpg) no-repeat center / cover;
 }
 
+.s-community-sec .m_tit {
+    opacity: 1;
+    /* transform: none; */
+}
+
 .s-community-sec .m_tit p {
     margin-top: 15px;
 }
@@ -913,11 +918,22 @@ input {
     width: 180px;
 }
 
+.s-community-sec .link-box {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+    width: auto;
+    /* width:180px 제거 */
+}
+
 .s-community-sec a.cta {
     color: var(--color-white);
     border-color: var(--color-lightbg);
     margin: 0px 5px;
     font-size: 16px;
+    margin: 0 !important;
+    /* 문제되는 margin 제거 */
 }
 
 .s-community-sec a.cta:hover {

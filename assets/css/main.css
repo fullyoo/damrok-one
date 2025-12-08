@@ -118,8 +118,8 @@ a.cta:hover .line-wrap,
 	width: 300%;
 	transition: var(--transition-10s);
 	transform: translateX(-100%);
-	display: block;
-	/* div처럼 보이게 만들기 */
+	display: inline-block;
+	vertical-align: middle;
 }
 
 .line-wrap .line {

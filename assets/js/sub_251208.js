@@ -2,26 +2,18 @@ $(function () {
 
     /****** 1. 서브 비주얼 영역 ******/
     let fadeSpeed = 120;
-    let timers = []; // ★ 실행 중인 모든 타이머 저장
-
-    function clearTimers() {
-        timers.forEach(t => clearTimeout(t));
-        timers = [];
-    }
 
     function startFade() {
-        clearTimers(); // ★ 기존 타이머 전부 제거 (겹침 방지)
-
         const inputText = $('#custom-text').val();
         if (!inputText) return;
 
-        const $fadeText = $('.fade-text');
-        $fadeText.empty(); // ★ 기존 글자 제거
+        const $fadeText = $('.fade-text'); // 클래스 사용
+        $fadeText.empty();
 
         const chars = inputText.split('');
 
         $.each(chars, function (index, char) {
-            const timer = setTimeout(function () {
+            setTimeout(function () {
 
                 if (char === '\n') {
                     $fadeText.append('<br>');
@@ -35,40 +27,22 @@ $(function () {
                 $fadeText.append($span);
 
             }, index * fadeSpeed);
-
-            timers.push(timer); // ★ 타이머 저장
         });
     }
 
-    /*** ↓↓↓↓↓ 이미지 애니 종료 0.3초 전 실행 ↓↓↓↓↓ ***/
+    function resetFade() {
+        $('.fade-text').empty();
+    }
 
-    const $img = $(".sv-sec img");
-    const $fadeText = $(".sv-title-wrap h2.fade-text");
-
-    // aniDuration 읽기 + fallback
-    let aniDuration = window.getComputedStyle($img[0]).animationDuration;
-    let aniSec = parseFloat(aniDuration);
-    if (!aniSec || aniSec === 0) aniSec = 1;
-
-    let aniMs = aniSec * 1000;
-    let startBefore = 300;
-    let delay = aniMs - startBefore;
-    if (delay < 0) delay = 0;
-
-    // load와 무관하게 강제 실행
-    setTimeout(function () {
-
-        $fadeText.addClass("sv-fade-start");
-        startFade();
-
-    }, delay);
-
-    /*** ↑↑↑↑↑ END ↑↑↑↑↑ ***/
-
+    // Enter 입력 시 실행
     $('#custom-text').on('keypress', function (e) {
         if (e.key === 'Enter') startFade();
     });
 
+    // 페이지 로드 후 자동 실행
+    $(window).on('load', startFade);
+
+    // 속도 조절 input
     $('#speed').on('input', function () {
         fadeSpeed = $(this).val();
         $('#speedValue').text(fadeSpeed + 'ms');

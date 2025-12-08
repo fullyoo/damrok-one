@@ -62,15 +62,24 @@ h2.fade-text {
     transform: translate(-50%, -50%);
 }
 
+/* 처음에는 투명 */
 .sv-title-wrap h2.fade-text {
     color: var(--color-white);
     width: 100%;
+    opacity: 0;
+    /* opacity: 0; 주석처리시 시간차 미적용 */
+    transition: opacity 0.3s ease;
+}
+
+/* 이미지 애니메이션 종료 후 적용할 전용 클래스 */
+.sv-title-wrap h2.fade-text.sv-fade-start {
+    opacity: 1;
 }
 
 .char {
     display: inline-block;
     opacity: 0;
-    animation: fadeInChar 0.8s ease forwards;
+    animation: fadeInChar 0.5s ease forwards;
 }
 
 @keyframes fadeInChar {
@@ -96,16 +105,16 @@ input {
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
     object-fit: cover;
-    -webkit-animation: snb 2s;
-    animation: svi 2s;
+    /* -webkit-animation: svi 2s; */
+    animation: svi 1.5s;
 }
 
 @keyframes svi {
     0% {
         filter: blur(10px);
         -webkit-filter: blur(10px);
-        transform: translateX(-50%) scale(1.2);
-        -webkit-transform: translateX(-50%) scale(1.2);
+        transform: translateX(-50%) scale(1.1);
+        -webkit-transform: translateX(-50%) scale(1.1);
     }
 
     100% {
@@ -890,8 +899,12 @@ input {
     background: url(../images/sub/community-bg.jpg) no-repeat center / cover;
 }
 
+.s-community-sec .m_tit p {
+    margin-top: 15px;
+}
+
 .link-box {
-    margin-top: 70px;
+    margin-top: 60px;
 }
 
 .link-box a {
@@ -1445,6 +1458,7 @@ input {
         flex-direction: column;
         align-items: center;
         gap: 12px;
+        margin-top: 40px;
     }
 
     /* faq  */

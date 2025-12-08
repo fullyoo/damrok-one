@@ -31,7 +31,7 @@ main {
 	font-size: 30px;
 	font-family: var(--key-font);
 	color: var(--color-white);
-	margin-top: 5px;
+	/* margin-top: 30px; */
 }
 
 .m_tit h5 {
@@ -73,7 +73,7 @@ main {
 	font-size: 22px;
 	color: var(--color-white);
 	margin-top: 35px;
-	letter-spacing: 0
+	letter-spacing: 0;
 }
 
 .m_tit.b p {
@@ -611,8 +611,8 @@ video {
 
 .m-about-sec .slide_wrap .slide_ctn .item .img_box .on {
 	position: absolute;
-	bottom: -5px;
-	right: 0;
+	bottom: 20px;
+	right: 20px;
 	font-family: var(--key-font);
 	font-size: 80px;
 	color: var(--color-white);
@@ -707,6 +707,10 @@ video {
 
 .m-about-sec .slide_wrap .slide_ctn .item.slick_now .down_txt {
 	transform: translateY(0);
+}
+
+.m-about-sec .m_tit p {
+	margin-top: 0;
 }
 
 
@@ -1106,6 +1110,10 @@ video {
 	object-fit: cover;
 }
 
+.m-contanct-sec .m_tit p {
+	margin-top: 0;
+}
+
 
 /****** 7. 뉴스 영역 news ******/
 
@@ -1161,7 +1169,7 @@ video {
 }
 
 .m-news-sec .cont .tab li:last-of-type {
-	margin-right: 0;
+	margin-right: 15px;
 }
 
 .m-news-sec .cont .tab li:last-of-type::after {
@@ -1634,8 +1642,7 @@ body:has(.intro[style*="display: block"]) {
 
 	.m-about-sec .slide_wrap .slide_ctn .item .img_box .on {
 		font-size: 60px;
-		bottom: -14px;
-		right: -2px;
+		right: 10px;
 	}
 
 	.m-about-sec .slide_wrap .slide_ctn .item .down_txt {
@@ -1907,6 +1914,7 @@ body:has(.intro[style*="display: block"]) {
 	a.cta,
 	.cta {
 		/* padding: 12px 10px; */
+		margin-top: 20px;
 	}
 
 	.m-about-sec .slide_wrap .slide_ctn .item {
@@ -1915,7 +1923,6 @@ body:has(.intro[style*="display: block"]) {
 
 	.m-about-sec .slide_wrap .slide_ctn .item .img_box .on {
 		font-size: 45px;
-		bottom: -11px;
 	}
 
 	.m-about-sec .slide_wrap .slide_btn {

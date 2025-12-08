@@ -154,8 +154,8 @@ $(function () {
         pauseOnFocus: false,
         variableWidth: true,
         centerMode: true,
-        autoplay: true,
-        autoplaySpeed: 4000,
+        // autoplay: true,
+        // autoplaySpeed: 4000,
         speed: 2000,
     }).on('beforeChange', function (event, slick, currentSlide, nextSlide) {
         var count = slick.slideCount;
@@ -175,18 +175,23 @@ $(function () {
             $(".m-about-sec .slide_wrap .slide_ctn").slick("slickNext")
         }
     })
-    $(".m-news-sec .cont .list .item").hover(function () {
-        $(".m-news-sec .cont .tab").addClass("on")
-    }, function () {
-        $(".m-news-sec .cont .tab").removeClass("on")
-    })
 
-    $(".m-news-sec .cont .tab li").on("click", function () {
-        var tabTxt = $(this).data('tab');
-        console.log(tabTxt)
-        $(".m-news-sec .cont .tab li").removeClass("on");
-        $(this).addClass("on");
-        $(".m-news-sec .cont .list .item").hide()
-        $(".m-news-sec .cont .list .item[data-idx='" + tabTxt + "']").show()
-    })
-})
+
+    /****** 4. 뉴스 news 영역  ******/
+    // $(".m-news-sec .cont .list .item").hover(function () {
+    //     $(".m-news-sec .cont .tab").addClass("on")
+    // }, function () {
+    //     $(".m-news-sec .cont .tab").removeClass("on")
+    // })
+
+    // $(".m-news-sec .cont .tab li").on("click", function () {
+    //     var tabTxt = $(this).data('tab');
+    //     console.log(tabTxt)
+    //     $(".m-news-sec .cont .tab li").removeClass("on");
+    //     $(this).addClass("on");
+    //     $(".m-news-sec .cont .list .item").hide()
+    //     $(".m-news-sec .cont .list .item[data-idx='" + tabTxt + "']").show()
+    // })
+
+
+}) // 끝코드

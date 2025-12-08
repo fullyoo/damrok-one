@@ -326,12 +326,6 @@
     <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="./assets/js/aos.js"></script>
     <script>AOS.init();</script>
-    <script>AOS.init({ disable: false });</script>
-    <script>
-        $(window).on("load", function () {
-            AOS.refresh();
-        });
-    </script>
 
 
     <script src="./assets/js/common.js"></script>
@@ -456,9 +450,9 @@
         }
 
         function playFaqFadeIn() {
-            $faqTopicsContainer.removeClass('fade-in');
-            void $faqTopicsContainer[0].offsetWidth;
-            $faqTopicsContainer.addClass('fade-in');
+            // $faqTopicsContainer.removeClass('fade-in');
+            // void $faqTopicsContainer[0].offsetWidth;
+            // $faqTopicsContainer.addClass('fade-in');
         }
 
         showFaqPage(1);

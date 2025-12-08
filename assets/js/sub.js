@@ -51,7 +51,7 @@ $(function () {
 
 
 
-    /****** 2. Chair-list 영역 ******/
+    /****** 2. Chair-list 리스트 영역 ******/
 
     /********************************************
          *  Gallery Section
@@ -190,7 +190,7 @@ $(function () {
 
 
 
-    /****** 3. Chair-view 영역 ******/
+    /****** 3. Chair-view 뷰 영역 ******/
 
     /**************************************
      *  화면 좌우 확대
@@ -229,235 +229,12 @@ $(function () {
 
     /****** 4. Why Damrok? 어바웃 영역 ******/
 
-    function initSlider() {
-        const slider = $(".mv-sec .slide_wrap .slide_ctn");
-        let autoplaySpeed = 3000;
-
-        const bars = $(".progress_ctn .bars_container");
-
-        const updateBars = (i) => {
-            bars.find(".bar").removeClass("active");
-            bars.find(".bar").eq(i).addClass("active");
-        };
-
-        // 화면 크기에 따라 진행바 목표값 결정 (mobile이면 100%, 아니면 95%)
-        function getProgressTargetPercent() {
-            // 모바일 기준: 너비 768px 이하(필요시 수치 변경)
-            const isMobile = window.matchMedia("(max-width: 768px)").matches;
-            return isMobile ? "100%" : "95%";
-        }
-
-        const startProgress = (duration) => {
-            const target = getProgressTargetPercent(); // 동적으로 결정
-            const bar = bars.find(".bar.active span");
-
-            // 안전하게 애니메이션 초기화
-            bar.stop(true, true)
-                .css({
-                    width: 0,
-                    opacity: 1
-                })
-                .animate(
-                    { width: target }, // 모바일이면 100%로 애니메이트
-                    duration,
-                    "linear",
-                    () => {
-                        bar.animate({ opacity: 0 }, 500);
-                    }
-                );
-        };
-
-        slider
-            .on("init", function (e, slick) {
-                const total = slick.slideCount;
-
-                bars.empty();
-                for (let i = 0; i < total; i++) {
-                    bars.append(`
-                    <div class="bar" data-slide="${i}">
-                        <span></span>
-                    </div>
-                `);
-                }
-
-                updateBars(0);
-
-                // 전체 초기화
-                bars.find(".bar span").css({ width: 0, opacity: 0 });
-
-                startProgress(autoplaySpeed);
-            })
-
-            .on("beforeChange", (e, slick, current, next) => {
-
-                // 🔥 무조건 전체 초기화 (핵심)
-                bars.find(".bar span").stop(true, true).css({
-                    width: 0,
-                    opacity: 0
-                });
-
-                updateBars(next);
-
-                // next span만 애니메이션 준비 상태
-                bars.find(".bar").eq(next).find("span").css({
-                    width: 0,
-                    opacity: 1
-                });
-            })
-
-            .on("afterChange", (e, slick, current) => {
-                startProgress(autoplaySpeed);
-            })
-
-            .slick({
-                arrows: false,
-                fade: true,
-                autoplay: true,
-                autoplaySpeed: autoplaySpeed,
-                infinite: true,
-                speed: 0,
-                pauseOnHover: false,
-                pauseOnFocus: false,
-                cssEase: "linear",
-            });
-
-
-        $(".play_btn .stop").on("click", function () {
-            const activeBar = bars.find(".bar.active");
-            const bar = activeBar.find("span");
-            const target = getProgressTargetPercent(); // 재생시에도 동일한 목표 사용
-
-            if (!$(this).hasClass("on")) {
-                // 정지
-                $(this).addClass("on");
-                slider.slick("slickPause");
-
-                // 현재 active span 숨기기
-                bar.stop(true, true).css({
-                    width: 0,
-                    opacity: 0
-                });
-            } else {
-                // 재생
-                $(this).removeClass("on");
-                slider.slick("slickPlay");
-
-                // 항상 0%에서 시작 — 모바일이면 target이 100%로 동작
-                bar.css({
-                    width: 0,
-                    opacity: 1
-                }).animate({ width: target }, autoplaySpeed, "linear", function () {
-                    bar.animate({ opacity: 0 }, 500);
-                });
-            }
-        });
-
-        // 진행바 클릭으로 이동
-        $(document).on("click", ".progress_ctn .bar", function () {
-            slider.slick("slickGoTo", $(this).data("slide"));
-        });
-
-        // (선택) 창 크기 변경시 진행 target이 바뀔 수 있으므로, resize 이벤트에서 현재 활성 span을 리셋해주면 안정적
-        $(window).on("resize", function () {
-            // 현재 active span 애니메이션 초기화 (resize시 보정)
-            bars.find(".bar span").stop(true, true).css({ width: 0, opacity: 0 });
-            // 현재 슬라이드의 진행을 다시 시작
-            const currentIndex = slider.slick("slickCurrentSlide");
-            updateBars(currentIndex);
-            bars.find(".bar").eq(currentIndex).find("span").css({ width: 0, opacity: 1 });
-            startProgress(autoplaySpeed);
-        });
-    }
-
-    initSlider();
 
 
 
+    /****** 5. FAQ 자주묻는 질문 영역 ******/
 
 
-    /****** 4. FAQ 자주묻는 질문 영역 ******/
-
-    /********************************************
-     *  FAQ Pagination Setup
-     ********************************************/
-
-    const $faqTopicsContainer = $('.topics');
-    const $faqAllTopics = $('.topic');
-    let faqItemsPerPage = 4;
-    let faqCurrentPage = 1;
-
-    function showFaqPage(page) {
-        faqCurrentPage = page;
-        const start = (page - 1) * faqItemsPerPage;
-        const end = start + faqItemsPerPage;
-
-        $faqAllTopics.hide().slice(start, end).show();
-        generateFaqPagination();
-        playFaqFadeIn();
-    }
-
-    function getFaqPageNumbers(current, total) {
-        const pages = [];
-        if (total <= 7) {
-            for (let i = 1; i <= total; i++) pages.push(i);
-        } else {
-            if (current <= 3) {
-                for (let i = 1; i <= 4; i++) pages.push(i);
-                pages.push('...');
-                pages.push(total);
-            } else if (current >= total - 2) {
-                pages.push(1);
-                pages.push('...');
-                for (let i = total - 3; i <= total; i++) pages.push(i);
-            } else {
-                pages.push(1);
-                pages.push('...');
-                for (let i = current - 1; i <= current + 1; i++) pages.push(i);
-                pages.push('...');
-                pages.push(total);
-            }
-        }
-        return pages;
-    }
-
-    function createFaqButton(html, onClick, disabled = false, active = false) {
-        const $btn = $('<button></button>').html(html);
-        if (disabled) $btn.prop('disabled', true);
-        if (active) $btn.addClass('active');
-        $btn.on('click', onClick);
-        return $btn;
-    }
-
-    function generateFaqPagination() {
-        const totalPages = Math.ceil($faqAllTopics.length / faqItemsPerPage);
-        const $pagination = $('#faq-pagination');
-        $pagination.empty();
-
-        if (totalPages <= 1) return;
-
-        $pagination.append(createFaqButton('<i class="iconoir-fast-arrow-left"></i>', () => showFaqPage(1), faqCurrentPage === 1).addClass('page-nav'));
-        $pagination.append(createFaqButton('<i class="iconoir-nav-arrow-left"></i>', () => showFaqPage(faqCurrentPage - 1), faqCurrentPage === 1).addClass('page-nav'));
-
-        const pageNumbers = getFaqPageNumbers(faqCurrentPage, totalPages);
-        $.each(pageNumbers, (_, num) => {
-            if (num === '...') {
-                $pagination.append('<span class="dots">...</span>');
-            } else {
-                $pagination.append(createFaqButton(num, () => showFaqPage(num), false, num === faqCurrentPage).addClass('page-number'));
-            }
-        });
-
-        $pagination.append(createFaqButton('<i class="iconoir-nav-arrow-right"></i>', () => showFaqPage(faqCurrentPage + 1), faqCurrentPage === totalPages).addClass('page-nav'));
-        $pagination.append(createFaqButton('<i class="iconoir-fast-arrow-right"></i>', () => showFaqPage(totalPages), faqCurrentPage === totalPages).addClass('page-nav'));
-    }
-
-    function playFaqFadeIn() {
-        $faqTopicsContainer.removeClass('fade-in');
-        void $faqTopicsContainer[0].offsetWidth;
-        $faqTopicsContainer.addClass('fade-in');
-    }
-
-    showFaqPage(1);
 
 
 

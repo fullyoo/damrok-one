@@ -9,7 +9,7 @@
     <meta name="format-detection" content="telephone=no, email=no">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Damrok, 淡綠 l Contact & Visit</title>
+    <title>Damrok-Chair, 淡綠 l Contact & Visit</title>
     <link rel="icon" href="./assets/images/common/favicon.ico" type="image/x-icon">
 
     <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" > -->
@@ -193,32 +193,32 @@
 
 
     <!-- 카카오 지도 API -->
-    <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5e8fe49c121c1ec2749e6e7f23267822"></script>
+    <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5e8fe49c121c1ec2749e6e7f23267822&autoload=false"></script>
 
     <script>
-        var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-            mapOption = {
-                center: new kakao.maps.LatLng(37.544918, 127.051669), // 지도의 중심좌표
-                level: 3 // 지도의 확대 레벨
+        kakao.maps.load(function () {
+
+            var mapContainer = document.getElementById('map');
+            var mapOption = {
+                center: new kakao.maps.LatLng(37.544918, 127.051669),
+                level: 3
             };
 
-        var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+            var map = new kakao.maps.Map(mapContainer, mapOption);
 
-        var iwContent = '<div class="map-label"><a href="https://kko.kakao.com/ysY2wvG1EJ" target="_blank">Damrok, 淡綠</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-            iwPosition = new kakao.maps.LatLng(37.544918, 127.051669), //인포윈도우 표시 위치입니다
-            iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+            var iwContent = '<div class="map-label"><a href="https://kko.kakao.com/ysY2wvG1EJ" target="_blank">Damrok, 淡綠</a></div>';
+            var iwPosition = new kakao.maps.LatLng(37.544918, 127.051669);
 
-        // 인포윈도우를 생성하고 지도에 표시합니다
-        var infowindow = new kakao.maps.InfoWindow({
-            map: map, // 인포윈도우가 표시될 지도
-            position: iwPosition,
-            content: iwContent,
-            removable: iwRemoveable
+            var infowindow = new kakao.maps.InfoWindow({
+                map: map,
+                position: iwPosition,
+                content: iwContent,
+                removable: true
+            });
         });
-
-        // 아래 코드는 인포윈도우를 지도에서 제거합니다
-        // infowindow.close();        
     </script>
+
+
 
     <script src="./assets/js/common.js"></script>
     <!-- <script src="./assets/js/main.js"></script> -->

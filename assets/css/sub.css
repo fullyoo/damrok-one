@@ -966,11 +966,11 @@ input {
 .topics {
     border-top: 3px solid var(--color-text);
     /* opacity: 0; */
-    transform: translateY(20px);
+    transform: translateY(50px);
 }
 
 .topics.fade-in {
-    animation: fadeIn .5s .3s forwards;
+    animation: fadeIn 1s .3s forwards;
 }
 
 

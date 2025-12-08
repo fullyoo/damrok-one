@@ -936,6 +936,7 @@ input {
     /* 문제되는 margin 제거 */
 }
 
+
 .s-community-sec a.cta:hover {
     background-color: var(--color-primary);
 }

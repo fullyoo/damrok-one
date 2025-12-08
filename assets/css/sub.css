@@ -925,7 +925,6 @@ input {
     border-color: var(--color-lightbg);
     margin: 0px 5px;
     font-size: 16px;
-    overflow: visible;
 }
 
 .s-community-sec a.cta:hover {

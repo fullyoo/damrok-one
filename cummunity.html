@@ -326,12 +326,23 @@
     <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="./assets/js/aos.js"></script>
     <script>AOS.init();</script>
-    <script>AOS.init({ disable: false });</script>
+
     <script>
-        $(window).on("load", function () {
-            AOS.refresh();
+        window.addEventListener("load", function () {
+            AOS.init({
+                disable: false,
+                duration: 800,
+                once: false,
+                offset: 120
+            });
+
+            setTimeout(() => {
+                AOS.refresh();
+            }, 300);
         });
     </script>
+
+
 
 
     <script src="./assets/js/common.js"></script>

@@ -919,10 +919,7 @@ input {
     width: 180px;
 }
 
-.s-community-sec .link-box {
-    display: flex;
-    flex-direction: row;
-}
+.s-community-sec .link-box {}
 
 
 .s-community-sec a.cta {
@@ -942,10 +939,28 @@ input {
 }
 
 .s-community-sec .line-wrap {
-    transform: none !important;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 2px;
 }
 
-.cta:hover .line-wrap {}
+.s-community-sec .line-wrap .line {
+    display: block;
+    width: 300%;
+    height: 2px;
+    background: #0f0;
+    /* 원하는 색 */
+    transform: translateX(-100%);
+    transition: var(--transition-10s);
+}
+
+
+.s-community-sec .cta:hover .line-wrap .line {
+    transform: translateX(0);
+}
 
 
 

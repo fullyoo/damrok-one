@@ -172,6 +172,8 @@ $(function () {
 
 
 
+
+
     /****** 3. 어바웃 chair 영역  ******/
 
     $(".m-about-sec .slide_wrap .slide_ctn").slick({

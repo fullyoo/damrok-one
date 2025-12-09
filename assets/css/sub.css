@@ -740,9 +740,51 @@ input {
 /* 어바웃-브랜드 영역 */
 
 .s-brand-sec {
-    /* display: none; */
+    position: relative;
+    width: 100%;
+    /* height: 100vh; */
+    /* min-height: 700px; */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 150px 0;
+    background: none;
 }
 
+/* 백그라운드 유튜브 영상 */
+.video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.video-bg iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: 178vh;
+    /* 16:9 비율 유지하는 트릭 */
+    height: 100vh;
+    pointer-events: none;
+}
+
+.video-dim {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0 0 0 /20%);
+    z-index: 1;
+}
 
 .text-box-wrap {
     position: relative;
@@ -1114,6 +1156,26 @@ input {
 
 /****** 반응형 브레이크 포인트 (모바일 반응형)******/
 
+@media (min-width: 1800px) {
+    .video-bg {
+        overflow: hidden !important;
+    }
+
+    .video-bg iframe {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -52%);
+        /* 살짝 더 위로 올려서 재생바 완전 숨김 */
+        width: 110vw;
+        /* 가로 더 크게 */
+        height: 62vw;
+        /* 세로도 크게 해서 아래 UI 안 보이게 */
+        pointer-events: none;
+    }
+}
+
+
 @media (max-width: 1500px) {
     .about-box .slide_wrap .slide_ui {
         padding: 0;
@@ -1156,6 +1218,8 @@ input {
 
     .s-brand-sec {
         min-height: auto;
+        padding: 80px 0;
+        height: auto;
     }
 
     .s-brand-sec h4 {

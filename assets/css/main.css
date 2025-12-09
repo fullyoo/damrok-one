@@ -569,7 +569,7 @@ video {
 	overflow: hidden;
 	padding-top: 106px;
 	transition: var(--transition-10s);
-	margin: 0 10px;
+	margin: 0 20px;
 }
 
 .m-about-sec .slide_wrap .slide_ctn .item a {
@@ -614,15 +614,15 @@ video {
 
 .m-about-sec .slide_wrap .slide_ctn .item .img_box .on {
 	position: absolute;
-	bottom: 0px;
-	right: 0px;
+	bottom: 10px;
+	right: 10px;
 	font-family: var(--key-font);
 	font-size: 80px;
 	color: var(--color-white);
 	letter-spacing: 0;
 	text-align: right;
 	line-height: 1.1;
-	transform: translateX(100%);
+	transform: translateX(105%);
 	transition: var(--transition-10s);
 }
 
@@ -713,7 +713,7 @@ video {
 }
 
 .m-about-sec .m_tit p {
-	margin-top: 10px;
+	margin-top: 0px;
 }
 
 
@@ -825,7 +825,7 @@ video {
 	height: 100%;
 	object-fit: cover;
 	/* 화면 꽉 채우기, 비율 유지 */
-	object-position: center;
+	object-position: center top;
 	/* 보이는 영역 기준 위치 */
 }
 
@@ -1003,7 +1003,7 @@ video {
 }
 
 /* 롤링 hover 시 멈춤 */
-.insta-cta:hover~.instawrap {
+.insta-cta-wrap:hover~.instawrap {
 	/* animation-play-state: paused; */
 }
 
@@ -1011,12 +1011,11 @@ video {
 	/* animation-play-state: paused; */
 }
 
-
-.insta-cta {
+.insta-cta-wrap {
 	position: absolute;
 	/* 기본: loop-container 기준 */
 	inset: 0;
-	background-color: var(--color-lightbg);
+	background-color: rgba(255 255 255 /25%);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -1028,21 +1027,26 @@ video {
 }
 
 /* 인스타그램 cta 버튼 */
-.insta-cta a {}
+.insta-cta-wrap a {}
 
-.insta-cta a:hover {
+.insta-cta-wrap a:hover {
 	/* background-color: var(--color-dark);
 	color: var(--white-dark); */
 }
 
-.insta-cta.m_tit.b a h4 {}
+.insta-cta-wrap.m_tit.b a h4 {}
 
-.insta-cta.m_tit.b a h5:nth-of-type(1) {
+.insta-cta-wrap.m_tit.b a h5:nth-of-type(1) {
 	color: var(--color-primary);
 	margin-top: 15px;
+	font-weight: 600;
 }
 
-.insta-cta.m_tit.b a h5:nth-of-type(2) {}
+.insta-cta-wrap.m_tit.b a h5:nth-of-type(2) {}
+
+.m-insta-sec .cta {
+	background-color: var(--color-lightbg);
+}
 
 
 /* 전체 오버레이 */
@@ -1928,8 +1932,12 @@ body:has(.intro[style*="display: block"]) {
 
 	a.cta,
 	.cta {
-		/* padding: 12px 10px; */
 		margin-top: 20px;
+		font-size: 16px;
+	}
+
+	.m-about-sec .m_tit p {
+		margin-top: 10px;
 	}
 
 	.m-about-sec .slide_wrap .slide_ctn .item {

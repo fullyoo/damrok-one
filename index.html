@@ -413,20 +413,25 @@
                 alert("담록의 새로운 이야기를 준비 중입니다.\n조금만 기다려 주세요.📸");
             });
 
+            // 2. 상단 비주얼 세로 중앙
+            function setVh() {
+                let vh = $(window).innerHeight() * 0.01;
+                $('html').css('--vh', `${vh}px`);
+            }
+
+            setVh();
+
+            $(window).on('resize', function () {
+                setVh();
+            });
+
+
 
         });  // 끝 코드
 
-        // 2. 상단 비주얼 세로 중앙
-        function setVh() {
-            let vh = $(window).innerHeight() * 0.01;
-            $(':root').css('--vh', `${vh}px`);
-        }
 
-        setVh();
 
-        $(window).on('resize', function () {
-            setVh();
-        });
+
 
 
         // function setVh() {

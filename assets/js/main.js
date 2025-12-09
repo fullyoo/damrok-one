@@ -135,6 +135,25 @@ $(function () {
 
 
 
+    // 상단 비주얼 세로 중앙
+    function setVh() {
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+    setVh();
+
+    // intro 끝날 때 다시 계산
+    setTimeout(function () {
+        setVh();
+        initSlider();
+    }, 3600);
+
+    $(window).on('resize', function () {
+        setVh();
+    });
+
+
+
 
 
     /****** 2. 인트로-페이지 로드 시 ******/

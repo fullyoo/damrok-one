@@ -127,11 +127,11 @@ $(function () {
 
 
     // .intro 인트로가 끝난 후 슬라이더 실행
-    $(function () {
-        setTimeout(function () {
-            initSlider();
-        }, 3600);
-    });
+    // $(function () {
+    //     setTimeout(function () {
+    //         initSlider();
+    //     }, 3600);
+    // });
 
 
 
@@ -142,15 +142,20 @@ $(function () {
     }
     setVh();
 
-    // intro 끝날 때 다시 계산
-    setTimeout(function () {
-        setVh();
-        initSlider();
-    }, 3600);
+    // 슬라이더는 단 한번만 실행!
+    function startPage() {
+        setVh();       // intro 끝난 시점 높이 다시 계산
+        initSlider();  // slick 단 1회 실행!
+    }
 
+    // intro 끝난 후
+    setTimeout(startPage, 3600);
+
+    // resize 대응
     $(window).on('resize', function () {
         setVh();
     });
+
 
 
 

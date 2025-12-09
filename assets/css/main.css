@@ -233,7 +233,7 @@ a.cta:hover .line-wrap,
 .mv-sec .slide_wrap .slide_ui .progress_ctn {
 	display: flex;
 	align-items: center;
-	margin-top: 50px;
+	margin-top: 70px;
 }
 
 .mv-sec .slide_wrap .slide_ui .progress_ctn .bar {
@@ -318,7 +318,6 @@ a.cta:hover .line-wrap,
 	position: relative;
 	width: 100%;
 	height: 100vh;
-	height: calc(100vh + 95px);
 	height: calc(100vh - 95px);
 	overflow: hidden;
 	/* margin-top: 95px; */
@@ -1682,8 +1681,7 @@ body:has(.intro[style*="display: block"]) {
 
 @media (max-width: 1200px) {
 	.mv-sec {
-		height: calc(100vh + 70px);
-		height: calc(100vh - 70px);
+		/* height: calc(100vh - 70px); */
 	}
 
 	.m_tit h2 {
@@ -1722,6 +1720,10 @@ body:has(.intro[style*="display: block"]) {
 
 	.mv-sec .slide_wrap .slide_ui {
 		padding: 0 16px;
+	}
+
+	.slide_txt h4 {
+		margin-top: 10px;
 	}
 
 	.m-about-sec {
@@ -1813,8 +1815,8 @@ body:has(.intro[style*="display: block"]) {
 	}
 
 	.mv-sec .slide_wrap .slide_ui .progress_ctn {
-		margin-top: 60px;
 		gap: 5px;
+		margin-top: 40px;
 	}
 
 	.m-about-sec {
@@ -1920,7 +1922,6 @@ body:has(.intro[style*="display: block"]) {
 
 	.m_tit h4 {
 		font-size: 20px;
-		/* margin: 5px 0 40px; */
 	}
 
 	a.cta,

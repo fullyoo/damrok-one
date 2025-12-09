@@ -1682,8 +1682,8 @@ body:has(.intro[style*="display: block"]) {
 
 @media (max-width: 1200px) {
 	.mv-sec {
-		height: calc(100vh - 70px);
 		height: calc(100vh + 70px);
+		height: calc(100vh - 70px);
 	}
 
 	.m_tit h2 {

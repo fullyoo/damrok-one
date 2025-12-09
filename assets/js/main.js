@@ -134,20 +134,6 @@ $(function () {
     });
 
 
-    // 상단 비주얼 세로 중앙-제이쿼리 버전
-    function setVh() {
-        let vh = $(window).innerHeight() * 0.01;
-        $(':root').css('--vh', `${vh}px`);
-    }
-
-    setVh();
-
-    $(window).on('resize', function () {
-        setVh();
-    });
-
-
-
 
 
 

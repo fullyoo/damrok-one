@@ -1319,12 +1319,12 @@ input {
         flex-direction: row;
     }
 
-    .s-community-sec .line-wrap {
+    .line-wrap {
         width: 100%;
         height: 2px;
     }
 
-    .s-community-sec .line-wrap .line {
+    .line-wrap .line {
         display: block;
         width: 300%;
         height: 2px;
@@ -1332,7 +1332,7 @@ input {
         transition: var(--transition-10s);
     }
 
-    .s-community-sec .cta:hover .line-wrap .line {
+    .cta:hover .line-wrap .line {
         transform: translateX(0);
     }
 

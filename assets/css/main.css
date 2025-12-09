@@ -233,7 +233,7 @@ a.cta:hover .line-wrap,
 .mv-sec .slide_wrap .slide_ui .progress_ctn {
 	display: flex;
 	align-items: center;
-	margin-top: 90px;
+	margin-top: 50px;
 }
 
 .mv-sec .slide_wrap .slide_ui .progress_ctn .bar {
@@ -318,6 +318,8 @@ a.cta:hover .line-wrap,
 	position: relative;
 	width: 100%;
 	height: 100vh;
+	height: calc(100vh + 95px);
+	height: calc(100vh - 95px);
 	overflow: hidden;
 	/* margin-top: 95px; */
 
@@ -613,8 +615,8 @@ video {
 
 .m-about-sec .slide_wrap .slide_ctn .item .img_box .on {
 	position: absolute;
-	bottom: 20px;
-	right: 20px;
+	bottom: 0px;
+	right: 0px;
 	font-family: var(--key-font);
 	font-size: 80px;
 	color: var(--color-white);
@@ -637,7 +639,7 @@ video {
 	font-weight: 800;
 	font-size: 30px;
 	color: var(--color-dark);
-	margin-bottom: 14px;
+	margin-bottom: 10px;
 	font-family: var(--key-font);
 }
 
@@ -712,7 +714,7 @@ video {
 }
 
 .m-about-sec .m_tit p {
-	margin-top: 0;
+	margin-top: 10px;
 }
 
 
@@ -835,6 +837,10 @@ video {
 .m-brand-sec .m_tit {
 	position: relative;
 	z-index: 2;
+}
+
+.m-brand-sec h4 {
+	margin-top: 10px;
 }
 
 .m-brand-sec .m_tit p {
@@ -1113,7 +1119,7 @@ video {
 }
 
 .m-contanct-sec .m_tit p {
-	margin-top: 0;
+	margin-top: 10px;
 }
 
 
@@ -1644,8 +1650,6 @@ body:has(.intro[style*="display: block"]) {
 
 	.m-about-sec .slide_wrap .slide_ctn .item .img_box .on {
 		font-size: 60px;
-		right: 10px;
-		bottom: 10px;
 	}
 
 	.m-about-sec .slide_wrap .slide_ctn .item .down_txt {
@@ -1677,6 +1681,11 @@ body:has(.intro[style*="display: block"]) {
 
 
 @media (max-width: 1200px) {
+	.mv-sec {
+		height: calc(100vh - 70px);
+		height: calc(100vh + 70px);
+	}
+
 	.m_tit h2 {
 		font-size: 60px;
 	}

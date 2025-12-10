@@ -231,10 +231,10 @@
 
             for (let i = 0; i < slideCount; i++) {
                 const bar = $(`
-                    <div class="progress_bar" data-index="${i}">
-                        <div class="progress_bar_fill"></div>
-                    </div>
-                `);
+                <div class="progress_bar" data-index="${i}">
+                    <div class="progress_bar_fill"></div>
+                </div>
+            `);
 
                 // 각 진행바에 클릭 이벤트 직접 바인딩
                 bar.on('click', function (e) {
@@ -320,31 +320,34 @@
         }
 
 
-        /*** ===========================
-        모바일 스크롤 시 autoplay 유지
-    ============================ ***/
-
+        /***********************************************
+         * ※ 추가된 기능 : 모바일 스크롤 시 autoplay 유지
+         ***********************************************/
         let scrollTimer;
 
         $(window).on('scroll touchmove', function () {
 
-            // 스크롤 중 autoplay 꺼져 있으면 강제 실행
+            // 스크롤 중 자동재생이 꺼져있으면 강제로 다시 재생
             if (!isPlaying) {
                 $('.mv_slide_ctn').slick('slickPlay');
                 $('.play_btn').addClass('playing');
                 isPlaying = true;
             }
 
-            // 스크롤이 멈춘 후에도 재생 유지
+            // 스크롤 멈추고 150ms 후에도 autoplay 유지
             clearTimeout(scrollTimer);
             scrollTimer = setTimeout(() => {
                 $('.mv_slide_ctn').slick('slickPlay');
                 $('.play_btn').addClass('playing');
                 isPlaying = true;
-            }, 150);
+            }, 0); // 150ms에서 0ms로 변경
         });
 
-        // iOS Safari는 스크롤 중 visibilityState가 hidden 되기도 함 → 복구 처리
+
+        /***********************************************
+         * ※ 추가된 기능 : iOS visibilitychange 대응
+         * (Safari가 스크롤 중일 때도 hidden 처리되는 문제)
+         ***********************************************/
         document.addEventListener("visibilitychange", () => {
             if (document.visibilityState === "visible") {
                 $('.mv_slide_ctn').slick('slickPlay');
@@ -353,10 +356,6 @@
             }
         });
 
-
-        /*** ===========================
-        화면 높이 세팅
-    ============================ ***/
 
 
         // 상단 비주얼 세로 중앙
@@ -378,13 +377,11 @@
         setTimeout(startPage, 3600);
 
         // resize 대응
-
         $(window).on('resize', function () {
             setVh();
         });
-
-
     </script>
+
 </body>
 
 </html>

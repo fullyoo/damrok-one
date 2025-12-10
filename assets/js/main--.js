@@ -3,8 +3,18 @@ $(function () {
 
 
     /****** 1. 메인 비주얼 영역 ******/
-    const autoplaySpeed = 5000;
+    // 1-1. if문으로 풀어서 작성
+    // const autoplaySpeed = 5000;
+    // let autoplaySpeed = 5000;
+    // if (/Mobi|Android/i.test(navigator.userAgent)) {
+    //     autoplaySpeed = 3000;
+    // }
+
+
+    // 1-2. 삼항연산자- 모바일과 데스크탑에 따라 재생 속도 다르게 설정 - 모바일이 더 빠름
+    const autoplaySpeed = (/Mobi|Android/i.test(navigator.userAgent)) ? 3000 : 5000;
     let isPlaying = true;
+
 
     // 진행바 생성
     function createProgressBars(slideCount) {
@@ -13,10 +23,10 @@ $(function () {
 
         for (let i = 0; i < slideCount; i++) {
             const bar = $(`
-                    <div class="progress_bar" data-index="${i}">
-                        <div class="progress_bar_fill"></div>
-                    </div>
-                `);
+                <div class="progress_bar" data-index="${i}">
+                    <div class="progress_bar_fill"></div>
+                </div>
+            `);
 
             // 각 진행바에 클릭 이벤트 직접 바인딩
             bar.on('click', function (e) {
@@ -102,6 +112,44 @@ $(function () {
     }
 
 
+    /***********************************************
+     * ※ 추가된 기능 : 모바일 스크롤 시 autoplay 유지
+     ***********************************************/
+    let scrollTimer;
+
+    $(window).on('scroll touchmove', function () {
+
+        // 스크롤 중 자동재생이 꺼져있으면 강제로 다시 재생
+        if (!isPlaying) {
+            $('.mv_slide_ctn').slick('slickPlay');
+            $('.play_btn').addClass('playing');
+            isPlaying = true;
+        }
+
+        // 스크롤 멈추고 150ms 후에도 autoplay 유지
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(() => {
+            $('.mv_slide_ctn').slick('slickPlay');
+            $('.play_btn').addClass('playing');
+            isPlaying = true;
+        }, 20); // 150ms에서 20ms로 변경
+    });
+
+
+    /***********************************************
+     * ※ 추가된 기능 : iOS visibilitychange 대응
+     * (Safari가 스크롤 중일 때도 hidden 처리되는 문제)
+     ***********************************************/
+    document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === "visible") {
+            $('.mv_slide_ctn').slick('slickPlay');
+            $('.play_btn').addClass('playing');
+            isPlaying = true;
+        }
+    });
+
+
+
     // 상단 비주얼 세로 중앙
     function setVh() {
         let vh = window.innerHeight * 0.01;
@@ -121,11 +169,9 @@ $(function () {
     setTimeout(startPage, 3600);
 
     // resize 대응
-
     $(window).on('resize', function () {
         setVh();
     });
-
 
 
 

@@ -635,22 +635,36 @@ input {
 .about-box {}
 
 .about-box .slide_wrap {
-    background-color: var(--color-white);
     width: 810px;
-    height: 700px;
+    height: 650px;
+    display: flex;
+    align-items: flex-start;
+    background-color: var(--color-white);
+    /* background-color: red; */
 }
 
-.about-box .slide_wrap .slide_ctn {
+.about-box .slide_wrap .mv_slide_ctn {
     height: 600px;
     overflow: hidden;
 }
 
-.about-box .slide_wrap .slide_ui .progress_ctn {
-    margin-top: 0;
-    gap: 0;
+.about-box .slide_wrap .progress_bar {
+    height: 7px;
+    border: 1px solid var(--color-beigebg);
+    border: 1px solid var(--color-border);
 }
 
-.about-box .slide_wrap .slide_ui {
+.about-box .slide_wrap .progress_bar_fill {
+    background-color: var(--color-beigebg);
+    background-color: var(--color-border);
+}
+
+.about-box .slide_wrap .play_btn {
+    border: 1px solid var(--color-border);
+    background-color: var(--color-border);
+}
+
+.about-box .slide_wrap .mv_slide_ui {
     width: 100%;
     max-width: 100%;
     position: absolute;
@@ -658,62 +672,65 @@ input {
     bottom: 0px;
     left: 0;
     transform: translate(0);
+    justify-content: flex-end;
 }
 
-.about-box .slide_wrap .slide_ui .progress_ctn .bar {
+.about-box .progress_ctn .bar {
     width: 60px;
 }
 
-.about-box .slide_wrap .slide_ui .progress_ctn .bar span {
+.about-box .progress_ctn .bar span {
     top: 13px;
 }
 
-.about-box .slide_wrap .slide_ui .progress_ctn .bar::before {
+.about-box .progress_ctn .bar::before {
     background-color: var(--color-border);
     height: 5px;
     top: 13px;
 }
 
-.about-box .slide_wrap .slide_ui .progress_ctn .bar.active span {
+.about-box .progress_ctn .bar.active span {
     height: 5px;
 }
 
-.about-box .slide_wrap .slide_ui .progress_ctn .bar.active span {
-    /* width: 90% !important; */
-}
-
-.about-box.slide_wrap .slide_ui .progress_ctn .play_btn .stop.on {
+.about-boxs .progress_ctn .play_btn .stop.on {
     background-color: var(--color-border);
 }
 
-.about-box .slide_wrap .slide_ui .progress_ctn .play_btn .stop {
-    background-color: var(--color-border);
+.about-box .progress_ctn .play_btn .stop {
+    border-color: transparent transparent transparent #fff
 }
 
-.about-box .slide_wrap .slide_ui .progress_ctn .play_btn .stop.on {
-    background-color: var(--color-border);
-}
-
-.about-box .slide_wrap .slide_ctn .item .bg {
+.about-box .slide_wrap .mv_slide_ctn .item .bg {
     height: 650px;
 }
 
-.about-box .slide_wrap .slide_ctn .item .bg01 {
+.about-box .slide_wrap .mv_slide_ctn .item .bg01 {
     background: url(../images/sub/brand-about01.jpg) 50% 50% no-repeat;
 }
 
-.about-box .slide_wrap .slide_ctn .item .bg02 {
+.about-box .slide_wrap .mv_slide_ctn .item .bg02 {
     background: url(../images/sub/brand-about02.jpg) 0% 50% no-repeat;
 }
 
-.about-box .slide_wrap .slide_ctn .item .bg03 {
+.about-box .slide_wrap .mv_slide_ctn .item .bg03 {
     background: url(../images/sub/brand-about03.jpg) 50% 50% no-repeat;
 }
 
-.about-box .slide_wrap .slide_ctn .item.slick-active .bg01,
-.about-box .slide_wrap .slide_ctn .item.slick-active .bg02,
-.about-box .slide_wrap .slide_ctn .item.slick-active .bg03 {
+.about-box .slide_wrap .mv_slide_ctn .item.slick-active .bg01,
+.about-box .slide_wrap .mv_slide_ctn .item.slick-active .bg02,
+.about-box .slide_wrap .mv_slide_ctn .item.slick-active .bg03 {
     animation: zoom 2s both;
+}
+
+@keyframes zoom {
+    0% {
+        transform: scale(1.02);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 .about-txt {
@@ -737,8 +754,9 @@ input {
 .about-txt p {}
 
 
-/* 어바웃-브랜드 영역 */
 
+
+/* 어바웃-브랜드 영역 */
 .s-brand-sec {
     position: relative;
     width: 100%;
@@ -930,7 +948,9 @@ input {
 
 
 
+
 /****** 4. Community 영역 ******/
+
 .s-community-sec {}
 
 #sub .sub-content.s-community-sec {
@@ -1177,7 +1197,7 @@ input {
 
 
 @media (max-width: 1500px) {
-    .about-box .slide_wrap .slide_ui {
+    .about-box .slide_wrap .mv_slide_ui {
         padding: 0;
     }
 }
@@ -1335,19 +1355,19 @@ input {
         height: 500px;
     }
 
-    .about-box .slide_wrap .slide_ui .progress_ctn .bar::before {
+    .about-box .progress_ctn .bar::before {
         top: 10px;
     }
 
-    .about-box .slide_wrap .slide_ui .progress_ctn .bar span {
+    .about-box .progress_ctn .bar span {
         top: 10px;
     }
 
-    .about-box .slide_wrap .slide_ctn .item .bg {
+    .about-box .slide_wrap .mv_slide_ctn .item .bg {
         height: 450px;
     }
 
-    .about-box .slide_wrap .slide_ui .progress_ctn {
+    .about-box .progress_ctn {
         justify-content: center;
     }
 
@@ -1621,7 +1641,7 @@ input {
         padding: 40px;
     }
 
-    .about-box .slide_wrap .slide_ui .progress_ctn .bar {
+    .about-box .progress_ctn .bar {
         width: 40px;
     }
 

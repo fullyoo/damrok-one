@@ -255,8 +255,245 @@ $(function () {
 
     /****** 4. Why Damrok? 어바웃 영역 ******/
 
+    // 1-1. 삼항연산자- 모바일과 데스크탑에 따라 재생 속도 다르게 설정 - 모바일이 더 빠름
+    const autoplaySpeed = (/Mobi|Android/i.test(navigator.userAgent)) ? 2000 : 3000;
+    let isPlaying = true;
 
 
+    // 1-2. if문으로 풀어서 작성
+    // const autoplaySpeed = 5000;
+    // let autoplaySpeed = 5000;
+    // if (/Mobi|Android/i.test(navigator.userAgent)) {
+    //     autoplaySpeed = 3000;
+    // }
+
+
+    // 진행바 생성
+    function createProgressBars(slideCount) {
+        const barsContainer = $('.bars_container');
+        barsContainer.empty(); // 기존 진행바 제거
+
+        for (let i = 0; i < slideCount; i++) {
+            const bar = $(`
+                <div class="progress_bar" data-index="${i}">
+                    <div class="progress_bar_fill"></div>
+                </div>
+            `);
+
+            // 각 진행바에 클릭 이벤트 직접 바인딩
+            bar.on('click', function (e) {
+                e.stopPropagation();
+                const targetIndex = $(this).data('index');
+                console.log('Bar clicked:', targetIndex); // 디버깅용
+                $('.mv_slide_ctn').slick('slickGoTo', targetIndex);
+
+                // 클릭 시 자동재생이 멈춰있다면 다시 시작
+                if (!isPlaying) {
+                    $('.mv_slide_ctn').slick('slickPlay');
+                    $('.play_btn').addClass('playing');
+                    isPlaying = true;
+                }
+            });
+
+            barsContainer.append(bar);
+        }
+    }
+
+    // 진행바 업데이트
+    function updateProgressBar(currentIndex) {
+        $('.progress_bar').removeClass('active');
+        $('.progress_bar .progress_bar_fill').css('width', '0%');
+
+        $('.progress_bar').each(function (index) {
+            if (index < currentIndex) {
+                $(this).find('.progress_bar_fill').css('width', '100%');
+            } else if (index === currentIndex) {
+                $(this).addClass('active');
+                $(this).find('.progress_bar_fill').css({
+                    'animation-duration': (autoplaySpeed / 1000) + 's',
+                    'width': '100%'
+                });
+            }
+        });
+    }
+
+    // 슬라이더 초기화
+    function initSlider() {
+        const slideCount = $('.mv_slide_ctn .item').length;
+
+        // 진행바 생성 (슬라이더 초기화 전에)
+        createProgressBars(slideCount);
+
+        $('.mv_slide_ctn').slick({
+            arrows: false,
+            fade: true,
+            autoplay: true,
+            autoplaySpeed: autoplaySpeed,
+            infinite: true,
+            speed: 500,
+            pauseOnHover: false,
+            pauseOnFocus: false,
+            cssEase: "linear",
+        });
+
+        // 초기 진행바 설정
+        updateProgressBar(0);
+
+        // 슬라이드 변경 시 진행바 업데이트
+        $('.mv_slide_ctn').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+            updateProgressBar(nextSlide);
+        });
+
+        // 재생/정지 버튼
+        $('.play_btn').on('click', function () {
+            if (isPlaying) {
+                $('.mv_slide_ctn').slick('slickPause');
+                $(this).removeClass('playing');
+                $('.progress_bar.active .progress_bar_fill').css('animation-play-state', 'paused');
+                isPlaying = false;
+            } else {
+                $('.mv_slide_ctn').slick('slickPlay');
+                $(this).addClass('playing');
+                $('.progress_bar.active .progress_bar_fill').css('animation-play-state', 'running');
+                isPlaying = true;
+            }
+        });
+
+        // 초기 상태를 재생 중으로 설정
+        $('.play_btn').addClass('playing');
+    }
+
+
+    /***********************************************
+     * ※ 추가된 기능 : 모바일 스크롤 시 autoplay 유지
+     ***********************************************/
+    let scrollTimer;
+
+    $(window).on('scroll touchmove', function () {
+
+        // 스크롤 중 자동재생이 꺼져있으면 강제로 다시 재생
+        if (!isPlaying) {
+            $('.mv_slide_ctn').slick('slickPlay');
+            $('.play_btn').addClass('playing');
+            isPlaying = true;
+        }
+
+        // 스크롤 멈추고 150ms 후에도 autoplay 유지
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(() => {
+            $('.mv_slide_ctn').slick('slickPlay');
+            $('.play_btn').addClass('playing');
+            isPlaying = true;
+        }, 20); // 150ms에서 20ms로 변경
+    });
+
+
+    /***********************************************
+     * ※ 추가된 기능 : iOS visibilitychange 대응
+     * (Safari가 스크롤 중일 때도 hidden 처리되는 문제)
+     ***********************************************/
+    document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === "visible") {
+            $('.mv_slide_ctn').slick('slickPlay');
+            $('.play_btn').addClass('playing');
+            isPlaying = true;
+        }
+    });
+
+    initSlider();
+
+
+
+    /****** 4-2. Why Damrok? 어바웃 영역 - 자동재생 아닌 버전 ******/
+
+    //  참조 gpt 링크
+    // https://chatgpt.com/share/69392013-2990-8003-9d22-9f88dd4311cc
+
+
+    /* 1. 모바일/PC 속도 정의 (진행바 애니메이션 시간에만 사용됨) */
+    const autoplaySpeed = (/Mobi|Android/i.test(navigator.userAgent)) ? 2000 : 3000;
+    let isPlaying = false; // 자동재생 기능이 없으므로 항상 false 유지
+
+
+    /* 진행바 생성 */
+    function createProgressBars(slideCount) {
+        const barsContainer = $('.bars_container');
+        barsContainer.empty();
+
+        for (let i = 0; i < slideCount; i++) {
+            const bar = $(`
+                <div class="progress_bar" data-index="${i}">
+                    <div class="progress_bar_fill"></div>
+                </div>
+            `);
+
+            // 진행바 클릭 → 슬라이드 이동만
+            bar.on('click', function (e) {
+                e.stopPropagation();
+                const targetIndex = $(this).data('index');
+                $('.mv_slide_ctn').slick('slickGoTo', targetIndex);
+            });
+
+            barsContainer.append(bar);
+        }
+    }
+
+
+    /* 진행바 업데이트 */
+    function updateProgressBar(currentIndex) {
+        $('.progress_bar').removeClass('active');
+        $('.progress_bar .progress_bar_fill').css('width', '0%');
+
+        $('.progress_bar').each(function (index) {
+            if (index < currentIndex) {
+                $(this).find('.progress_bar_fill').css('width', '100%');
+            } else if (index === currentIndex) {
+                $(this).addClass('active');
+                $(this).find('.progress_bar_fill').css({
+                    'width': '100%',
+                    'transition': `${autoplaySpeed}ms linear`
+                });
+            }
+        });
+    }
+
+
+    /* 슬라이더 초기화 */
+    function initSlider() {
+        const slideCount = $('.mv_slide_ctn .item').length;
+
+        createProgressBars(slideCount);
+
+        $('.mv_slide_ctn').slick({
+            arrows: false,
+            fade: true,
+            autoplay: false,         // ★ 자동재생 완전 OFF
+            autoplaySpeed: autoplaySpeed,
+            infinite: true,
+            speed: 500,
+            pauseOnHover: false,
+            pauseOnFocus: false,
+            cssEase: "linear"
+        });
+
+        updateProgressBar(0);
+
+        // 슬라이드 변경 시 진행바만 갱신
+        $('.mv_slide_ctn').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+            updateProgressBar(nextSlide);
+        });
+
+        // play 버튼은 의미가 없으므로 "재생" 기능 삭제하고 CSS 클래스만 관리
+        $('.play_btn').removeClass('playing');
+    }
+
+
+    /* 불필요한 자동재생 관련 코드는 전부 삭제됨 */
+    /* scroll 이벤트 제거 */
+    /* visibilitychange 이벤트 제거 */
+
+
+    initSlider();
 
 
 

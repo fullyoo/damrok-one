@@ -320,6 +320,45 @@
         }
 
 
+        /*** ===========================
+        모바일 스크롤 시 autoplay 유지
+    ============================ ***/
+
+        let scrollTimer;
+
+        $(window).on('scroll touchmove', function () {
+
+            // 스크롤 중 autoplay 꺼져 있으면 강제 실행
+            if (!isPlaying) {
+                $('.mv_slide_ctn').slick('slickPlay');
+                $('.play_btn').addClass('playing');
+                isPlaying = true;
+            }
+
+            // 스크롤이 멈춘 후에도 재생 유지
+            clearTimeout(scrollTimer);
+            scrollTimer = setTimeout(() => {
+                $('.mv_slide_ctn').slick('slickPlay');
+                $('.play_btn').addClass('playing');
+                isPlaying = true;
+            }, 150);
+        });
+
+        // iOS Safari는 스크롤 중 visibilityState가 hidden 되기도 함 → 복구 처리
+        document.addEventListener("visibilitychange", () => {
+            if (document.visibilityState === "visible") {
+                $('.mv_slide_ctn').slick('slickPlay');
+                $('.play_btn').addClass('playing');
+                isPlaying = true;
+            }
+        });
+
+
+        /*** ===========================
+        화면 높이 세팅
+    ============================ ***/
+
+
         // 상단 비주얼 세로 중앙
         function setVh() {
             let vh = window.innerHeight * 0.01;

@@ -221,8 +221,11 @@
     <script src="./assets/js/common.js"></script>
     <script src="./assets/js/main.js"></script>
     <script>
-        const autoplaySpeed = 5000;
+        // const autoplaySpeed = 5000;
+        // 모바일과 데스크탑에 따라 재생 속도 다르게 설정 - 모바일이 더 빠름 - 삼항연산자
+        const autoplaySpeed = (/Mobi|Android/i.test(navigator.userAgent)) ? 3000 : 5000;
         let isPlaying = true;
+
 
         // 진행바 생성
         function createProgressBars(slideCount) {
@@ -340,7 +343,7 @@
                 $('.mv_slide_ctn').slick('slickPlay');
                 $('.play_btn').addClass('playing');
                 isPlaying = true;
-            }, 0); // 150ms에서 0ms로 변경
+            }, 20); // 150ms에서 20ms로 변경
         });
 
 

@@ -650,13 +650,13 @@ input {
 
 .about-box .slide_wrap .progress_bar {
     height: 7px;
-    border: 1px solid var(--color-beigebg);
     border: 1px solid var(--color-border);
+    border: 1px solid var(--color-beigebg);
 }
 
 .about-box .slide_wrap .progress_bar_fill {
-    background-color: var(--color-beigebg);
     background-color: var(--color-border);
+    background-color: var(--color-beigebg);
 }
 
 .about-box .slide_wrap .play_btn {
@@ -1355,6 +1355,10 @@ input {
         height: 500px;
     }
 
+    .about-box .slide_wrap .mv_slide_ui {
+        align-items: center;
+    }
+
     .about-box .progress_ctn .bar::before {
         top: 10px;
     }
@@ -1365,10 +1369,6 @@ input {
 
     .about-box .slide_wrap .mv_slide_ctn .item .bg {
         height: 450px;
-    }
-
-    .about-box .progress_ctn {
-        justify-content: center;
     }
 
     .about-txt {

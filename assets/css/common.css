@@ -961,6 +961,10 @@ video {
 		width: 160px;
 	}
 
+	.footer .top .addr ul li:last-of-type b {
+		display: block;
+	}
+
 	.sns-box img {
 		width: 30px;
 	}

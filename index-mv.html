@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- iOS 전화번호, 이메일 자동링크 방지 -->
+    <meta name="format-detection" content="telephone=no, email=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>index-mv</title>
+    <link rel="icon" href="./assets/images/common/favicon.ico" type="image/x-icon">
+
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" > -->
+    <link rel="stylesheet" href="./assets/css/slick.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@xpressengine/xeicon@2.3.3/xeicon.min.css">
+
+    <link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/common.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/aos.css">
+    <link rel="stylesheet" href="./assets/css/main--.css">
+
+    <style>
+        html {
+            overflow-y: scroll;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="bg"></div>
+        <div class="header-wrap w1500">
+            <h1 class="logo">
+                <a href="/"><img src="./assets/images/common/logo.svg" alt="로고"></a>
+            </h1>
+            <nav class="gnb">
+                <ul>
+                    <li>
+                        <a href="./chair-list.html">CHAIR</a>
+                        <!-- <ul class="sub_depth sub_depth01">
+                        <li><a href="#">CEO인사말</a></li>
+                        <li><a href="#">연혁</a></li>
+                    </ul> -->
+                    </li>
+                    <li>
+                        <a href="./brand.html">Why Damrok?</a>
+                    </li>
+                    <li>
+                        <a href="./cummunity.html">COMMUNITY</a>
+                    </li>
+                    <li>
+                        <a href="./contact.html">CONTACT</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header_ui">
+                <div class="m_btn">
+                    <span></span>
+                </div>
+                <div class="m_gnb"></div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main" class="wrap">
+        <section class="mv-sec">
+            <div class="slide_wrap">
+                <div class="mv_slide_ctn">
+                    <div class="item">
+                        <div class="bg bg04"></div>
+                    </div>
+                    <div class="item">
+                        <div class="bg bg03"></div>
+                    </div>
+                    <div class="item">
+                        <div class="bg bg02"></div>
+                    </div>
+                    <div class="item">
+                        <div class="bg bg01">
+                            <video loop playsinline muted autoplay>
+                                <source src="./assets/images/main/mv01.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+                <div class="mv_slide_ui">
+                    <div class="m_tit">
+                        <div class="slide_txt">
+                            <div class="item">
+                                <h2>Damrok</h2>
+                                <h4>"은은한 초록, 머무는 쉼"</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="progress_ctn">
+                        <div class="bars_container"></div>
+                        <div class="play_btn">
+                            <div class="stop"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="./assets/js/jquery-3.7.1.min.js"></script>
+    <script src="./assets/js/jquery-latest.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="./assets/js/aos.js"></script>
+    <script>AOS.init();</script>
+
+    <script src="./assets/js/common.js"></script>
+    <script src="./assets/js/main--.js"></script>
+    <script>
+        const autoplaySpeed = 5000;
+        let isPlaying = true;
+
+        // 진행바 생성
+        function createProgressBars(slideCount) {
+            const barsContainer = $('.bars_container');
+            barsContainer.empty(); // 기존 진행바 제거
+
+            for (let i = 0; i < slideCount; i++) {
+                const bar = $(`
+                    <div class="progress_bar" data-index="${i}">
+                        <div class="progress_bar_fill"></div>
+                    </div>
+                `);
+
+                // 각 진행바에 클릭 이벤트 직접 바인딩
+                bar.on('click', function (e) {
+                    e.stopPropagation();
+                    const targetIndex = $(this).data('index');
+                    console.log('Bar clicked:', targetIndex); // 디버깅용
+                    $('.mv_slide_ctn').slick('slickGoTo', targetIndex);
+
+                    // 클릭 시 자동재생이 멈춰있다면 다시 시작
+                    if (!isPlaying) {
+                        $('.mv_slide_ctn').slick('slickPlay');
+                        $('.play_btn').addClass('playing');
+                        isPlaying = true;
+                    }
+                });
+
+                barsContainer.append(bar);
+            }
+        }
+
+        // 진행바 업데이트
+        function updateProgressBar(currentIndex) {
+            $('.progress_bar').removeClass('active');
+            $('.progress_bar .progress_bar_fill').css('width', '0%');
+
+            $('.progress_bar').each(function (index) {
+                if (index < currentIndex) {
+                    $(this).find('.progress_bar_fill').css('width', '100%');
+                } else if (index === currentIndex) {
+                    $(this).addClass('active');
+                    $(this).find('.progress_bar_fill').css({
+                        'animation-duration': (autoplaySpeed / 1000) + 's',
+                        'width': '100%'
+                    });
+                }
+            });
+        }
+
+        // 슬라이더 초기화
+        function initSlider() {
+            const slideCount = $('.mv_slide_ctn .item').length;
+
+            // 진행바 생성 (슬라이더 초기화 전에)
+            createProgressBars(slideCount);
+
+            $('.mv_slide_ctn').slick({
+                arrows: false,
+                fade: true,
+                autoplay: true,
+                autoplaySpeed: autoplaySpeed,
+                infinite: true,
+                speed: 500,
+                pauseOnHover: false,
+                pauseOnFocus: false,
+                cssEase: "linear",
+            });
+
+            // 초기 진행바 설정
+            updateProgressBar(0);
+
+            // 슬라이드 변경 시 진행바 업데이트
+            $('.mv_slide_ctn').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+                updateProgressBar(nextSlide);
+            });
+
+            // 재생/정지 버튼
+            $('.play_btn').on('click', function () {
+                if (isPlaying) {
+                    $('.mv_slide_ctn').slick('slickPause');
+                    $(this).removeClass('playing');
+                    $('.progress_bar.active .progress_bar_fill').css('animation-play-state', 'paused');
+                    isPlaying = false;
+                } else {
+                    $('.mv_slide_ctn').slick('slickPlay');
+                    $(this).addClass('playing');
+                    $('.progress_bar.active .progress_bar_fill').css('animation-play-state', 'running');
+                    isPlaying = true;
+                }
+            });
+
+            // 초기 상태를 재생 중으로 설정
+            $('.play_btn').addClass('playing');
+        }
+
+
+        // 상단 비주얼 세로 중앙
+        function setVh() {
+            let vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
+
+        // 페이지 시작
+        function startPage() {
+            setVh();
+            initSlider();
+        }
+
+        // 초기 실행
+        setVh();
+
+        // intro 끝난 후 (0s: 즉시 실행하도록 수정, 필요시 3600으로 변경)
+        setTimeout(startPage, 0);
+
+        // resize 대응
+
+        $(window).on('resize', function () {
+            setVh();
+        });
+
+    </script>
+</body>
+
+</html>

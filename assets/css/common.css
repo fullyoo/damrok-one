@@ -65,6 +65,15 @@
 	display: none;
 }
 
+video {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	/* 화면 꽉 채우기, 비율 유지 */
+	object-position: center top;
+	/* 보이는 영역 기준 위치 */
+}
+
 
 /* privacy */
 .privacy {

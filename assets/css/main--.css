@@ -1555,8 +1555,6 @@ body:has(.intro[style*="display: block"]) {
         /* fallback */
         height: calc(var(--vh, 1vh) * 100 - 70px);
         height: calc(100dvh - 70px);
-        height: 100%;
-        height: calc(100vh - 70px);
     }
 
     .m_tit h2 {
@@ -1937,6 +1935,14 @@ body:has(.intro[style*="display: block"]) {
             opacity: 0;
         }
     }
+
+    .mv-sec {
+        /* fallback */
+        height: 100%;
+        height: calc(100vh - 70px);
+        height: 850px;
+    }
+
 }
 
 

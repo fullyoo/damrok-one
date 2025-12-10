@@ -988,7 +988,7 @@ a.cta:hover .line-wrap,
 }
 
 .m-contanct-sec .m_tit p {
-	margin-top: 10px;
+	margin-top: 15px;
 }
 
 
@@ -1858,7 +1858,7 @@ body:has(.intro[style*="display: block"]) {
 
 	.m-contanct-sec {
 		min-height: auto;
-		padding: 40px 0 20px;
+		padding: 40px 0;
 	}
 
 	.m-contanct-sec .box {
@@ -1968,8 +1968,8 @@ body:has(.intro[style*="display: block"]) {
 	}
 
 	.insta-img {
-		min-width: 150px;
-		height: 150px;
+		min-width: 200px;
+		height: 200px;
 		border-radius: 6px;
 	}
 

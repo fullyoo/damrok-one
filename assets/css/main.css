@@ -236,7 +236,7 @@ a.cta:hover .line-wrap,
 	align-items: flex-start;
 	pointer-events: none;
 	z-index: 10;
-	gap: 80px;
+	gap: 50px;
 }
 
 .mv-sec .slide_wrap .mv_slide_ui .m_tit {

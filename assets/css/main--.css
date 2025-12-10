@@ -1555,6 +1555,7 @@ body:has(.intro[style*="display: block"]) {
         /* fallback */
         height: calc(var(--vh, 1vh) * 100 - 70px);
         height: calc(100dvh - 70px);
+        height: 100%;
     }
 
     .m_tit h2 {

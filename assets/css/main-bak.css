@@ -2,7 +2,7 @@
 
 /***** 공통 영역 *****/
 
-#main {
+main {
     margin-top: 95px;
     background-color: var(--color-white);
 }
@@ -163,42 +163,25 @@ a.cta:hover .line-wrap,
 
 /****** 1. 메인 비주얼 영역 ******/
 
-.mv-sec {
-    position: relative;
-    width: 100%;
-    height: calc(100vh - 95px);
-    /* height: 100vh; */
-    /* height: calc(var(--vh, 1vh) * 100); */
-    /* margin-top: 95px; */
-    overflow: hidden;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .mv-sec .slide_wrap {
-    width: 100%;
-    height: 100%;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.mv_slide_ctn {
-    width: 100%;
-    height: 100%;
-}
+.mv-sec .slide_wrap .slide_ctn {}
 
-.mv-sec .slide_wrap .mv_slide_ctn .item .bg {
+.mv-sec .slide_wrap .slide_ctn .item {}
+
+.mv-sec .slide_wrap .slide_ctn .item .bg {
     position: relative;
     width: 100%;
     height: 100vh;
     background-size: cover !important;
 }
 
-.mv-sec .slide_wrap .mv_slide_ctn .item .bg::before {
+.mv-sec .slide_wrap .slide_ctn .item .bg::before {
     content: '';
     width: 100%;
     height: 100%;
@@ -209,43 +192,91 @@ a.cta:hover .line-wrap,
     z-index: 1;
 }
 
-.mv-sec .slide_wrap .mv_slide_ctn .item .bg02 {
+.mv-sec .slide_wrap .slide_ctn .item .bg video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.mv-sec .slide_wrap .slide_ctn .item .bg02 {
     background: url(../images/main/mv02.jpg) 50% 50% no-repeat;
 }
 
-.mv-sec .slide_wrap .mv_slide_ctn .item .bg03 {
+.mv-sec .slide_wrap .slide_ctn .item .bg03 {
     background: url(../images/main/mv03.jpg) 50% 50% no-repeat;
 }
 
-.mv-sec .slide_wrap .mv_slide_ctn .item .bg04 {
+.mv-sec .slide_wrap .slide_ctn .item .bg04 {
     background: url(../images/main/mv04.jpg) 50% 50% no-repeat;
 }
 
-.mv-sec .slide_wrap .mv_slide_ui {
+.mv-sec .slide_wrap .slide_ui {
     position: absolute;
     top: 50%;
     left: 50%;
     width: 100%;
     max-width: 1500px;
     transform: translate(-50%, -50%);
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    align-items: flex-start;
-    pointer-events: none;
-    z-index: 10;
-    gap: 80px;
 }
 
-.mv-sec .slide_wrap .mv_slide_ui .m_tit {
-    /* text-align: center; */
-    /* flex: 1; */
+.mv-sec .slide_wrap .slide_ui .slide_txt .item p {
+    font-weight: 300;
+    font-size: 20px;
+    color: var(--color-white);
+    margin-top: 24px;
+    animation: fadeUp 1s 0.3s both
+}
+
+.mv-sec .slide_wrap .slide_ui .progress_ctn {
     display: flex;
     align-items: center;
-    justify-content: center;
-    animation: fadeUp 1s both;
+    margin-top: 70px;
+}
+
+.mv-sec .slide_wrap .slide_ui .progress_ctn .bar {
+    position: relative;
+    width: 250px;
+    height: 3px;
+    background-color: var(--color-lightbg);
+}
+
+.mv-sec .slide_wrap .slide_ui .progress_ctn .bar span {
+    display: inline-block;
+    vertical-align: top;
+    width: 0;
+    height: 100%;
+    /* background-color: var(--color-white); */
+}
+
+.mv-sec .slide_wrap .slide_ui .progress_ctn .play_btn {
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.mv-sec .slide_wrap .slide_ui .progress_ctn .play_btn .stop {
+    width: 30px;
+    height: 30px;
+    background: url(../images/main/icon_stop.png) 50% 50% no-repeat;
+}
+
+.mv-sec .slide_wrap .slide_ui .progress_ctn .play_btn .stop.on {
+    background: url(../images/main/icon_play.png) 50% 50% no-repeat;
+}
+
+.mv-sec .slide_wrap .slide_ctn .item.slick-active .bg02,
+.mv-sec .slide_wrap .slide_ctn .item.slick-active .bg03,
+.mv-sec .slide_wrap .slide_ctn .item.slick-active .bg04 {
+    animation: zoom 2s both;
+}
+
+.mv-sec .slide_wrap .slide_ctn .item.slick-active .bg01,
+.mv-sec .slide_wrap .slide_ctn .item.slick-active .bg05 {
+    animation: fade 2s both;
 }
 
 @keyframes fadeUp {
@@ -260,11 +291,7 @@ a.cta:hover .line-wrap,
     }
 }
 
-.mv-sec .slide_wrap .mv_slide_ctn .item.slick-active .bg01 {
-    animation: fadeBg 2s both;
-}
-
-@keyframes fadeBg {
+@keyframes fade {
     0% {
         opacity: 0.5;
     }
@@ -272,12 +299,6 @@ a.cta:hover .line-wrap,
     100% {
         opacity: 1;
     }
-}
-
-.mv-sec .slide_wrap .mv_slide_ctn .item.slick-active .bg02,
-.mv-sec .slide_wrap .mv_slide_ctn .item.slick-active .bg03,
-.mv-sec .slide_wrap .mv_slide_ctn .item.slick-active .bg04 {
-    animation: zoom 2s both;
 }
 
 @keyframes zoom {
@@ -290,126 +311,235 @@ a.cta:hover .line-wrap,
     }
 }
 
-.slide_txt h2 {
-    font-weight: 800;
-}
 
+/* 메인비주얼-추가영역 */
 
-/* 추가된 내용 */
-.bars_container {
-    display: flex;
-    gap: 10px;
-}
-
-.progress_ctn {
-    /* position: absolute; */
-    bottom: 40px;
-    left: 50%;
-    /* transform: translateX(-50%); */
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    pointer-events: all;
-}
-
-.progress_bar {
-    width: 60px;
-    height: 4px;
-    background-color: rgba(255 255 255/ 30%);
-    border-radius: 2px;
-    overflow: hidden;
+.mv-sec {
     position: relative;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
+    width: 100%;
+    height: 100vh;
+    height: calc(100vh - 95px);
+    overflow: hidden;
+    /* margin-top: 95px; */
 
-.progress_bar:hover {
-    transform: scaleY(1);
-}
-
-.progress_bar_fill {
-    width: 0%;
-    height: 100%;
-    background-color: var(--color-white);
-    transition: width 0.1s linear;
-}
-
-.progress_bar.active .progress_bar_fill {
-    animation: progress linear;
-}
-
-@keyframes progress {
-    from {
-        width: 0%;
-    }
-
-    to {
-        width: 100%;
-    }
-}
-
-.play_btn {
-    width: 40px;
-    height: 40px;
-    background-color: rgba(255 255 255 /20%);
-    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
-    transition: background 0.3s;
-    backdrop-filter: blur(10px);
 }
 
-.play_btn:hover {
-    background-color: rgba(255 255 255 / 30%);
+.slide_wrap {
+    width: 100%;
+    height: 100%;
 }
 
+.slide_ctn {
+    width: 100%;
+    height: 100%;
+}
 
-.stop {
-    width: 12px;
-    height: 12px;
-    background-color: var(--color-white);
+.item {
+    /* width: 100%;
+            height: 100vh;
+            position: relative; */
+}
+
+.bg {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.bg01 {
+    background-color: #ff6b6b;
+}
+
+.bg02 {
+    background-color: #4ecdc4;
+}
+
+.bg04 {
+    background-color: #45b7d1;
+}
+
+video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide_ui {
+    position: absolute;
+    left: 50px;
+    /* bottom: 50px; */
+    z-index: 10;
+}
+
+.slide_txt {
+    margin-bottom: 30px;
+}
+
+.slide_txt h2 {
+    font-weight: 800;
+    animation: fadeUp 1s both
+}
+
+.slide_txt p {
+    color: var(--color-white);
+    font-size: 72px;
+    opacity: 0.9;
+}
+
+.progress_ctn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bars_container {
+    display: flex;
+    gap: 0px;
+}
+
+/* 개선된 bar 컨테이너 - 클릭 영역 확장 */
+.mv-sec .slide_wrap .slide_ui .progress_ctn .bar {
     position: relative;
+    width: 50px;
+    height: 3px;
+    background: none;
+    cursor: pointer;
+    /* 클릭 영역을 위아래로 확장 */
+    margin: -15px 0px;
 }
 
-.stop::before,
-.stop::after {
+/* 실제 진행바는 패딩 안쪽에 위치 */
+.mv-sec .slide_wrap .slide_ui .progress_ctn .bar::before {
     content: '';
     position: absolute;
-    width: 4px;
-    height: 12px;
+    top: 15px;
+    left: 5px;
+    right: 5px;
+    height: 3px;
+    background-color: var(--color-lightbg);
+    transition: var(--transition-3s);
+}
+
+.mv-sec .slide_wrap .slide_ui .progress_ctn .bar span {
+    position: absolute;
+    top: 15px;
+    left: 5px;
+    width: 0;
+    height: 3px;
+    background-color: var(--color-primary);
+    background: none;
+    transition: var(--transition-3s);
+    z-index: 1;
+    display: block;
+}
+
+.mv-sec .slide_wrap .slide_ui .progress_ctn .bar.active span {
     background-color: var(--color-white);
-    top: 0;
+    background-color: var(--color-primary);
+    /* width: 90% !important; */
 }
 
-.stop::before {
-    left: 0;
+.mv-sec .slide_wrap .slide_ui .progress_ctn .bar.completed span {
+    opacity: 0;
+    width: 100% !important;
+    background-color: var(--color-white);
+    background: none;
 }
 
-.stop::after {
-    right: 0;
+/* 호버 효과 추가 */
+.mv-sec .slide_wrap .slide_ui .progress_ctn .bar:hover::before {
+    /* background-color: var(--color-white); */
 }
 
-.play_btn.playing .stop {
-    background-color: transparent;
+.play_btn {
+    margin-left: 15px;
 }
 
-.play_btn.playing .stop::before,
-.play_btn.playing .stop::after {
-    display: none;
+.mv-sec .slide_wrap .slide_ui .progress_ctn .play_btn .stop {
+    width: 30px;
+    height: 30px;
+    background-color: var(--color-lightbg);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* transition: var(--transition-3s); */
 }
 
-.play_btn.playing .stop {
+.stop:hover {
+    background-color: var(--color-lightbg);
+}
+
+.mv-sec .slide_wrap .slide_ui .progress_ctn .play_btn .stop:hover {
+    background-color: var(--color-primary) !important;
+}
+
+.mv-sec .slide_wrap .slide_ui .progress_ctn .play_btn .stop.on {
+    background-color: var(--color-lightbg);
+}
+
+.stop.on:before {
+    content: '';
     width: 0;
     height: 0;
-    border-style: solid;
-    border-width: 6px 0 6px 10px;
-    border-color: transparent transparent transparent var(--color-white);
-    background-color: transparent;
+    border-left: 8px solid var(--color-white);
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    margin-left: 2px;
+    background: none;
+    box-shadow: none;
 }
 
+.stop:before {
+    content: '';
+    width: 1px;
+    height: 11px;
+    background-color: var(--color-white);
+    border: none;
+    box-shadow: 5px 0 0 var(--color-white);
+    margin-left: -5px;
+}
 
+/* 개선된 바 텍스트 스타일 - 클릭 가능, bar 위쪽에 위치 */
+.bar-text {
+    position: absolute;
+    top: -25px;
+    left: 5px;
+    color: var(--color-white);
+    font-size: 12px;
+    font-weight: 500;
+    opacity: 0.6;
+    transition: var(--transition-3s);
+    white-space: nowrap;
+    cursor: pointer;
+    z-index: 2;
+    /* 클릭 영역 확장을 위한 패딩 */
+    padding: 5px 0;
+    margin: -5px 0;
+}
+
+/* 텍스트 호버 효과 */
+.bar-text:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.mv-sec .slide_wrap .slide_ui .progress_ctn .bar.active .bar-text {
+    opacity: 1;
+    color: var(--color-white);
+    font-weight: 700;
+    transform: translateY(2px);
+}
+
+/* 활성 상태의 텍스트 호버 */
+.mv-sec .slide_wrap .slide_ui .progress_ctn .bar.active .bar-text:hover {
+    transform: translateY(3px);
+}
 
 
 
@@ -587,8 +717,6 @@ a.cta:hover .line-wrap,
 }
 
 
-
-
 /****** 3. 글자롤링 영역 text-slide ******/
 .m-flow-sec {
     padding: 20px 0 70px;
@@ -693,6 +821,12 @@ a.cta:hover .line-wrap,
     position: absolute;
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* 화면 꽉 채우기, 비율 유지 */
+    object-position: center top;
+    /* 보이는 영역 기준 위치 */
 }
 
 .m-brand-sec .video-item {
@@ -1489,18 +1623,17 @@ body:has(.intro[style*="display: block"]) {
 /****** 반응형 브레이크 포인트 (모바일 반응형)******/
 
 @media (max-width: 1700px) {
-    .m-about-sec .slide_wrap .slide_ctn .slick-track {
-        left: 22vw;
-    }
-
     .m-news-sec .cont .list .item .position_img {
         right: 0;
     }
 
+    .m-about-sec .slide_wrap .slide_ctn .slick-track {
+        left: 22vw;
+    }
 }
 
 @media (max-width: 1500px) {
-    .mv-sec .slide_wrap .mv_slide_ui {
+    .mv-sec .slide_wrap .slide_ui {
         padding: 0 40px;
     }
 
@@ -1587,11 +1720,11 @@ body:has(.intro[style*="display: block"]) {
         transform: scale(0.8);
     }
 
-    #main {
+    main {
         margin-top: 70px;
     }
 
-    .mv-sec .slide_wrap .mv_slide_ui {
+    .mv-sec .slide_wrap .slide_ui {
         padding: 0 16px;
     }
 
@@ -1679,8 +1812,17 @@ body:has(.intro[style*="display: block"]) {
         /* display: none; */
     }
 
-    .mv-sec .slide_wrap .mv_slide_ui {
+    .mv-sec .slide_wrap .slide_ui {
         padding: 0 16px;
+    }
+
+    .mv-sec .slide_wrap .slide_ui .slide_txt .item p {
+        font-size: 18px;
+    }
+
+    .mv-sec .slide_wrap .slide_ui .progress_ctn {
+        gap: 5px;
+        margin-top: 40px;
     }
 
     .m-about-sec {
@@ -1794,23 +1936,6 @@ body:has(.intro[style*="display: block"]) {
         font-size: 16px;
     }
 
-    .progress_bar {
-        width: 40px;
-    }
-
-    .progress_ctn {
-        bottom: 30px;
-    }
-
-    .play_btn {
-        width: 36px;
-        height: 36px;
-    }
-
-    .bars_container {
-        gap: 8px;
-    }
-
     .m-about-sec .m_tit p {
         margin-top: 10px;
     }
@@ -1875,6 +2000,59 @@ body:has(.intro[style*="display: block"]) {
         padding: 80px;
     }
 
+    .mv-sec .slide_wrap .slide_ui .progress_ctn .bar {
+        width: 40px;
+        margin: -12px 0;
+    }
+
+    .mv-sec .slide_wrap .slide_ui .progress_ctn .bar::before {
+        top: 12px;
+        left: 3px;
+        /* width: calc(100% - 15px); */
+    }
+
+    .mv-sec .slide_wrap .slide_ui .progress_ctn .bar span {
+        top: 12px;
+        left: 3px;
+
+    }
+
+    .mv-sec .slide_wrap .slide_ui .progress_ctn .bar.completed span {
+        width: calc(100% - 6px) !important;
+    }
+
+    .mv-sec .slide_wrap .slide_ui .progress_ctn .play_btn .stop {
+        width: 25px;
+        height: 25px;
+    }
+
+    .mv-sec .slide_wrap .slide_ui .progress_ctn .play_btn {
+        width: 25px;
+        height: 25px;
+    }
+
+    .stop:before {
+        border-left-width: 6px;
+        border-top-width: 4px;
+        border-bottom-width: 4px;
+    }
+
+    .stop.on:before {}
+
+    .bar-text {
+        font-size: 11px;
+        top: -22px;
+        left: 3px;
+        opacity: 0.6;
+        padding: 4px 0;
+        margin: -4px 0;
+    }
+
+    .mv-sec .slide_wrap .slide_ui .progress_ctn .bar.active .bar-text {
+        opacity: 1;
+        font-weight: 700;
+    }
+
     .m-flow-sec .text-slide h3 {
         font-size: 80px;
     }
@@ -1935,51 +2113,49 @@ body:has(.intro[style*="display: block"]) {
             opacity: 0;
         }
     }
-}
 
 
 
-/* 작은 모바일 */
-@media (max-width: 480px) {
+    /* 작은 모바일 */
+    @media (max-width: 480px) {
 
-    .progress_ctn {
-        bottom: 20px;
-        gap: 15px;
+        .m-about-sec .slide_wrap .slide_ctn .item {
+            max-width: 380px;
+        }
+
+        .progress_ctn {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .bars_container {
+            /* width: 100%; */
+            /* justify-content: space-between; */
+            gap: 0px;
+        }
+
+        .mv-sec .slide_wrap .slide_ui .progress_ctn .play_btn {
+            margin-left: 0;
+            display: flex;
+            /* align-self: center; */
+        }
+
+        .mv-sec .slide_wrap .slide_ui .progress_ctn {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            gap: 5px;
+        }
+
+        .m-contanct-sec .img-box {
+            padding: 40px;
+        }
+
+        .insta-img {
+            min-width: 150px;
+            height: 150px;
+            border-radius: 6px;
+        }
+
     }
-
-    .play_btn {
-        width: 32px;
-        height: 32px;
-    }
-
-    .stop {
-        width: 10px;
-        height: 10px;
-    }
-
-    .stop::before,
-    .stop::after {
-        width: 3px;
-        height: 10px;
-    }
-
-    .play_btn.playing .stop {
-        border-width: 5px 0 5px 8px;
-    }
-
-    .m-about-sec .slide_wrap .slide_ctn .item {
-        max-width: 380px;
-    }
-
-
-    .m-contanct-sec .img-box {
-        padding: 40px;
-    }
-
-    .insta-img {
-        min-width: 150px;
-        height: 150px;
-        border-radius: 6px;
-    }
-
-}

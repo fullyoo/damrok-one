@@ -1936,13 +1936,6 @@ body:has(.intro[style*="display: block"]) {
         }
     }
 
-    .mv-sec {
-        /* fallback */
-        height: 100%;
-        height: calc(100vh - 70px);
-        height: 850px;
-    }
-
 }
 
 

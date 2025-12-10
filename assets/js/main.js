@@ -3,151 +3,135 @@ $(function () {
 
 
     /****** 1. 메인 비주얼 영역 ******/
+    function initSlider() {
+        const slider = $(".mv-sec .slide_wrap .slide_ctn");
+        let autoplaySpeed = 4000;
 
-    // 1-1. if문으로 풀어서 작성
-    // const autoplaySpeed = 5000;
-    // let autoplaySpeed = 5000;
-    // if (/Mobi|Android/i.test(navigator.userAgent)) {
-    //     autoplaySpeed = 3000;
-    // }
+        const bars = $(".progress_ctn .bars_container");
 
+        const updateBars = (i) => {
+            bars.find(".bar").removeClass("active");
+            bars.find(".bar").eq(i).addClass("active");
+        };
 
-    // 1-2. 삼항연산자- 모바일과 데스크탑에 따라 재생 속도 다르게 설정 - 모바일이 더 빠름
-    const autoplaySpeed = (/Mobi|Android/i.test(navigator.userAgent)) ? 3000 : 5000;
-    let isPlaying = true;
+        const startProgress = (duration) => {
+            const bar = bars.find(".bar.active span");
 
+            bar.stop(true, true)
+                .css({
+                    width: 0,
+                    opacity: 1
+                })
+                .animate(
+                    { width: "95%" },
+                    duration,
+                    "linear",
+                    () => {
+                        bar.animate({ opacity: 0 }, 500);
+                    }
+                );
+        };
 
-    // 진행바 생성
-    function createProgressBars(slideCount) {
-        const barsContainer = $('.bars_container');
-        barsContainer.empty(); // 기존 진행바 제거
+        slider
+            .on("init", function (e, slick) {
+                const total = slick.slideCount;
 
-        for (let i = 0; i < slideCount; i++) {
-            const bar = $(`
-                <div class="progress_bar" data-index="${i}">
-                    <div class="progress_bar_fill"></div>
-                </div>
-            `);
-
-            // 각 진행바에 클릭 이벤트 직접 바인딩
-            bar.on('click', function (e) {
-                e.stopPropagation();
-                const targetIndex = $(this).data('index');
-                console.log('Bar clicked:', targetIndex); // 디버깅용
-                $('.mv_slide_ctn').slick('slickGoTo', targetIndex);
-
-                // 클릭 시 자동재생이 멈춰있다면 다시 시작
-                if (!isPlaying) {
-                    $('.mv_slide_ctn').slick('slickPlay');
-                    $('.play_btn').addClass('playing');
-                    isPlaying = true;
+                bars.empty();
+                for (let i = 0; i < total; i++) {
+                    bars.append(`
+                    <div class="bar" data-slide="${i}">
+                        <span></span>
+                    </div>
+                `);
                 }
+
+                updateBars(0);
+
+                // 전체 초기화
+                bars.find(".bar span").css({ width: 0, opacity: 0 });
+
+                startProgress(autoplaySpeed);
+            })
+
+            .on("beforeChange", (e, slick, current, next) => {
+
+                // 🔥 무조건 전체 초기화 (핵심)
+                bars.find(".bar span").stop(true, true).css({
+                    width: 0,
+                    opacity: 0
+                });
+
+                updateBars(next);
+
+                // next span만 애니메이션 준비 상태
+                bars.find(".bar").eq(next).find("span").css({
+                    width: 0,
+                    opacity: 1
+                });
+            })
+
+            .on("afterChange", (e, slick, current) => {
+                startProgress(autoplaySpeed);
+            })
+
+            .slick({
+                arrows: false,
+                fade: true,
+                autoplay: true,
+                autoplaySpeed: autoplaySpeed,
+                infinite: true,
+                speed: 0,
+                pauseOnHover: false,
+                pauseOnFocus: false,
+                cssEase: "linear",
             });
 
-            barsContainer.append(bar);
-        }
-    }
 
-    // 진행바 업데이트
-    function updateProgressBar(currentIndex) {
-        $('.progress_bar').removeClass('active');
-        $('.progress_bar .progress_bar_fill').css('width', '0%');
+        let isPaused = false;
 
-        $('.progress_bar').each(function (index) {
-            if (index < currentIndex) {
-                $(this).find('.progress_bar_fill').css('width', '100%');
-            } else if (index === currentIndex) {
-                $(this).addClass('active');
-                $(this).find('.progress_bar_fill').css({
-                    'animation-duration': (autoplaySpeed / 1000) + 's',
-                    'width': '100%'
+        $(".play_btn .stop").on("click", function () {
+            const activeBar = bars.find(".bar.active");
+            const bar = activeBar.find("span");
+
+            if (!$(this).hasClass("on")) {
+                // 정지
+                $(this).addClass("on");
+                slider.slick("slickPause");
+
+                // 현재 active span 숨기기
+                bar.stop(true, true).css({
+                    width: 0,
+                    opacity: 0
+                });
+            } else {
+                // 재생
+                $(this).removeClass("on");
+                slider.slick("slickPlay");
+
+                // 항상 0%에서 시작
+                bar.css({
+                    width: 0,
+                    opacity: 1
+                }).animate({ width: "95%" }, autoplaySpeed, "linear", function () {
+                    bar.animate({ opacity: 0 }, 500);
                 });
             }
         });
-    }
 
-    // 슬라이더 초기화
-    function initSlider() {
-        const slideCount = $('.mv_slide_ctn .item').length;
 
-        // 진행바 생성 (슬라이더 초기화 전에)
-        createProgressBars(slideCount);
 
-        $('.mv_slide_ctn').slick({
-            arrows: false,
-            fade: true,
-            autoplay: true,
-            autoplaySpeed: autoplaySpeed,
-            infinite: true,
-            speed: 500,
-            pauseOnHover: false,
-            pauseOnFocus: false,
-            cssEase: "linear",
+        $(document).on("click", ".progress_ctn .bar", function () {
+            slider.slick("slickGoTo", $(this).data("slide"));
         });
-
-        // 초기 진행바 설정
-        updateProgressBar(0);
-
-        // 슬라이드 변경 시 진행바 업데이트
-        $('.mv_slide_ctn').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-            updateProgressBar(nextSlide);
-        });
-
-        // 재생/정지 버튼
-        $('.play_btn').on('click', function () {
-            if (isPlaying) {
-                $('.mv_slide_ctn').slick('slickPause');
-                $(this).removeClass('playing');
-                $('.progress_bar.active .progress_bar_fill').css('animation-play-state', 'paused');
-                isPlaying = false;
-            } else {
-                $('.mv_slide_ctn').slick('slickPlay');
-                $(this).addClass('playing');
-                $('.progress_bar.active .progress_bar_fill').css('animation-play-state', 'running');
-                isPlaying = true;
-            }
-        });
-
-        // 초기 상태를 재생 중으로 설정
-        $('.play_btn').addClass('playing');
     }
 
 
-    /***********************************************
-     * ※ 추가된 기능 : 모바일 스크롤 시 autoplay 유지
-     ***********************************************/
-    let scrollTimer;
-
-    $(window).on('scroll touchmove', function () {
-
-        // 스크롤 중 자동재생이 꺼져있으면 강제로 다시 재생
-        if (!isPlaying) {
-            $('.mv_slide_ctn').slick('slickPlay');
-            $('.play_btn').addClass('playing');
-            isPlaying = true;
-        }
-
-        // 스크롤 멈추고 150ms 후에도 autoplay 유지
-        clearTimeout(scrollTimer);
-        scrollTimer = setTimeout(() => {
-            $('.mv_slide_ctn').slick('slickPlay');
-            $('.play_btn').addClass('playing');
-            isPlaying = true;
-        }, 20); // 150ms에서 20ms로 변경
-    });
-
-
-    /***********************************************
-     * ※ 추가된 기능 : iOS visibilitychange 대응
-     * (Safari가 스크롤 중일 때도 hidden 처리되는 문제)
-     ***********************************************/
-    document.addEventListener("visibilitychange", () => {
-        if (document.visibilityState === "visible") {
-            $('.mv_slide_ctn').slick('slickPlay');
-            $('.play_btn').addClass('playing');
-            isPlaying = true;
-        }
-    });
+    // .intro 인트로가 끝난 후 슬라이더 실행
+    // $(function () {
+    //     setTimeout(function () {
+    //         initSlider();
+    //     }, 3600);
+    // });
 
 
 
@@ -156,23 +140,23 @@ $(function () {
         let vh = window.innerHeight * 0.01;
         document.documentElement.style.setProperty('--vh', `${vh}px`);
     }
-
-    // 페이지 시작
-    function startPage() {
-        setVh();
-        initSlider();
-    }
-
-    // 초기 실행
     setVh();
 
-    // intro 끝난 후 (0s: 즉시 실행하도록 수정, 필요시 3600으로 변경)
+    // 슬라이더는 단 한번만 실행!
+    function startPage() {
+        setVh();       // intro 끝난 시점 높이 다시 계산
+        initSlider();  // slick 단 1회 실행!
+    }
+
+    // intro 끝난 후
     setTimeout(startPage, 3600);
 
     // resize 대응
     $(window).on('resize', function () {
         setVh();
     });
+
+
 
 
 
@@ -238,6 +222,4 @@ $(function () {
     // })
 
 
-
-
-}); // 끝코드
+}) // 끝코드

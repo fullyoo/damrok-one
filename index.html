@@ -73,6 +73,13 @@
             <div class="slide_wrap">
                 <div class="mv_slide_ctn">
                     <div class="item">
+                        <div class="bg bg01">
+                            <video loop playsinline muted autoplay>
+                                <source src="./assets/images/main/mv00.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    <div class="item">
                         <div class="bg bg04"></div>
                     </div>
                     <div class="item">
@@ -80,13 +87,6 @@
                     </div>
                     <div class="item">
                         <div class="bg bg02"></div>
-                    </div>
-                    <div class="item">
-                        <div class="bg bg01">
-                            <video loop playsinline muted autoplay>
-                                <source src="./assets/images/main/mv01.mp4" type="video/mp4">
-                            </video>
-                        </div>
                     </div>
                 </div>
                 <div class="mv_slide_ui">
@@ -392,7 +392,18 @@
             });
 
 
-            // 2. 상단 비주얼 세로 중앙-제이쿼리
+            // 2. 메인 콘솔 에러 교정
+            // document.addEventListener('touchstart', function (e) { }, { passive: true });
+            // document.addEventListener('touchmove', function (e) { }, { passive: true });
+
+            $('.target').each(function () {
+                this.addEventListener('touchstart', () => { }, { passive: true });
+                this.addEventListener('touchmove', () => { }, { passive: true });
+            });
+
+
+
+
 
 
 

@@ -230,8 +230,8 @@ $(function () {
         pauseOnFocus: false,
         variableWidth: true,
         centerMode: true,
-        // autoplay: true,
-        // autoplaySpeed: 4000,
+        autoplay: true,
+        autoplaySpeed: 4000,
         speed: 2000,
     }).on('beforeChange', function (event, slick, currentSlide, nextSlide) {
         var count = slick.slideCount;

@@ -99,8 +99,6 @@ $(function () {
             cssEase: "linear",
         });
 
-
-
         // 첫 진행바 활성화
         updateProgressBar(0);
 
@@ -108,6 +106,32 @@ $(function () {
         $('.mv_slide_ctn').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
             updateProgressBar(nextSlide);
         });
+
+
+
+        $('.mv_slide_ctn').on('afterChange', function (event, slick, currentSlide) {
+
+            // 모든 비디오 멈춤 + 초기화
+            $('.mv_slide_ctn .slick-slide:not(.slick-cloned) video').each(function () {
+                this.pause();
+                this.currentTime = 0;
+            });
+
+            // 현재 실제 슬라이드의 비디오만 재생
+            const $current = $(slick.$slides.get(currentSlide)).find('video').get(0);
+
+            if ($current) {
+                $current.currentTime = 0;
+
+                // 약간의 지연 후 재생 (slick 전환 완료 후 실행)
+                setTimeout(() => {
+                    $current.play();
+                }, 50);
+            }
+        });
+
+
+
 
         // 재생/정지 버튼
         $('.play_btn').on('click', function () {
@@ -134,8 +158,7 @@ $(function () {
 
 
     // -----------------------------------------------------------
-    // ※ 추가된 기능 : 모바일 스크롤 시 autoplay 유지
-    //   → PC에서는 멈칫 현상이 생기므로 "모바일에서만 실행"하도록 조건 추가
+    // ※ 모바일 스크롤 시 autoplay 유지 (PC 제외)
     // -----------------------------------------------------------
     if (isMobile) {
 
@@ -185,20 +208,43 @@ $(function () {
 
 
     // -----------------------------------------------------------
-    // 페이지 시작
+    // 페이지 시작 (슬라이더는 인트로 끝나고 실행되도록 변경)
     // -----------------------------------------------------------
     function startPage() {
-        setVh();
-        initSlider();
+        setVh();  // vh 먼저 계산
+        // initSlider();  ← 기존 실행 제거됨
     }
 
 
 
-    // 초기 실행 (vh 계산)
+    // 초기 실행 (vh 계산만 실행)
     setVh();
 
-    // intro 끝난 후 실행 (3600ms → 필요 시 조정 가능)
-    setTimeout(startPage, 3600);
+
+
+    // -----------------------------------------------------------
+    // 인트로 종료 후 슬라이더 + UI 동시 실행 (4초 딜레이)
+    // -----------------------------------------------------------
+    setTimeout(function () {
+        startPage();
+        initSlider();
+
+        // 모든 비디오 초기화
+        $('.mv_slide_ctn video').each(function () {
+            this.pause();
+            this.currentTime = 0;
+        });
+
+        // ★ 첫 슬라이드 영상 강제 재생 (중요!)
+        const firstVideo = $('.mv_slide_ctn .slick-current video').get(0);
+        if (firstVideo) {
+            firstVideo.currentTime = 0;
+            firstVideo.play();
+        }
+
+    }, 4000);
+
+
 
 
     // resize 대응
@@ -208,20 +254,14 @@ $(function () {
 
 
 
-
-
-
-
-
-    /****** 2. 인트로-페이지 로드 시 ******/
-
+    /****** 2. 인트로-페이지 로드 시 스크롤바 재생성 ******/
     $('body').addClass('intro-active');
 
     // 인트로 애니메이션 종료 후 (4.6초 후)
     setTimeout(function () {
         $('body').removeClass('intro-active');
-    }, 4600);
 
+    }, 4600);
 
 
 

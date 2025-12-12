@@ -5,7 +5,7 @@ $(function () {
     /****** 1. 메인 비주얼 영역 ******/
 
     // 1-1. 삼항연산자 - 모바일과 데스크탑에 따라 재생 속도 다르게 설정 - 모바일이 더 빠름
-    const autoplaySpeed = (/Mobi|Android/i.test(navigator.userAgent)) ? 4000 : 4000;
+    const autoplaySpeed = (/Mobi|Android/i.test(navigator.userAgent)) ? 3000 : 3000;
     let isPlaying = true;
 
     // 현재 디바이스가 모바일인지 판별 (편하게 재사용하기 위해 변수화)
